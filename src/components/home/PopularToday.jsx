@@ -50,7 +50,7 @@ export default function PopularToday({ movies, series }) {
                 </div>
             </div>
             {/* <!-- Gallery grid with gutters --> */}
-            <MovieGrid movies={movies} route="watch/movie/" divID="popularMovie" divInfo='row g-4' style="show"/>
+            <MovieGrid movies={movies} route="watch/movie?q=" divID="popularMovie" divInfo='row g-4' style="show"/>
             <MovieGrid movies={series} divID="popularSeries" divInfo='row g-4' style="none"/>
         </section>
     )

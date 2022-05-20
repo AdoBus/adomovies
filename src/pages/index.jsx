@@ -11,17 +11,17 @@ export default function Index({ movies, trending, series, genres, latest_movie, 
       <div className="container mt-5">
         <Navbar genres={genres} />
         <TrendingToday trending={trending} genres={genres} />
-        <PopularToday movies={movies} series={series}/>
-        <LatestMoviesAndTVs latest={latest_movie} type="Latest Movies" route="watch/movie/"/>
-        <LatestMoviesAndTVs latest={latest_series} type="Latest TV Series"/>
-        <LatestMoviesAndTVs latest={upcoming_movies} type="Coming Soon" route="watch/movie/"/>
+        <PopularToday movies={movies} series={series} />
+        <LatestMoviesAndTVs latest={latest_movie} type="Latest Movies" route="watch/movie?q=" />
+        <LatestMoviesAndTVs latest={latest_series} type="Latest TV Series" />
+        <LatestMoviesAndTVs latest={upcoming_movies} type="Coming Soon" route="watch/movie?q=" />
       </div>
-      <Footer/>
+      <Footer />
     </>
   )
 }
 
-export async function getServerSideProps({req, res}) {
+export async function getServerSideProps({ req, res }) {
   const trending_all_api = await fetch(`https://api.themoviedb.org/3/trending/all/day?api_key=${process.env.tmdbkey}`)
   const trending_movies_api = await fetch(`https://api.themoviedb.org/3/trending/movie/day?api_key=${process.env.tmdbkey}`)
   const popular_series_api = await fetch(`https://api.themoviedb.org/3/trending/tv/day?api_key=${process.env.tmdbkey}`)
@@ -40,7 +40,7 @@ export async function getServerSideProps({req, res}) {
 
   res.setHeader(
     'Cache-Control',
-    'public, s-maxage=86400, stale-while-revalidate=59'
+    'public, s-maxage=86400, stale-while-revalidate=86450'
   )
 
   return {
