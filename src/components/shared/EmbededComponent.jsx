@@ -25,7 +25,7 @@ export default function EmbededComponent({ movie }) {
             <section className=" container">
                 {/* <!-- Center slide carousel --> */}
                 <div className="card border-0 overflow-hidden">
-                    {movie.status === 'Released' ?
+                    {movie.status === 'Released' || movie.status === 'Ended' ?
                         <iframe src={`https://imdbembed.xyz/movie/tmdb/${movie.id}`} width="100%" height="500px" frameBorder="0" allow="fullscreen 'src'"></iframe>
                         : movie.videos.results.map(video => (
                             video.type === 'Teaser' ? <YouTube videoId={video.key} opts={{

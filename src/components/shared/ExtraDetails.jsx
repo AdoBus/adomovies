@@ -1,5 +1,12 @@
 import Image from 'next/image'
 
+const formatCash = n => {
+    if (n < 1e3) return n;
+    if (n >= 1e3 && n < 1e6) return +(n / 1e3).toFixed(1) + "K";
+    if (n >= 1e6 && n < 1e9) return +(n / 1e6).toFixed(1) + "M";
+    if (n >= 1e9 && n < 1e12) return +(n / 1e9).toFixed(1) + "B";
+    if (n >= 1e12) return +(n / 1e12).toFixed(1) + "T";
+};
 
 export default function ExtraDetails({movie}) {
     return (
@@ -26,7 +33,7 @@ export default function ExtraDetails({movie}) {
                 </div>
             </div>
             <div className="mb-3">
-                <p>${movie.budget}</p>
+                <p>{movie.budget ? `$${formatCash(movie.budget)}` : 'No Data'}</p>
             </div>
             <div className="d-flex align-items-end align-items-lg-center justify-content-between pb-md-2">
                 <div className="d-flex w-100 align-items-center justify-content-between justify-content-lg-start">
@@ -34,7 +41,7 @@ export default function ExtraDetails({movie}) {
                 </div>
             </div>
             <div className="mb-3">
-                <p>${movie.revenue}</p>
+                <p>{movie.budget ? `$${formatCash(movie.revenue)}` : 'No Data'}</p>
             </div>
             <div className="d-flex align-items-end align-items-lg-center justify-content-between pb-md-2">
                 <div className="d-flex w-100 align-items-center justify-content-between justify-content-lg-start">

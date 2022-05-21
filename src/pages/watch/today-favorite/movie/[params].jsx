@@ -11,10 +11,10 @@ import YoutubeIframe from '../../../../components/shared/YoutubeIframe'
 export const getStaticPaths = async () => {
     const trending_all_api = await fetch(`https://api.themoviedb.org/3/trending/all/day?api_key=${process.env.tmdbkey}`)
     const { results } = await trending_all_api.json()
-    const paths = results.slice(0, 1).map(data => {
+    const paths = results.map(data => {
         return {
             params: {
-                params: `${data.original_title ? data.original_title : data.original_name}-${data.id}`
+                params: `${data.id}-${data.original_title ? data.original_title : data.original_name}`
             }
         }
     })
@@ -24,12 +24,11 @@ export const getStaticPaths = async () => {
 }
 
 export const getStaticProps = async ({ params }) => {
-    var x = params.params.split("-").length - 1
-    var id = params.params.split('-')[x]
+    var id = params.params.split('-')
 
     const genres_api = await fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.tmdbkey}&language=en-US`)
     const movie_api = await fetch(
-        `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.tmdbkey}&language=en-US&append_to_response=videos,credits,reviews,similar`
+        `https://api.themoviedb.org/3/movie/${id[0]}?api_key=${process.env.tmdbkey}&language=en-US&append_to_response=videos,credits,reviews,similar`
     )
 
     const { genres } = await genres_api.json()

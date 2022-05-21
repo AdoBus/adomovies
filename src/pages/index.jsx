@@ -13,7 +13,7 @@ export default function Index({ movies, trending, series, genres, latest_movie, 
         <TrendingToday trending={trending} genres={genres} />
         <PopularToday movies={movies} series={series} />
         <LatestMoviesAndTVs latest={latest_movie} type="Latest Movies" route="watch/movie?q=" />
-        <LatestMoviesAndTVs latest={latest_series} type="Latest TV Series" />
+        <LatestMoviesAndTVs latest={latest_series} route="watch/tv?q=" type="Latest TV Series" />
         <LatestMoviesAndTVs latest={upcoming_movies} type="Coming Soon" route="watch/movie?q=" />
       </div>
       <Footer />

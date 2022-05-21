@@ -36,7 +36,7 @@ export default function TrendingToday({ trending, genres }) {
                                 </a>
                             </Link>
                             <div className="btn-group ms-n2 ms-sm-0 mt-3">
-                                <Link href={`watch/today-favorite/${trending[0].media_type}/${trending[0].original_title ? trending[0].original_title : trending[0].original_name}-${trending[0].id}`}>
+                                <Link href={`watch/today-favorite/${trending[0].media_type}/${trending[0].id}-${trending[0].original_title ? trending[0].original_title : trending[0].original_name}`}>
                                     <a className="btn btn-primary px-3">Watch <i className="fi-play"></i></a>
                                 </Link>
                             </div>

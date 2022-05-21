@@ -1,7 +1,6 @@
 import YouTube from 'react-youtube';
 
 const _onReady = ((event) => {
-    // access to player in all event handlers via event.target
     event.target.pauseVideo();
 })
 

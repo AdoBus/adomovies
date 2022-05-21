@@ -1,4 +1,6 @@
 import ReactReadMoreReadLess from "react-read-more-read-less";
+import moment from "moment";
+
 
 export default function TopReview({ movie }) {
     return (
@@ -30,7 +32,7 @@ export default function TopReview({ movie }) {
                                     </div>
                                 </div>
                             </div>
-                            <span className="text-muted fs-sm">Jan 17, 2021</span>
+                            <span className="text-muted fs-sm">{moment(review.created_at).format('LL')}</span>
                         </div>
                         <ReactReadMoreReadLess
                             charLimit={800}

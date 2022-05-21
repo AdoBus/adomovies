@@ -13,14 +13,15 @@ export const getServerSideProps = async ({ res, req, query }) => {
     var id = q.split('-')
 
     const genres_api = await fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.tmdbkey}&language=en-US`)
-    const movie_api = await fetch(
-        `https://api.themoviedb.org/3/movie/${id[0]}?api_key=${process.env.tmdbkey}&language=en-US&append_to_response=videos,credits,reviews,similar`
+    const series_api = await fetch(
+        `https://api.themoviedb.org/3/tv/${id[0]}?api_key=${process.env.tmdbkey}&language=en-US&append_to_response=videos,credits,reviews,similar`
     )
 
     const { genres } = await genres_api.json()
-    const movie = await movie_api.json()
+    const series = await series_api.json()
 
-    if (movie.success == false) {
+
+    if (series.success == false) {
         return {
             notFound: true,
         }
@@ -28,15 +29,23 @@ export const getServerSideProps = async ({ res, req, query }) => {
 
     let torrent;
 
-    if (movie.imdb_id) {
-        const torrent_api = await fetch(`https://yts.mx/api/v2/movie_details.json?imdb_id=${movie.imdb_id}`)
-        torrent = await torrent_api.json()
-    } else {
-        torrent = {
-            data: {
-                movie: {
-                    torrents: null
-                }
+    // if (movie.imdb_id) {
+    //     const torrent_api = await fetch(`https://yts.mx/api/v2/movie_details.json?imdb_id=${movie.imdb_id}`)
+    //     torrent = await torrent_api.json()
+    // } else {
+    //     torrent = {
+    //         data: {
+    //             movie: {
+    //                 torrents: null
+    //             }
+    //         }
+    //     }
+    // }
+
+    torrent = {
+        data: {
+            movie: {
+                torrents: null
             }
         }
     }
@@ -49,30 +58,30 @@ export const getServerSideProps = async ({ res, req, query }) => {
     return {
         props: {
             genres: genres,
-            movie: movie,
+            series: series,
             torrent: torrent,
         }
     }
 }
 
-export default function Streaming({ genres, movie, torrent }) {
+export default function Streaming({ genres, series, torrent }) {
     return (
         <>
             <Navbar genres={genres} />
-            <EmbededComponent movie={movie} />
-            <MovieDetails movie={movie} torrent={torrent} />
+            <EmbededComponent movie={series} />
+            <MovieDetails movie={series} torrent={torrent} />
 
             <section className="container mt-3 mb-3">
                 <div className="row">
                     <div className="col-lg-10 col-xl-9 radius-4 p-4">
-                        <Casts movie={movie} />
-                        <TopReview movie={movie} />
+                        <Casts movie={series} />
+                        <TopReview movie={series} />
                     </div>
-                    <ExtraDetails movie={movie} />
+                    <ExtraDetails movie={series} />
                 </div>
             </section>
-            <SimilarMovie movie={movie} route="watch/movie?q=" />
-            <YoutubeIframe movie={movie} />
+            <SimilarMovie movie={series} route="watch/tv?q=" />
+            <YoutubeIframe movie={series} />
             <Footer />
         </>
     )
