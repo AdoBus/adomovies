@@ -8,23 +8,10 @@ import ExtraDetails from '../../../../components/shared/ExtraDetails'
 import SimilarMovie from '../../../../components/shared/SimilarMovies'
 import YoutubeIframe from '../../../../components/shared/YoutubeIframe'
 
-export const getStaticPaths = async () => {
-    const trending_all_api = await fetch(`https://api.themoviedb.org/3/trending/all/day?api_key=${process.env.tmdbkey}`)
-    const { results } = await trending_all_api.json()
-    const paths = results.map(data => {
-        return {
-            params: {
-                params: `${data.id}-${data.original_title ? data.original_title : data.original_name}`
-            }
-        }
-    })
-    return {
-        paths, fallback: false
-    }
-}
 
-export const getStaticProps = async ({ params }) => {
-    var id = params.params.split('-')
+export const getServerSideProps = async ({ res, req, query }) => {
+    const { q } = query
+    var id = q.split('-')
 
     const genres_api = await fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.tmdbkey}&language=en-US`)
     const movie_api = await fetch(
@@ -34,8 +21,31 @@ export const getStaticProps = async ({ params }) => {
     const { genres } = await genres_api.json()
     const movie = await movie_api.json()
 
-    const torrent_api = await fetch(`https://yts.mx/api/v2/movie_details.json?imdb_id=${movie.imdb_id}`)
-    const torrent = await torrent_api.json()
+    if (movie.success == false) {
+        return {
+            notFound: true,
+        }
+    }
+
+    let torrent;
+
+    if (movie.imdb_id) {
+        const torrent_api = await fetch(`https://yts.mx/api/v2/movie_details.json?imdb_id=${movie.imdb_id}`)
+        torrent = await torrent_api.json()
+    } else {
+        torrent = {
+            data: {
+                movie: {
+                    torrents: null
+                }
+            }
+        }
+    }
+
+    res.setHeader(
+        'Cache-Control',
+        'public, s-maxage=3600, stale-while-revalidate=3660'
+    )
 
     return {
         props: {
@@ -62,7 +72,7 @@ export default function Streaming({ genres, movie, torrent }) {
                     <ExtraDetails movie={movie} />
                 </div>
             </section>
-            <SimilarMovie movie={movie} route="watch/movie?q="/>
+            <SimilarMovie movie={movie} route="watch/movie?q=" />
             <YoutubeIframe movie={movie} />
             <Footer />
         </>
