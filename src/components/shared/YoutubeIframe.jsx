@@ -1,4 +1,11 @@
-export default function YoutubeIframe({movie}) {
+import YouTube from 'react-youtube';
+
+const _onReady = ((event) => {
+    // access to player in all event handlers via event.target
+    event.target.pauseVideo();
+})
+
+export default function YoutubeIframe({ movie }) {
     return (
         <div className="modal fade" id="youtube-modal" tabIndex="-1" style={{ display: "none" }} aria-hidden="true">
             <div className="modal-dialog modal-lg modal-dialog-centered p-2 my-0 mx-auto" style={{ maxWidth: '950px' }}>
@@ -8,9 +15,14 @@ export default function YoutubeIframe({movie}) {
                         <div className="row mx-0 align-items-center">
                             <div className="col p-4 p-sm-5">
                                 {movie.videos.results.map(video => (
-                                    video.name.includes('Trailer') || video.name.includes('trailer')  ? <iframe id="player" type="text/html" width="640" height="390"
-                                        src={`http://www.youtube.com/embed/${video.key}?enablejsapi=1&origin=http://example.com`}
-                                        frameBorder="0"></iframe> : ''
+                                    video.name.includes('Trailer') || video.name.includes('trailer')  ?
+                                    <YouTube videoId={video.key} opts={{
+                                        height: '390',
+                                        width: '640',
+                                        playerVars: {
+                                            autoplay: 0
+                                        },
+                                    }} onReady={_onReady} />: ''
                                 ))}
                             </div>
                         </div>

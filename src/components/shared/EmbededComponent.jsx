@@ -1,3 +1,10 @@
+import YouTube from 'react-youtube';
+
+const _onReady = ((event) => {
+    // access to player in all event handlers via event.target
+    event.target.pauseVideo();
+})
+
 export default function EmbededComponent({ movie }) {
     return (
         <>
@@ -21,9 +28,13 @@ export default function EmbededComponent({ movie }) {
                     {movie.status === 'Released' ?
                         <iframe src={`https://imdbembed.xyz/movie/tmdb/${movie.id}`} width="100%" height="500px" frameBorder="0" allow="fullscreen 'src'"></iframe>
                         : movie.videos.results.map(video => (
-                            video.type === 'Teaser' ? <iframe key={video.key} id="player" type="text/html" width="100%" height="500px"
-                                src={`http://www.youtube.com/embed/${video.key}?enablejsapi=1&origin=http://example.com`}
-                                frameBorder="0"></iframe> : <></>
+                            video.type === 'Teaser' ? <YouTube videoId={video.key} opts={{
+                                height: '500',
+                                width: '100%',
+                                playerVars: {
+                                    autoplay: 0
+                                },
+                            }} onReady={_onReady} /> : ''
                         ))}
                 </div>
             </section>
