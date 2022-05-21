@@ -21,7 +21,7 @@ export default function Navbar({genres}) {
            aria-controls="navbarUserNav" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
-          <div className="d-none d-lg-block order-lg-3">
+          <div className="order-lg-3">
             <form className="form-group">
               <div className="input-group input-group-sm">
                 <span className="input-group-text text-muted">

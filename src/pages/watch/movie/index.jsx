@@ -8,8 +8,8 @@ import ExtraDetails from '../../../components/shared/ExtraDetails'
 import SimilarMovie from '../../../components/shared/SimilarMovies'
 import YoutubeIframe from '../../../components/shared/YoutubeIframe'
 
-export const getServerSideProps = async (context) => {
-    const { q } = context.query
+export const getServerSideProps = async ({ res, req, query }) => {
+    const { q } = query
     var x = q.split("-").length - 1
     var id = q.split('-')[x]
 
@@ -21,12 +21,30 @@ export const getServerSideProps = async (context) => {
     const { genres } = await genres_api.json()
     const movie = await movie_api.json()
 
-    const torrent_api = await fetch(`https://yts.mx/api/v2/movie_details.json?imdb_id=${movie.imdb_id}`)
-    const torrent = await torrent_api.json()
+    if (movie.success == false) {
+        return {
+            notFound: true,
+        }
+    }
+
+    let torrent;
+
+    if (movie.imdb_id) {
+        const torrent_api = await fetch(`https://yts.mx/api/v2/movie_details.json?imdb_id=${movie.imdb_id}`)
+        torrent = await torrent_api.json()
+    } else {
+        torrent = {
+            data: {
+                movie: {
+                    torrents: null
+                }
+            }
+        }
+    }
 
     res.setHeader(
         'Cache-Control',
-        'public, s-maxage=86400, stale-while-revalidate=86450'
+        'public, s-maxage=3600, stale-while-revalidate=3660'
     )
 
     return {

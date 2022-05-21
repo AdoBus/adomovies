@@ -5,9 +5,9 @@ export default function MovieDetails({ movie, torrent }) {
                 <article className="card border-0 shadow-sm card-hover card-horizontal">
                     <a rel="noreferrer"  target="_blank" href={movie.homepage} className="card-img-top" style={{ backgroundImage: `url(https://www.themoviedb.org/t/p/w440_and_h660_face${movie.poster_path})` }}></a>
                     <div className="card-body">
-                        <a href="#" className="fs-xs text-uppercase text-decoration-none">{movie.status}</a>
+                        <a rel="noreferrer"  target="_blank" href={movie.homepage} className="fs-xs text-uppercase text-decoration-none">{movie.status}</a>
                         <h3 className="fs-base pt-1 mb-2">
-                            <a href="#" className="nav-link">{movie.title} <span className="badge bg-info fs-xs">{movie.tagline}</span></a>
+                            <a href={movie.homepage} rel="noreferrer"  target="_blank" className="nav-link">{movie.title} <span className="badge bg-info fs-xs">{movie.tagline}</span></a>
                         </h3>
                         <p className="fs-sm text-muted">{movie.overview}</p>
                         <div className="d-flex flex-wrap flex-column flex-sm-row">
@@ -46,11 +46,11 @@ export default function MovieDetails({ movie, torrent }) {
                             <div className="btn-group" role="group" aria-label="Outline button group">
                                 {torrent.data.movie.torrents ?
                                     <>
-                                        <a href={torrent.data.movie.torrents[1].url} className="btn btn-sm btn-outline-primary"><i className='fi-cloud-download'></i> Torrent 1080p</a>
-                                        <a href={torrent.data.movie.torrents[0].url} className="btn btn-sm btn-outline-primary"><i className='fi-cloud-download'></i> Torrent 720p</a>
+                                        <a href={torrent.data.movie.torrents[1].url} className="btn btn-sm btn-outline-primary"><i className='fi-cloud-download'></i> 1080p</a>
+                                        <a href={torrent.data.movie.torrents[0].url} className="btn btn-sm btn-outline-primary"><i className='fi-cloud-download'></i> 720p</a>
                                     </> : ''
                                 }
-                                <a className="btn btn-sm btn-outline-primary" id="play-button" href="#youtube-modal" data-bs-toggle="modal"><i className='fi-youtube'></i> Trailer</a>
+                                <a className="btn btn-sm btn-outline-primary" id="play-button" href="#youtube-modal" data-bs-toggle="modal"><i className='fi-youtube'></i> Trailers</a>
                             </div>
                         </div>
                     </div>

@@ -1,3 +1,5 @@
+import ReactReadMoreReadLess from "react-read-more-read-less";
+
 export default function TopReview({ movie }) {
     return (
         <>
@@ -20,17 +22,24 @@ export default function TopReview({ movie }) {
                                 <div className="ps-2">
                                     <h6 className="fs-base mb-0">{review.author}</h6>
                                     <div className="star-rating">
-                                        <i className="star-rating-icon fi-star-filled active"></i>
-                                        <i className="star-rating-icon fi-star-filled active"></i>
-                                        <i className="star-rating-icon fi-star-filled active"></i>
-                                        <i className="star-rating-icon fi-star-filled active"></i>
-                                        <i className="star-rating-icon fi-star"></i>
+                                        <h2 className="h5" style={{"color":"white"}}>
+                                            <span className="badge bg-black">
+                                                <i className="star-rating-icon text-white fi-star-filled"></i>{' '}{review.author_details.rating}
+                                            </span>
+                                        </h2>
                                     </div>
                                 </div>
                             </div>
                             <span className="text-muted fs-sm">Jan 17, 2021</span>
                         </div>
-                        <p>{review.content}</p>
+                        <ReactReadMoreReadLess
+                            charLimit={800}
+                            readMoreText={"Read more"}
+                            readLessText={"Read less"}
+                            readMoreStyle={{ color: "#33cabb" }}
+                            readLessStyle={{ color: "#33cabb" }}>
+                            {review.content}
+                        </ReactReadMoreReadLess>
                     </>
                 )) : <p>We don&apos;t have any review so far.</p>}
         </>

@@ -63,7 +63,7 @@ export default function Streaming({ genres, movie, torrent }) {
                     <ExtraDetails movie={movie} />
                 </div>
             </section>
-            <SimilarMovie movie={movie} route="watch/movie/similar?q="/>
+            <SimilarMovie movie={movie} route="watch/movie?q="/>
             <YoutubeIframe movie={movie} />
             <Footer />
         </>
