@@ -89,7 +89,7 @@ export default function Streaming({ genres, series, torrent, episodes }) {
                                     <input type="hidden" value="New York" />
                                     <ul className="dropdown-menu">
                                         {series.seasons.slice(1, series.seasons.length).map(season => (
-                                            <li>
+                                            <li key={season.id}>
                                                 <a className="dropdown-item" href="#">
                                                     <span className="dropdown-item-label">Season {season.season_number}</span>
                                                 </a>
@@ -100,7 +100,7 @@ export default function Streaming({ genres, series, torrent, episodes }) {
                             </div>
                             <div className="row g-2">
                                 {episodes.episodes.map(episode => (
-                                    <div className="col-md-2 col-6">
+                                    <div key={episode.id} className="col-md-2 col-6">
                                         <button style={{'overflow': 'hidden', 'textOverflow': 'ellipsis'}} type="button" className="btn btn-secondary w-100">Eps {episode.episode_number}: {episode.name}</button>
                                     </div>
                                 ))}

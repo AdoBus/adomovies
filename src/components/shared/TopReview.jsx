@@ -20,7 +20,7 @@ export default function TopReview({ movie }) {
                                         <img className="rounded-circle me-1" src={review.author_details.avatar_path.replace('/http', 'http')} width="48" alt="Avatar" />
                                         :
                                         <img className="rounded-circle me-1" src={`/api/getImage?q=${review.author_details.avatar_path}`} width="48" alt="Avatar" />
-                                    : <img className="rounded-circle me-1" src="" width="48" />}
+                                    : <img className="rounded-circle me-1" src="" alt="No image" width="48" />}
                                 <div className="ps-2">
                                     <h6 className="fs-base mb-0">{review.author}</h6>
                                     <div className="star-rating">
