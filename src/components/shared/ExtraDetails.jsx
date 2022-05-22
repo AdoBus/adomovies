@@ -63,7 +63,7 @@ export default function ExtraDetails({movie}) {
             {movie.production_companies.map(company => (
                 <div key={company.name} className="mb-3">
                     <a className="d-flex align-items-center text-decoration-none" href="#">
-                        <Image className="rounded-circle" src={`https://www.themoviedb.org/t/p/w440_and_h660_face${company.logo_path}`} alt={company.name} height="44" width="44" />
+                        <Image className="rounded-circle" src={`/api/getImage?q=${company.logo_path}`} alt={company.name} height="44" width="44" />
                         <div className="ps-2">
                             <h6 className="fs-sm text-nav lh-base mb-1">{company.name}</h6>
                             <div className="d-flex text-body fs-xs"><strong>Origin Country:</strong>{company.origin_country}</div>

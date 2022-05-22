@@ -7,7 +7,7 @@ export default function TrendingToday({ trending, genres }) {
                 {/* <!-- Center slide carousel --> */}
                 <div className="card border-0 overflow-hidden"
                     style={{
-                        backgroundImage: `url(https://www.themoviedb.org/t/p/w440_and_h660_face${trending[0].backdrop_path})`,
+                        backgroundImage: `url(api/getImage?q=${trending[0].backdrop_path})`,
                         padding: "100px", backgroundSize: "auto"
                     }}>
                     <span className="img-gradient-overlay"></span>

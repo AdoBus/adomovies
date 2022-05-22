@@ -13,7 +13,7 @@ export default function MovieDetails({ movie, torrent }) {
         <>
             <section className="container pt-5 p-4">
                 <article className="card border-0 shadow-sm card-hover card-horizontal">
-                    <a rel="noreferrer" target="_blank" href={movie.homepage} className="card-img-top" style={{ backgroundImage: `url(https://www.themoviedb.org/t/p/w440_and_h660_face${movie.poster_path})` }}></a>
+                    <a rel="noreferrer" target="_blank" href={movie.homepage} className="card-img-top" style={{ backgroundImage: `url(/api/getImage?q=${movie.poster_path})` }}></a>
                     <div className="card-body">
                         <a rel="noreferrer" target="_blank" href={movie.homepage} className="fs-xs text-uppercase text-decoration-none">{movie.status}</a>
                         <h3 className="fs-base pt-1 mb-2">
@@ -37,7 +37,7 @@ export default function MovieDetails({ movie, torrent }) {
                                 <strong>IMDb Rating</strong>: {movie.vote_average}
                             </div>
                             <div className="fs-sm col-md-4 pt-2 mb-1">
-                                <strong>Duration</strong>: {movie.runtime ? movie.runtime : 0} min
+                                <strong>Duration</strong>: {movie.runtime ? movie.runtime : movie.episode_run_time} min
                             </div>
                             <div className="row">
                                 <div className="fs-sm col-md-4 pt-2 mb-1">

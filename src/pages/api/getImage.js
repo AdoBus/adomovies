@@ -7,15 +7,11 @@ const handler = nc()
 
         res.setHeader('Content-Type', 'image/png')
 
-        fetch(`https://imdb-api.com/en/API/Posters/k_k32ze3oq/${query}`)
-            .then(response => response.json())
-            .then(data => (
-                fetch(data.posters[0].link)
-                .then(response => response.buffer())
-                .then(data => {
-                    return res.end(data)
-                })
-            ))
+        fetch(`https://www.themoviedb.org/t/p/w440_and_h660_face${query}`)
+            .then(response => response.buffer())
+            .then(data => {
+                return res.end(data)
+            }).catch(error => console.log(error))
     })
 
 export default handler

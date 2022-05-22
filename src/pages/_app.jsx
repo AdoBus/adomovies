@@ -24,8 +24,8 @@ function MyApp({ Component, pageProps }) {
         '/js/lg-fullscreen.min.js',
         '/js/lg-video.min.js',
         '/js/theme.js',
-        '/js/tiny-slider.js'
-      ]);
+        '/js/tiny-slider.js',
+    ]);
     return (
         <>
             <Head>

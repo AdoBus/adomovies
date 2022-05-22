@@ -13,13 +13,13 @@ export default function TopReview({ movie }) {
             {movie.reviews.results.length > 0 ?
                 movie.reviews.results.slice(0, 1).map(review => (
                     <>
-                        <div className="d-flex justify-content-between mb-3">
+                        <div key={review.author} className="d-flex justify-content-between mb-3">
                             <div className="d-flex align-items-center pe-2">
                                 {review.author_details.avatar_path ?
                                     review.author_details.avatar_path.includes('/http') ?
                                         <img className="rounded-circle me-1" src={review.author_details.avatar_path.replace('/http', 'http')} width="48" alt="Avatar" />
                                         :
-                                        <img className="rounded-circle me-1" src={`https://www.themoviedb.org/t/p/w440_and_h660_face${review.author_details.avatar_path}`} width="48" alt="Avatar" />
+                                        <img className="rounded-circle me-1" src={`/api/getImage?q=${review.author_details.avatar_path}`} width="48" alt="Avatar" />
                                     : <img className="rounded-circle me-1" src="" width="48" />}
                                 <div className="ps-2">
                                     <h6 className="fs-base mb-0">{review.author}</h6>

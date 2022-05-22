@@ -12,7 +12,7 @@ export default function Casts({movie}) {
                         {/* <!-- Item --> */}
                         <a className="card h-100 shadow-sm border-0">
                             <div className="card-img-top card-img-hover">
-                                <img width="300" height="400" src={`https://www.themoviedb.org/t/p/w440_and_h660_face${c.profile_path}`} alt={c.name} />
+                                <img width="300" height="400" src={`/api/getImage?q=${c.profile_path}`} alt={c.name} />
                             </div>
                             <div className="card-body text-center">
                                 <p className="mb-0 text-nav fs-sm">{c.name}</p>

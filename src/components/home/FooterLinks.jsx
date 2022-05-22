@@ -19,7 +19,7 @@ export default function FooterLinks() {
                             </li>
                             <li className="nav-item mb-2">
                                 <a className="nav-link p-0 fw-normal  text-nowrap" href="tel:+255692536972">
-                                    <i className="fi-device-mobile mt-n1 me-1 align-middle text-primary"></i>+255-692-536-972
+                                    <i className="fi-instagram mt-n1 me-1 align-middle text-primary"></i>Instagram
                                 </a>
                             </li>
                         </ul>
@@ -46,15 +46,15 @@ export default function FooterLinks() {
                     </div>
                     {/* <!-- Subscription form--> */}
                     <div className="col-lg-4 offset-lg-1">
-                        <h3 className="h4">Subscribe to our newsletter</h3>
-                        <p>Be the first one to stream movies and series!</p>
-                        <form className="form-group rounded-pill" style={{ maxWidth: '500px' }}>
-                            <div className="input-group input-group-sm"><span className="input-group-text text-muted">
-                                <i className="fi-mail"></i></span>
-                                <input className="form-control" type="email" placeholder="Your email" />
-                            </div>
-                            <button className="btn btn-primary btn-sm rounded-pill" type="button">Subscribe</button>
-                        </form>
+                        <h3 className="fs-base">DISCRIMER</h3>
+                        <p>
+                            This site does not store any files on the server.
+                            All content is provided by unaffiliated third parties.
+                            Adomovies.com is not responsible for the accuracy, copyright,
+                            legality, dignity or other aspects of the content of any other
+                            linked site. If you have any legal questions, please contact the
+                            appropriate media owner or host site.
+                        </p>
                     </div>
                 </div>
             </div>
