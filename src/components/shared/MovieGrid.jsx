@@ -8,7 +8,7 @@ export default function MovieGrid({ movies, divID, divInfo, style, route }) {
                     movies.slice(0, 18).map((movie, index) =>
                         <div key={index} className="col-md-2 col-6 mb-3">
                             {/* <!-- Item --> */}
-                            <Link href={`/${route}${movie.id}-${movie.original_title ? movie.original_title : movie.original_name}`}>
+                            <Link href={`/${route}${movie.id}-${route === 'watch/tv?q=' ? '1-' : ''}${movie.original_title ? movie.original_title : movie.original_name}`}>
                                 <a className="card h-100 shadow-sm card-hover border-0">
                                     <div className="card-img-top card-img-hover">
                                         <span className="img-overlay opacity-65"></span>

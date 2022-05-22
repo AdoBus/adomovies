@@ -5,10 +5,10 @@ const _onReady = ((event) => {
     event.target.pauseVideo();
 })
 
-export default function EmbededComponent({ movie }) {
+export default function EmbededComponent({ movie, season_number }) {
     return (
         <>
-            <section className="container pt-5 mt-5">
+            <section id='iframeContainer' className="container pt-5 mt-5">
                 {/* <!-- Breadcrumb--> */}
                 <nav className="mb-3 pt-md-3" aria-label="breadcrumb">
                     <ol className="breadcrumb">
@@ -28,7 +28,7 @@ export default function EmbededComponent({ movie }) {
                     {movie.status === 'Released' || movie.status === 'Ended' || movie.status === 'Returning Series' || movie.status === 'Canceled' ?
                         <>
                             {movie.hasOwnProperty("seasons") ?
-                                <iframe src={`https://imdbembed.xyz/tv/tmdb/${movie.id}-1-1`} width="100%" height="500px" frameBorder="0" allow="fullscreen 'src'"></iframe>
+                                <iframe id='iframe' src={`https://imdbembed.xyz/tv/tmdb/${movie.id}-${season_number}-1`} width="100%" height="500px" frameBorder="0" allow="fullscreen 'src'"></iframe>
                                 :
                                 <iframe src={`https://imdbembed.xyz/movie/tmdb/${movie.id}`} width="100%" height="500px" frameBorder="0" allow="fullscreen 'src'"></iframe>
                             }

@@ -31,7 +31,7 @@ export default function MovieDetails({ movie, torrent }) {
                         </div>
                         <div className="row mb-3">
                             <div className="fs-sm col-md-4 pt-2 mb-1">
-                                <strong>Release date</strong>: {moment(movie.release_date).format('LL')}
+                                <strong>Release date</strong>: {moment(movie.last_air_date ? movie.last_air_date : movie.release_date).format('LL')}
                             </div>
                             <div className="fs-sm col-md-4 pt-2 mb-1">
                                 <strong>IMDb Rating</strong>: {movie.vote_average}

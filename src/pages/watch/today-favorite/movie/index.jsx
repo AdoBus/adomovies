@@ -7,6 +7,7 @@ import TopReview from '../../../../components/shared/TopReview'
 import ExtraDetails from '../../../../components/shared/ExtraDetails'
 import SimilarMovie from '../../../../components/shared/SimilarMovies'
 import YoutubeIframe from '../../../../components/shared/YoutubeIframe'
+import Script from 'next/script'
 
 
 export const getServerSideProps = async ({ res, req, query }) => {
@@ -59,6 +60,14 @@ export const getServerSideProps = async ({ res, req, query }) => {
 export default function Streaming({ genres, movie, torrent }) {
     return (
         <>
+            <Script src='/js/bootstrap.bundle.min.js' />
+            <Script src='/js/smooth-scroll.polyfills.min.js' />
+            <Script src='/js/lightgallery.min.js' />
+            <Script src='/js/lg-zoom.min.js' />
+            <Script src='/js/lg-fullscreen.min.js' />
+            <Script src='/js/lg-video.min.js' />
+            <Script src='/js/theme.js' />
+            <Script src='/js/tiny-slider.js' />
             <Navbar genres={genres} />
             <EmbededComponent movie={movie} />
             <MovieDetails movie={movie} torrent={torrent} />

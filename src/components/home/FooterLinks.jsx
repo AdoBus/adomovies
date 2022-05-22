@@ -46,7 +46,7 @@ export default function FooterLinks() {
                     </div>
                     {/* <!-- Subscription form--> */}
                     <div className="col-lg-4 offset-lg-1">
-                        <h3 className="fs-base">DISCRIMER</h3>
+                        <h3 className="fs-base">DISCLAIMER</h3>
                         <p>
                             This site does not store any files on the server.
                             All content is provided by unaffiliated third parties.

@@ -32,8 +32,8 @@ export default function PopularToday({ movies, series }) {
                             type="button" data-bs-toggle="dropdown" aria-expanded="false"><span className="dropdown-toggle-label">Movies</span></button>
                         <input type="hidden" />
                         <div className="dropdown-menu">
-                            <a id="movieMobile" className="dropdown-item" href="#"><span className="dropdown-item-label">Movies</span></a>
-                            <a id="TVMobile" className="dropdown-item" href="#"><span className="dropdown-item-label">TV Series</span></a>
+                            <a id="movieMobile" className="dropdown-item" href="javascript:"><span className="dropdown-item-label">Movies</span></a>
+                            <a id="TVMobile" className="dropdown-item" href="javascript:"><span className="dropdown-item-label">TV Series</span></a>
                         </div>
                     </div>
                     <ul className="nav nav-pills d-none d-md-flex ps-lg-2 mb-0" role="tablist">

@@ -1,7 +1,6 @@
 import Head from "next/head"
 import NProgress from "nprogress"
 import Router from "next/router"
-import useScript from "../hooks/useScript";
 
 import '../../assets/styles/theme.min.css';
 import '../../assets/styles/flatpickr.min.css';
@@ -16,16 +15,6 @@ Router.events.on('routeChangeComplete', () => NProgress.done())
 Router.events.on('routeChangeError', () => NProgress.done())
 
 function MyApp({ Component, pageProps }) {
-    useScript([
-        '/js/bootstrap.bundle.min.js',
-        '/js/smooth-scroll.polyfills.min.js',
-        '/js/lightgallery.min.js',
-        '/js/lg-zoom.min.js',
-        '/js/lg-fullscreen.min.js',
-        '/js/lg-video.min.js',
-        '/js/theme.js',
-        '/js/tiny-slider.js',
-    ]);
     return (
         <>
             <Head>

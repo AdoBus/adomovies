@@ -3,11 +3,20 @@ import TrendingToday from "../components/home/TrendingToday";
 import PopularToday from "../components/home/PopularToday";
 import LatestMoviesAndTVs from "../components/home/LatestMoviesAndTVs";
 import Footer from "../components/shared/Footer"
+import Script from "next/script";
 
 
 export default function Index({ movies, trending, series, genres, latest_movie, latest_series, upcoming_movies }) {
   return (
     <>
+      <Script src='/js/bootstrap.bundle.min.js' />
+      <Script src='/js/smooth-scroll.polyfills.min.js' />
+      <Script src='/js/lightgallery.min.js' />
+      <Script src='/js/lg-zoom.min.js' />
+      <Script src='/js/lg-fullscreen.min.js' />
+      <Script src='/js/lg-video.min.js' />
+      <Script src='/js/theme.js' />
+      <Script src='/js/tiny-slider.js' />
       <div className="container mt-5">
         <Navbar genres={genres} />
         <TrendingToday trending={trending} genres={genres} />
@@ -42,7 +51,7 @@ export async function getServerSideProps({ req, res }) {
     'Cache-Control',
     'public, s-maxage=3600, stale-while-revalidate=3660'
   )
-  
+
   return {
     props: {
       trending: trending.results,

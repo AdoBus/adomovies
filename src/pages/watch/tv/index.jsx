@@ -7,7 +7,10 @@ import TopReview from '../../../components/shared/TopReview'
 import ExtraDetails from '../../../components/shared/ExtraDetails'
 import SimilarMovie from '../../../components/shared/SimilarMovies'
 import YoutubeIframe from '../../../components/shared/YoutubeIframe'
+import Script from 'next/script'
+import dynamic from 'next/dynamic'
 
+const SeasonEpisodes = dynamic(() => import("../../../components/shared/SeasonEpisodes"), {ssr: false })
 
 export const getServerSideProps = async ({ res, req, query }) => {
     const { q } = query
@@ -18,7 +21,7 @@ export const getServerSideProps = async ({ res, req, query }) => {
         `https://api.themoviedb.org/3/tv/${id[0]}?api_key=${process.env.tmdbkey}&language=en-US&append_to_response=videos,credits,reviews,similar,seasons`
     )
     const episodes_api = await fetch(
-        `https://api.themoviedb.org/3/tv/${id[0]}/season/1?api_key=${process.env.tmdbkey}&language=en-US&append_to_response=episodes`
+        `https://api.themoviedb.org/3/tv/${id[0]}/season/${id[1]}?api_key=${process.env.tmdbkey}&language=en-US&append_to_response=episodes`
     )
 
     const { genres } = await genres_api.json()
@@ -31,22 +34,7 @@ export const getServerSideProps = async ({ res, req, query }) => {
         }
     }
 
-    let torrent;
-
-    // if (movie.imdb_id) {
-    //     const torrent_api = await fetch(`https://yts.mx/api/v2/movie_details.json?imdb_id=${movie.imdb_id}`)
-    //     torrent = await torrent_api.json()
-    // } else {
-    //     torrent = {
-    //         data: {
-    //             movie: {
-    //                 torrents: null
-    //             }
-    //         }
-    //     }
-    // }
-
-    torrent = {
+    const torrent = {
         data: {
             movie: {
                 torrents: null
@@ -72,42 +60,21 @@ export const getServerSideProps = async ({ res, req, query }) => {
 export default function Streaming({ genres, series, torrent, episodes }) {
     return (
         <>
+            <Script src='/js/bootstrap.bundle.min.js' />
+            <Script src='/js/smooth-scroll.polyfills.min.js' />
+            <Script src='/js/lightgallery.min.js' />
+            <Script src='/js/lg-zoom.min.js' />
+            <Script src='/js/lg-fullscreen.min.js' />
+            <Script src='/js/lg-video.min.js' />
+            <Script src='/js/theme.js' />
+            <Script src='/js/tiny-slider.js' />
+
             <Navbar genres={genres} />
-            <EmbededComponent movie={series} />
+            <EmbededComponent movie={series} season_number={episodes.season_number} />
             <MovieDetails movie={series} torrent={torrent} />
 
             {series.seasons.length >= 1 ?
-                <section className="container">
-                    <article className="card border-0 shadow-sm card-hover card-horizontal">
-                        <div className="card-body">
-                            <div className="mb-2">
-                                <div className="dropdown w-sm-50 border-end-sm" data-bs-toggle="select">
-                                    <button className="btn btn-link dropdown-toggle ps-2 ps-sm-3" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i className="fi-align-justify me-2"></i>
-                                        <span className="dropdown-toggle-label">Season 1</span>
-                                    </button>
-                                    <input type="hidden" value="New York" />
-                                    <ul className="dropdown-menu">
-                                        {series.seasons.slice(1, series.seasons.length).map(season => (
-                                            <li key={season.id}>
-                                                <a className="dropdown-item" href="#">
-                                                    <span className="dropdown-item-label">Season {season.season_number}</span>
-                                                </a>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            </div>
-                            <div className="row g-2">
-                                {episodes.episodes.map(episode => (
-                                    <div key={episode.id} className="col-md-2 col-6">
-                                        <button style={{'overflow': 'hidden', 'textOverflow': 'ellipsis'}} type="button" className="btn btn-secondary w-100">Eps {episode.episode_number}: {episode.name}</button>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    </article>
-                </section>
+                <SeasonEpisodes series={series} episodes={episodes} />
                 : ''
             }
 
