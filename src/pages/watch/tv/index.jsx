@@ -68,7 +68,7 @@ export default function Streaming({ genres, series, torrent, episodes }) {
             <Script src='/js/lg-video.min.js' />
             <Script src='/js/theme.js' />
             <Script src='/js/tiny-slider.js' />
-
+            <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5496971688522015" crossOrigin="anonymous"/>
             <Navbar genres={genres} />
             <EmbededComponent movie={series} season_number={episodes.season_number} />
             <MovieDetails movie={series} torrent={torrent} />

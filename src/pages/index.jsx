@@ -17,6 +17,7 @@ export default function Index({ movies, trending, series, genres, latest_movie, 
       <Script src='/js/lg-video.min.js' />
       <Script src='/js/theme.js' />
       <Script src='/js/tiny-slider.js' />
+      <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5496971688522015" crossOrigin="anonymous"/>
       <div className="container mt-5">
         <Navbar genres={genres} />
         <TrendingToday trending={trending} genres={genres} />
