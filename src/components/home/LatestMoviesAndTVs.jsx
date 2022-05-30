@@ -10,7 +10,7 @@ export default function LatestMoviesAndTVs({latest, type, route}) {
                     </div>
                 </div>
                 {/* <!-- Gallery grid with gutters --> */}
-                <MovieGrid movies={latest} divID={type} route={route} divInfo='row g-4' style="show" />
+                <MovieGrid movies={latest} divID={type} route={route} divInfo='row g-4' style="show" total_vid="18"/>
             </section>
         </>
     )

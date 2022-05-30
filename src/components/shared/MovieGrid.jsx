@@ -1,11 +1,11 @@
 import Link from 'next/link'
 
-export default function MovieGrid({ movies, divID, divInfo, style, route }) {
+export default function MovieGrid({ movies, divID, divInfo, style, route, total_vid }) {
     return (
         <>
             <div id={divID} className={divInfo} style={{ "display": style }}>
                 {movies.length > 0 ?
-                    movies.slice(0, 18).map((movie, index) =>
+                    movies.slice(0, total_vid).map((movie, index) =>
                         <div key={index} className="col-md-2 col-6 mb-3">
                             {/* <!-- Item --> */}
                             <Link href={`/${route}${movie.id}-${route === 'watch/tv?q=' ? '1-' : ''}${movie.original_title ? movie.original_title : movie.original_name}`}>

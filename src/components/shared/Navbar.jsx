@@ -3,7 +3,7 @@ import Link from "next/link"
 import { useRouter } from "next/router";
 
 
-export default function Navbar({genres}) {
+export default function Navbar({ genres }) {
   const router = useRouter();
 
   return (
@@ -18,7 +18,7 @@ export default function Navbar({genres}) {
             </a>
           </Link>
           <button type="button" className="navbar-toggler ms-auto" data-bs-toggle="collapse" data-bs-target="#navbarUserNav"
-           aria-controls="navbarUserNav" aria-expanded="false" aria-label="Toggle navigation">
+            aria-controls="navbarUserNav" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="order-lg-3">
@@ -46,7 +46,11 @@ export default function Navbar({genres}) {
                 <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">GENRE</a>
                 <ul className="dropdown-menu row">
                   {genres.map(genre => (
-                    <li key={genre.id} className="col-6"><a className="dropdown-item" href="real-estate-catalog-rent.html">{genre.name}</a></li>
+                    <li key={genre.id} className="col-6">
+                      <Link href="/genres">
+                        <a className="dropdown-item">{genre.name}</a>
+                      </Link>
+                    </li>
                   ))}
                 </ul>
               </li>

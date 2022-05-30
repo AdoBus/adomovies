@@ -1,4 +1,3 @@
-import jquery from "jquery";
 import { useEffect } from "react";
 import MovieGrid from "../shared/MovieGrid";
 import $ from 'jquery'
@@ -50,8 +49,8 @@ export default function PopularToday({ movies, series }) {
                 </div>
             </div>
             {/* <!-- Gallery grid with gutters --> */}
-            <MovieGrid movies={movies} route="watch/movie?q=" divID="popularMovie" divInfo='row g-4' style="show"/>
-            <MovieGrid movies={series} route="watch/tv?q=" divID="popularSeries" divInfo='row g-4' style="none"/>
+            <MovieGrid movies={movies} route="watch/movie?q=" divID="popularMovie" divInfo='row g-4' total_vid="18" style="show"/>
+            <MovieGrid movies={series} route="watch/tv?q=" divID="popularSeries" divInfo='row g-4' total_vid="18" style="none"/>
         </section>
     )
 }

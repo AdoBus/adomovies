@@ -34,7 +34,8 @@ export default function SeasonEpisodes({ series, episodes }) {
                         <div id="episodesRow" className="row g-2">
                             {episodes.episodes.map(episode => (
                                 <div key={episode.id} className="col-md-2 col-6">
-                                    <a id={`episode${episode.episode_number}`} href="#iframeContainer" onClick={() => changeEpisodes(`https://imdbembed.xyz/tv/tmdb/${series.id}-${episode.season_number}-${episode.episode_number}`)}
+                                    <a id={`episode${episode.episode_number}`} href="#iframeContainer"
+                                        onClick={() => changeEpisodes(`https://www.2embed.ru/embed/tmdb/tv?id=${series.id}&s=${episode.season_number}&e=${episode.episode_number}`)}
                                         style={{ 'overflow': 'hidden', 'textOverflow': 'ellipsis' }}
                                         type="button" className="btn btn-secondary w-100">Eps {episode.episode_number}: {episode.name}
                                     </a>

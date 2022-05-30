@@ -8,7 +8,7 @@ export default function SimilarMovie({movie, route}) {
                     <h2 className="h5 mb-0">Similar Movies</h2>
                 </div>
             </div>
-            <MovieGrid movies={movie.similar.results} route={route} divID="similarMovies" divInfo='row g-4' style="show" />
+            <MovieGrid movies={movie.similar.results} total_vid="18" route={route} divID="similarMovies" divInfo='row g-4' style="show" />
         </section>
     )
 }

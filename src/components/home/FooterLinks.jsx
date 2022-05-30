@@ -18,7 +18,7 @@ export default function FooterLinks() {
                                 </a>
                             </li>
                             <li className="nav-item mb-2">
-                                <a className="nav-link p-0 fw-normal  text-nowrap" href="tel:+255692536972">
+                                <a className="nav-link p-0 fw-normal  text-nowrap" href="#">
                                     <i className="fi-instagram mt-n1 me-1 align-middle text-primary"></i>Instagram
                                 </a>
                             </li>

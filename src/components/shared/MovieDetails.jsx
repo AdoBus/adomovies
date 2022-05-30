@@ -17,7 +17,8 @@ export default function MovieDetails({ movie, torrent }) {
                     <div className="card-body">
                         <a rel="noreferrer" target="_blank" href={movie.homepage} className="fs-xs text-uppercase text-decoration-none">{movie.status}</a>
                         <h3 className="fs-base pt-1 mb-2">
-                            <a href={movie.homepage} rel="noreferrer" target="_blank" className="nav-link">{movie.title ? movie.title : movie.name} <span className="badge bg-info fs-xs">{movie.tagline}</span>
+                            <a href={movie.homepage} rel="noreferrer" target="_blank" className="nav-link">
+                                {movie.title ? movie.title : movie.name} <span className="badge bg-info fs-xs">{movie.tagline}</span>
                             </a>
                         </h3>
                         <p className="fs-sm text-muted">{movie.overview}</p>

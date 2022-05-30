@@ -11,7 +11,10 @@ const handler = nc()
             .then(response => response.buffer())
             .then(data => {
                 return res.end(data)
-            }).catch(error => console.log(error))
+            }).catch(error => {
+                res.json(error);
+                res.status(405).end();
+            })
     })
 
 export default handler
