@@ -33,7 +33,7 @@ export default function EmbededComponent({ movie, season_number }) {
                                 <iframe id='iframe' src={`https://www.2embed.ru/embed/tmdb/tv?id=${movie.id}&s=${season_number}&e=1`} width="100%" height="500px" frameBorder="0" allow="fullscreen 'src'"></iframe>
                                 :
                                 <iframe src={`https://www.2embed.ru/embed/tmdb/movie?id=${movie.id}`} width="100%" height="500px" 
-                                frameBorder="0" allow="autoplay fullscreen 'src'" scrolling="no" allowtransparency="true"></iframe>
+                                frameBorder="0" allow="fullscreen 'src'" scrolling="no" allowtransparency="true"></iframe>
                             }
                         </>
                         : movie.videos.results.map(video => (
