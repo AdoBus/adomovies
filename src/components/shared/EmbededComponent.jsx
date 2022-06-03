@@ -13,7 +13,11 @@ export default function EmbededComponent({ movie, season_number }) {
                 <nav className="mb-3 pt-md-3" aria-label="breadcrumb">
                     <ol className="breadcrumb">
                         <li className="breadcrumb-item"><a href="real-estate-home-v1.html">Home</a></li>
+                        {movie.hasOwnProperty("seasons") ?
+                        <li className="breadcrumb-item"><a href="real-estate-catalog-rent.html">Tv</a></li>
+                        :
                         <li className="breadcrumb-item"><a href="real-estate-catalog-rent.html">Movies</a></li>
+                        }
                         <li className="breadcrumb-item active" aria-current="page">
                             {movie.original_title ? movie.original_title : movie.name}
                         </li>

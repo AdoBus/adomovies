@@ -21,6 +21,7 @@ export default function Index({ movies, trending, series, genres, latest_movie, 
       <div className="container mt-5">
         <Navbar genres={genres} />
         <TrendingToday trending={trending} genres={genres} />
+        <iframe data-aa='2021339' src='//ad.a-ads.com/2021339?size=728x90' style={{"width":"728px","height":"90px","border":"0px","padding":"0","overflow":"hidden","backgroundColor":"transparent"}}></iframe>
         <PopularToday movies={movies} series={series} />
         <LatestMoviesAndTVs latest={latest_movie} type="Latest Movies" route="watch/movie?q=" />
         <LatestMoviesAndTVs latest={latest_series} route="watch/tv?q=" type="Latest TV Series" />
