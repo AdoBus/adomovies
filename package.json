@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "adblock-detect-react": "^1.0.5",
     "ajv": "^8.11.0",
     "jquery": "^3.6.0",
     "moment": "^2.29.3",

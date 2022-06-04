@@ -28,10 +28,8 @@ export default function FooterLinks() {
                     <div className="col-lg-2 col-md-3 col-sm-4">
                         <h3 className="fs-base ">Quick links</h3>
                         <ul className="list-unstyled fs-sm">
-                            <li><a className="nav-link" rel="noreferrer" target="_blank" href="https://www.imdb.com/">IMDb</a></li>
-                            <li><a className="nav-link" rel="noreferrer" target="_blank" href="https://www.themoviedb.org/">TMDB</a></li>
-                            <li><a className="nav-link" rel="noreferrer" target="_blank" href="https://www.rottentomatoes.com/">Rotten Tomatoes</a></li>
-                            <li><a className="nav-link" rel="noreferrer" target="_blank" href="#">Events</a></li>
+                            <li><a className="nav-link" rel="noreferrer" target="_blank" href="https://adobus.co.tz/">Ado<b>Bus</b></a></li>
+                            <li><a className="nav-link" rel="noreferrer" target="_blank" href="https://adotelevision.vercel.app/">Ado<b>Television</b></a></li>
                         </ul>
                     </div>
                     {/* <!-- Links--> */}

@@ -1,24 +1,31 @@
 export default function Aside() {
     return (
         <>
-            <aside className="col-lg-4 col-xl-3 border-top-lg border-end-lg shadow-sm px-3 px-xl-4 px-xxl-5 pt-lg-2">
-                <div className="offcanvas offcanvas-start offcanvas-collapse" id="filters-sidebar">
-                    <div className="offcanvas-header d-flex d-lg-none align-items-center">
-                        <h2 className="h5 mb-0">Filters</h2>
-                        <button className="btn-close" type="button" data-bs-dismiss="offcanvas"></button>
+            <aside className="col-lg-4 col-xl-3 border-top-lg border-end-lg shadow-sm px-4 px-xl-3 px-xxl-2 pt-lg-2">
+                <div style={{"position":"sticky","top":"10px"}}>
+                    <div className="mt-3" style={{ "position": "sticky", "top": "0" }}>
+                        <iframe data-aa='2021339' src='//ad.a-ads.com/2021339?size=728x90'
+                            style={{ "width": "100%", "height": "90px", "borderRadius": "10px", "padding": "0", "overflow": "hidden", "backgroundColor": "transparent" }}></iframe>
                     </div>
-                    <div className="offcanvas-body py-lg-4">
-                        <div className="pb-4 mb-2">
-                            <h3 className="h6">Drama Movies</h3>
-                            <select className="form-select mb-2">
-                                <option value="Chicago">Movies</option>
-                                <option value="Chicago">Tv Series</option>
-                            </select>
-                        </div>
-                        <div className="border-top py-4">
-                            <button className="btn btn-outline-primary" type="button"><i className="fi-search me-2">
-                            </i>Search</button>
-                        </div>
+                    <div className="mt-3">
+                        <iframe data-aa='2021339' src='//ad.a-ads.com/2021339?size=728x90'
+                            style={{ "width": "100%", "height": "90px", "borderRadius": "10px", "padding": "0", "overflow": "hidden", "backgroundColor": "transparent" }}></iframe>
+                    </div>
+                    <div className="mt-3">
+                        <iframe data-aa='2021339' src='//ad.a-ads.com/2021339?size=728x90'
+                            style={{ "width": "100%", "height": "90px", "borderRadius": "10px", "padding": "0", "overflow": "hidden", "backgroundColor": "transparent" }}></iframe>
+                    </div>
+                    <div className="mt-3">
+                        <iframe data-aa='2021339' src='//ad.a-ads.com/2021339?size=728x90'
+                            style={{ "width": "100%", "height": "90px", "borderRadius": "10px", "padding": "0", "overflow": "hidden", "backgroundColor": "transparent" }}></iframe>
+                    </div>
+                    <div className="mt-3">
+                        <iframe data-aa='2021339' src='//ad.a-ads.com/2021339?size=728x90'
+                            style={{ "width": "100%", "height": "90px", "borderRadius": "10px", "padding": "0", "overflow": "hidden", "backgroundColor": "transparent" }}></iframe>
+                    </div>
+                    <div className="mt-3">
+                        <iframe data-aa='2021339' src='//ad.a-ads.com/2021339?size=728x90'
+                            style={{ "width": "100%", "height": "90px", "borderRadius": "10px", "padding": "0", "overflow": "hidden", "backgroundColor": "transparent" }}></iframe>
                     </div>
                 </div>
             </aside>

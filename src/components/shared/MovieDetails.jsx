@@ -11,7 +11,7 @@ const formatCash = n => {
 export default function MovieDetails({ movie, torrent }) {
     return (
         <>
-            <section className="container pt-5 p-4">
+            <section className="container pl-4 pr-4 pb-4">
                 <article className="card border-0 shadow-sm card-hover card-horizontal">
                     <a rel="noreferrer" target="_blank" href={movie.homepage} className="card-img-top" style={{ backgroundImage: `url(/api/getImage?q=${movie.poster_path})` }}></a>
                     <div className="card-body">

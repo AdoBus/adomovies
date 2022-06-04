@@ -1,6 +1,7 @@
 // import SignIn from "../home/SignIn"
 import Link from "next/link"
 import { useRouter } from "next/router";
+import Adblocker from "../home/Adblocker";
 
 
 export default function Navbar({ genres }) {
@@ -8,6 +9,7 @@ export default function Navbar({ genres }) {
 
   return (
     <>
+      <Adblocker/>
       {/* <SignIn /> */}
       {/* <!-- Navbar with user account dropdown --> */}
       <header className="navbar navbar-expand-lg navbar-light bg-light shadow-sm fixed-top navbar-stuck">

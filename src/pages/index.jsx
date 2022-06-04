@@ -4,6 +4,8 @@ import PopularToday from "../components/home/PopularToday";
 import LatestMoviesAndTVs from "../components/home/LatestMoviesAndTVs";
 import Footer from "../components/shared/Footer"
 import Script from "next/script";
+import Adblocker from "../components/home/Adblocker";
+import AdsComponent from "../components/shared/AdsComponent";
 
 
 export default function Index({ movies, trending, series, genres, latest_movie, latest_series, upcoming_movies }) {
@@ -17,14 +19,17 @@ export default function Index({ movies, trending, series, genres, latest_movie, 
       <Script src='/js/lg-video.min.js' />
       <Script src='/js/theme.js' />
       <Script src='/js/tiny-slider.js' />
-      <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5496971688522015" crossOrigin="anonymous"/>
+      <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5496971688522015" crossOrigin="anonymous" />
       <div className="container mt-5">
         <Navbar genres={genres} />
         <TrendingToday trending={trending} genres={genres} />
-        <iframe data-aa='2021339' src='//ad.a-ads.com/2021339?size=728x90' style={{"width":"728px","height":"90px","border":"0px","padding":"0","overflow":"hidden","backgroundColor":"transparent"}}></iframe>
+        <AdsComponent />
         <PopularToday movies={movies} series={series} />
+        <AdsComponent />
         <LatestMoviesAndTVs latest={latest_movie} type="Latest Movies" route="watch/movie?q=" />
+        <AdsComponent />
         <LatestMoviesAndTVs latest={latest_series} route="watch/tv?q=" type="Latest TV Series" />
+        <AdsComponent />
         <LatestMoviesAndTVs latest={upcoming_movies} type="Coming Soon" route="watch/movie?q=" />
       </div>
       <Footer />
