@@ -24,6 +24,9 @@ function MyApp({ Component, pageProps }) {
                 <meta charSet="utf-8" />
                 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
                 <meta name="propeller" content="ade3739f5cb895e538b883d2513c8761"></meta>
+                
+                // Propeller ads
+                <script>(function(s,u,z,p){s.src=u,s.setAttribute('data-zone',z),p.appendChild(s);})(document.createElement('script'),'https://inklinkor.com/tag.min.js',5142665,document.body||document.documentElement)</script>
 
                 {/* Favicon icon */}
                 <link rel="shortcut icon" type="image/x-icon" href="/img/logo/logo.svg" />
