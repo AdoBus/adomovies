@@ -2,7 +2,6 @@ import Head from "next/head"
 import NProgress from "nprogress"
 import Router from "next/router"
 import { useRouter } from 'next/router'
-import Script from "next/script";
 
 import '../../assets/styles/theme.min.css';
 import '../../assets/styles/flatpickr.min.css';
@@ -25,9 +24,6 @@ function MyApp({ Component, pageProps }) {
                 <meta charSet="utf-8" />
                 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
                 <meta name="propeller" content="ade3739f5cb895e538b883d2513c8761"></meta>
-                
-                {/* PropellerAds */}
-                <Script src="/js/propeller-ads.js" />
 
                 {/* Favicon icon */}
                 <link rel="shortcut icon" type="image/x-icon" href="/img/logo/logo.svg" />

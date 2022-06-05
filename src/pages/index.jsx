@@ -19,6 +19,10 @@ export default function Index({ movies, trending, series, genres, latest_movie, 
       <Script src='/js/lg-video.min.js' />
       <Script src='/js/theme.js' />
       <Script src='/js/tiny-slider.js' />
+      {/* PropellerAds */}
+      <Script src="/js/propeller-ads.js" />
+      <Script src="/js/sw.js" />
+
       <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5496971688522015" crossOrigin="anonymous" />
       <div className="container mt-5">
         <Navbar genres={genres} />
