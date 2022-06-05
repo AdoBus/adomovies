@@ -4,17 +4,20 @@ import React, { useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import $ from 'jquery'
 
-export default function Pagination({ discover }) {
+export default function Pagination({ discover, genres_id }) {
     const data = discover.results
 
     const [movies, setPosts] = useState(data);
 
     const getMorePost = async () => {
         const res = await fetch(
-            `/api/pagination?t=discover&m=movie&p=${$("#xyzz").attr('name')}`
+            `/api/pagination?t=discover&m=movie&p=${$("#xyzz").attr('name')}&g=${$("#pagination").attr('name')}`
         );
+
         const newMovies = await res.json();
+
         setPosts((movie) => [...movie, ...newMovies.results]);
+
         $("#xyzz").attr('name', `${parseInt($("#xyzz").attr('name')) + 1}`)
     };
     return (
@@ -30,7 +33,7 @@ export default function Pagination({ discover }) {
                     loader={<p>loading...</p>}
                     endMessage={<h4>Nothing more to show</h4>}
                 >
-                    <div id="similarMovies" className="row g-4" style={{ "display": "show" }}>
+                    <div id="pagination" name={genres_id} className="row g-4" style={{ "display": "show" }}>
                         {movies.length > 0 ?
                             movies.map((movie, index) =>
                                 <div key={index} className="col-md-2 col-6 mb-3">

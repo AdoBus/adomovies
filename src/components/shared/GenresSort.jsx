@@ -4,10 +4,10 @@ export default function SortBy({ discover }) {
             <div className="d-flex flex-sm-row flex-column align-items-sm-center mt-5 mb-5 align-items-stretch my-2">
                 <div className="d-flex align-items-center flex-shrink-0">
                     <label className="fs-sm me-2 pe-1 text-nowrap" htmlFor="sortby">
-                        <i className="fi-arrows-sort text-muted mt-n1 me-2"></i>Sort by:</label>
+                        <i className="fi-tv text-muted mt-n1 me-2"></i>Media Type:</label>
                     <select className="form-select form-select-sm" id="sortby">
-                        <option>Popularity</option>
-                        <option>Newest</option>
+                        <option>Movies</option>
+                        <option>Tv Series</option>
                     </select>
                 </div>
                 <hr className="d-none d-sm-block w-100 mx-4" />

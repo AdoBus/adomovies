@@ -1,6 +1,7 @@
 import Head from "next/head"
 import NProgress from "nprogress"
 import Router from "next/router"
+import { useRouter } from 'next/router'
 
 import '../../assets/styles/theme.min.css';
 import '../../assets/styles/flatpickr.min.css';
@@ -15,6 +16,7 @@ Router.events.on('routeChangeComplete', () => NProgress.done())
 Router.events.on('routeChangeError', () => NProgress.done())
 
 function MyApp({ Component, pageProps }) {
+    const router = useRouter()
     return (
         <>
             <Head>
@@ -26,7 +28,7 @@ function MyApp({ Component, pageProps }) {
                 <link rel="shortcut icon" type="image/x-icon" href="/img/logo/logo.svg" />
                 <title>AdoMovies - Stream Latest Movies and TV Shows For Free</title>
             </Head>
-            <Component {...pageProps} />
+            <Component key={router.asPath} {...pageProps} />
         </>
     )
 }

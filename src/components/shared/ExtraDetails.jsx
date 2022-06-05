@@ -25,7 +25,7 @@ export default function ExtraDetails({movie}) {
                 </div>
             </div>
             <div className="mb-3">
-                <p>{movie.spoken_languages[0].english_name}</p>
+                <p>{movie.spoken_languages.slice(0, 1).map(language =>(language.english_name))}</p>
             </div>
             <div className="d-flex align-items-end align-items-lg-center justify-content-between pb-md-2">
                 <div className="d-flex w-100 align-items-center justify-content-between justify-content-lg-start">

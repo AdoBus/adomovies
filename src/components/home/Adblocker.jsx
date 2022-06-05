@@ -20,7 +20,7 @@ export default function Adblocker() {
                                                 We know ads are annoying but please bear with us here & disable your ad blocker!
                                             </p>
                                             <p>This is the only way we monetize this site to keep it going.</p>
-                                            <a className="btn btn-danger btn-lg rounded-pill w-100" href="/">I've disabled my ad blocker!</a>
+                                            <a className="btn btn-danger btn-lg rounded-pill w-100" href="https://adomovies.com">I&aposve disabled my ad blocker!</a>
                                         </form>
                                     </div>
                                 </div>
