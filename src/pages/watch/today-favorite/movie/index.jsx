@@ -31,23 +31,15 @@ export const getServerSideProps = async ({ res, req, query }) => {
 
     let torrent;
 
-    // if (movie.imdb_id) {
-    //     const torrent_api = await fetch(`https://yts.mx/api/v2/movie_details.json?imdb_id=${movie.imdb_id}`)
-    //     torrent = await torrent_api.json()
-    // } else {
-    //     torrent = {
-    //         data: {
-    //             movie: {
-    //                 torrents: null
-    //             }
-    //         }
-    //     }
-    // }
-
-    torrent = {
-        data: {
-            movie: {
-                torrents: null
+    if (movie.imdb_id) {
+        const torrent_api = await fetch(`https://yts.mx/api/v2/movie_details.json?imdb_id=${movie.imdb_id}`)
+        torrent = await torrent_api.json()
+    } else {
+        torrent = {
+            data: {
+                movie: {
+                    torrents: null
+                }
             }
         }
     }
@@ -78,8 +70,8 @@ export default function Streaming({ genres, movie, torrent }) {
             <Script src='/js/theme.js' />
             <Script src='/js/tiny-slider.js' />
             {/* PropellerAds */}
-            <Script src="/js/propeller-ads.js" />
-            <Script src="/js/sw.js" />
+            {/* <Script src="/js/propeller-ads.js" />
+            <Script src="/js/sw.js" /> */}
             <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5496971688522015" crossOrigin="anonymous" />
             <Navbar genres={genres} />
             <EmbededComponent movie={movie} />

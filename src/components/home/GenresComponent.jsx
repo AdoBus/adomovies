@@ -22,7 +22,7 @@ export default function Pagination({ discover, genres_id }) {
     };
     return (
         <>
-            <div id="xyzz" name="2" className="col-lg-8 col-xl-9 position-relative overflow-hidden pb-5 pt-4 px-3 px-xl-4 px-xxl-5">
+            <div id="xyzz" name="2" className="col-lg-12 col-xl-12 position-relative overflow-hidden pb-5 pt-4 px-3 px-xl-4 px-xxl-5">
                 {/* <!-- Sorting--> */}
                 <SortBy discover={discover} />
                 {/* <!-- Catalog grid--> */}

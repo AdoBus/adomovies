@@ -4,7 +4,6 @@ import PopularToday from "../components/home/PopularToday";
 import LatestMoviesAndTVs from "../components/home/LatestMoviesAndTVs";
 import Footer from "../components/shared/Footer"
 import Script from "next/script";
-import Adblocker from "../components/home/Adblocker";
 import AdsComponent from "../components/shared/AdsComponent";
 
 
@@ -20,8 +19,8 @@ export default function Index({ movies, trending, series, genres, latest_movie, 
       <Script src='/js/theme.js' />
       <Script src='/js/tiny-slider.js' />
       {/* PropellerAds */}
-      <Script src="/js/propeller-ads.js" />
-      <Script src="/js/sw.js" />
+      {/* <Script src="/js/propeller-ads.js" />
+      <Script src="/js/sw.js" /> */}
 
       <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5496971688522015" crossOrigin="anonymous" />
       <div className="container mt-5">

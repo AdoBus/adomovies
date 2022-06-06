@@ -23,7 +23,7 @@ function MyApp({ Component, pageProps }) {
                 {/* Required meta tags */}
                 <meta charSet="utf-8" />
                 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-                <meta name="propeller" content="ade3739f5cb895e538b883d2513c8761"></meta>
+                {/* <meta name="propeller" content="ade3739f5cb895e538b883d2513c8761"></meta> */}
 
                 {/* Favicon icon */}
                 <link rel="shortcut icon" type="image/x-icon" href="/img/logo/logo.svg" />

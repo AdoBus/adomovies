@@ -18,14 +18,14 @@ export default function Genres({ genres, discover, genres_id }) {
             <Script src='/js/theme.js' />
             <Script src='/js/tiny-slider.js' />
             {/* PropellerAds */}
-            <Script src="/js/propeller-ads.js" />
-            <Script src="/js/sw.js" />
+            {/* <Script src="/js/propeller-ads.js" />
+            <Script src="/js/sw.js" /> */}
             <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5496971688522015" crossOrigin="anonymous" />
             <Navbar genres={genres} />
             <div className="container-fluid mt-5 pt-5 p-0">
                 <div className="row g-0 mt-n3">
                     {/* <!-- Filters sidebar (Offcanvas on mobile)--> */}
-                    <Aside />
+                    {/* <Aside /> */}
                     {/* <!-- Page content--> */}
                     <Pagination discover={discover} genres_id={genres_id} />
                 </div>
