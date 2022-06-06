@@ -48,7 +48,7 @@ export default function Navbar({ genres }) {
                 <ul className="dropdown-menu row">
                   {genres.map(genre => (
                     <li key={genre.id} className="col-6">
-                      <Link href={`/genres?q=${genre.id}-${genre.name}`}>
+                      <Link href={`/genres?q=${genre.id}-${genre.name}&m=movie`}>
                         <a className="dropdown-item">{genre.name}</a>
                       </Link>
                     </li>

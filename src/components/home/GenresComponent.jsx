@@ -4,14 +4,14 @@ import React, { useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import $ from 'jquery'
 
-export default function Pagination({ discover, genres_id }) {
+export default function Pagination({ discover, genres_id, media_type, genres_name, tv_genre }) {
     const data = discover.results
 
     const [movies, setPosts] = useState(data);
 
     const getMorePost = async () => {
         const res = await fetch(
-            `/api/pagination?t=discover&m=movie&p=${$("#xyzz").attr('name')}&g=${$("#pagination").attr('name')}`
+            `/api/pagination?t=discover&m=${media_type}&p=${$("#xyzz").attr('name')}&g=${$("#pagination").attr('name')}`
         );
 
         const newMovies = await res.json();
@@ -24,7 +24,7 @@ export default function Pagination({ discover, genres_id }) {
         <>
             <div id="xyzz" name="2" className="col-lg-12 col-xl-12 position-relative overflow-hidden pb-5 pt-4 px-3 px-xl-4 px-xxl-5">
                 {/* <!-- Sorting--> */}
-                <SortBy discover={discover} />
+                <SortBy discover={discover} genres_id={genres_id} genres_name={genres_name} media_type={media_type}/>
                 {/* <!-- Catalog grid--> */}
                 <InfiniteScroll
                     dataLength={movies.length}
@@ -33,12 +33,12 @@ export default function Pagination({ discover, genres_id }) {
                     loader={<p>loading...</p>}
                     endMessage={<h4>Nothing more to show</h4>}
                 >
-                    <div id="pagination" name={genres_id} className="row g-4" style={{ "display": "show" }}>
+                    <div id="pagination" name={media_type === 'movie' ? genres_id : tv_genre} className="row g-4" style={{ "display": "show" }}>
                         {movies.length > 0 ?
                             movies.map((movie, index) =>
                                 <div key={index} className="col-md-2 col-6 mb-3">
                                     {/* <!-- Item --> */}
-                                    <Link href={`/watch/movie?q=${movie.id}-${movie.original_title ? movie.original_title : movie.original_name}`}>
+                                    <Link href={`/watch/${media_type}?q=${movie.id}-${movie.original_title ? movie.original_title : movie.original_name}`}>
                                         <a className="card h-100 shadow-sm card-hover border-0">
                                             <div className="card-img-top card-img-hover">
                                                 <span className="img-overlay opacity-65"></span>
