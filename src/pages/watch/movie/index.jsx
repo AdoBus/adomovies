@@ -30,15 +30,23 @@ export const getServerSideProps = async ({ res, req, query }) => {
 
     let torrent;
 
-    if (movie.imdb_id) {
-        const torrent_api = await fetch(`https://yts.mx/api/v2/movie_details.json?imdb_id=${movie.imdb_id}`)
-        torrent = await torrent_api.json()
-    } else {
-        torrent = {
-            data: {
-                movie: {
-                    torrents: null
-                }
+    // if (movie.imdb_id) {
+    //     const torrent_api = await fetch(`https://yts.mx/api/v2/movie_details.json?imdb_id=${movie.imdb_id}`)
+    //     torrent = await torrent_api.json()
+    // } else {
+    //     torrent = {
+    //         data: {
+    //             movie: {
+    //                 torrents: null
+    //             }
+    //         }
+    //     }
+    // }
+
+    torrent = {
+        data: {
+            movie: {
+                torrents: null
             }
         }
     }
