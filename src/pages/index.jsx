@@ -4,7 +4,6 @@ import PopularToday from "../components/home/PopularToday";
 import LatestMoviesAndTVs from "../components/home/LatestMoviesAndTVs";
 import Footer from "../components/shared/Footer"
 import Script from "next/script";
-import AdsComponent from "../components/shared/AdsComponent";
 
 
 export default function Index({ movies, trending, series, genres, latest_movie, latest_series, upcoming_movies }) {
@@ -23,13 +22,9 @@ export default function Index({ movies, trending, series, genres, latest_movie, 
       <div className="container mt-5">
         <Navbar genres={genres} />
         <TrendingToday trending={trending} genres={genres} />
-        <AdsComponent />
         <PopularToday movies={movies} series={series} />
-        <AdsComponent />
         <LatestMoviesAndTVs latest={latest_movie} type="Latest Movies" route="watch/movie?q=" />
-        <AdsComponent />
         <LatestMoviesAndTVs latest={latest_series} route="watch/tv?q=" type="Latest TV Series" />
-        <AdsComponent />
         <LatestMoviesAndTVs latest={upcoming_movies} type="Coming Soon" route="watch/movie?q=" />
       </div>
       <Footer />
