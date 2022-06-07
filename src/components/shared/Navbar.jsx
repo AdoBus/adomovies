@@ -43,7 +43,7 @@ export default function Navbar({ genres }) {
                   <a className="nav-link">HOME</a>
                 </Link>
               </li>
-              <li className="nav-item dropdown">
+              <li className={`nav-item dropdown ${router.pathname == "/genres" ? "active" : ""}`}>
                 <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">GENRE</a>
                 <ul className="dropdown-menu row">
                   {genres.map(genre => (
