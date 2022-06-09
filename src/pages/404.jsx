@@ -3,7 +3,6 @@ import Link from 'next/link'
 export default function Custom404() {
     return (
         <>
-
             <main className="page-wrapper">
                 {/* <!-- Page content--> */}
                 <section className="d-flex align-items-lg-center align-items-end position-relative min-vh-100 py-lg-5 py-0">
@@ -50,7 +49,6 @@ export default function Custom404() {
                     </div>
                 </section>
             </main>
-
         </>
     )
 }

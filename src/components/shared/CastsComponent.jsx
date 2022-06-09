@@ -15,7 +15,8 @@ export default function Casts({movie}) {
                                 <img width="300" height="400" src={`/api/getImage?q=${c.profile_path}`} alt={c.name} />
                             </div>
                             <div className="card-body text-center">
-                                <p className="mb-0 text-nav fs-sm">{c.name}</p>
+                                <p className="mb-0 text-nav fs-sm"><strong>{c.name}</strong></p>
+                                <p className="mb-0 text-nav fs-sm">{c.character}</p>
                             </div>
                         </a>
                     </div>

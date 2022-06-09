@@ -55,14 +55,20 @@ export default function Navbar({ genres }) {
                   ))}
                 </ul>
               </li>
-              <li className="nav-item">
-                <a href="#" className="nav-link">MOVIES</a>
+              <li className={`nav-item ${router.pathname == "/movies" ? "active" : ""}`}>
+                <Link href="/movies">
+                  <a className="nav-link">MOVIES</a>
+                </Link>
               </li>
-              <li className="nav-item">
-                <a href="#" className="nav-link">TV SERIES</a>
+              <li className={`nav-item ${router.pathname == "/tv" ? "active" : ""}`}>
+                <Link href="/tv">
+                  <a className="nav-link">TV SERIES</a>
+                </Link>
               </li>
-              <li className="nav-item">
-                <a href="#" className="nav-link">IMDB TOP 250</a>
+              <li className={`nav-item ${router.pathname == "/top-rated" ? "active" : ""}`}>
+                <Link href="/top-rated?q=movie">
+                  <a className="nav-link">TOP RATED</a>
+                </Link>
               </li>
             </ul>
           </div>

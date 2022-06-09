@@ -9,18 +9,18 @@ export default function SortBy({ discover, genres_id, genres_name, media_type })
                         <i className="fi-tv text-muted mt-n1 me-2"></i>Media Type:</label>
                     <div className="dropdown w-sm-50" data-bs-toggle="select">
                         <button className="btn btn-outline-secondary dropdown-toggle ps-2 ps-sm-3" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <span id="xyz" className="dropdown-toggle-label">{media_type === 'movie' ? <>Movies</>:<>Tv Series</>}</span>
+                            <span id="xyz" className="dropdown-toggle-label">{media_type === 'movie' ? <>Movies</> : <>Tv Series</>}</span>
                         </button>
                         <ul className="dropdown-menu">
                             <li>
-                                <Link href={`/genres?q=${genres_id}-${genres_name}&m=movie`}>
+                                <Link href={genres_id ? `/genres?q=${genres_id}-${genres_name}&m=movie` : `/top-rated?q=movie`}>
                                     <a className="dropdown-item">
                                         <span className="dropdown-item-label">Movies</span>
                                     </a>
                                 </Link>
                             </li>
                             <li>
-                                <Link href={`/genres?q=${genres_id}-${genres_name}&m=tv`}>
+                                <Link href={genres_id ? `/genres?q=${genres_id}-${genres_name}&m=tv`: `/top-rated?q=tv`}>
                                     <a className="dropdown-item">
                                         <span className="dropdown-item-label">Tv Series</span>
                                     </a>

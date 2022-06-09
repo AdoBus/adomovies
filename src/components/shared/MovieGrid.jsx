@@ -12,7 +12,7 @@ export default function MovieGrid({ movies, divID, divInfo, style, route, total_
                                 <a className="card h-100 shadow-sm card-hover border-0">
                                     <div className="card-img-top card-img-hover">
                                         <span className="img-overlay opacity-65"></span>
-                                        <img width="300" height="400" src={`/api/getImage?q=${movie.poster_path}`} alt={movie.original_title} />
+                                        <img width="300" height="400" src={`/api/getImage?q=${movie.poster_path}`} alt={movie.original_title ? movie.original_title : movie.original_name} />
                                         <div className="content-overlay start-0 top-0 d-flex align-items-center justify-content-center w-100 h-100 p-3">
                                             <div className="w-100 p-1">
                                                 <div className="mb-2">
