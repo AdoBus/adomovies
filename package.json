@@ -9,12 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "adblock-detect-react": "^1.0.5",
     "ajv": "^8.11.0",
     "jquery": "^3.6.0",
     "moment": "^2.29.3",
     "next": "12.1.6",
     "next-connect": "^0.12.2",
+    "next-pwa": "^5.5.4",
     "nprogress": "^0.2.0",
     "react": "18.1.0",
     "react-dom": "18.1.0",

@@ -28,6 +28,13 @@ function MyApp({ Component, pageProps }) {
                 {/* Favicon icon */}
                 <link rel="shortcut icon" type="image/x-icon" href="/img/logo/logo.svg" />
                 <title>AdoMovies - Stream Latest Movies and TV Shows For Free</title>
+
+                <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+                <meta
+                    name="viewport"
+                    content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"
+                />
+                {/* dont forget */}
             </Head>
             <Component key={router.asPath} {...pageProps} />
         </>

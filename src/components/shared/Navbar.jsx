@@ -39,7 +39,7 @@ export default function Navbar({ genres }) {
           <div className="collapse navbar-collapse order-lg-2" id="navbarUserNav">
             <ul className="navbar-nav">
               <li className={`nav-item ${router.pathname == "/" ? "active" : ""}`}>
-                <Link href={`${router.pathname == "/" ? "javascript:" : "/"}`}>
+                <Link href={`${router.pathname == "/" ? "#" : "/"}`}>
                   <a className="nav-link">HOME</a>
                 </Link>
               </li>
