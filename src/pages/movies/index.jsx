@@ -1,6 +1,7 @@
 import Script from "next/script"
 import Navbar from "../../components/shared/Navbar"
 import dynamic from "next/dynamic";
+import Footer from "../../components/shared/Footer";
 
 const Pagination = dynamic(() => import("../../components/shared/Pagination"), { ssr: false })
 
@@ -25,6 +26,7 @@ export default function Movies({ genres, discover }) {
                     </div>
                 </div>
             </div>
+            <Footer/>
         </>
     )
 }
