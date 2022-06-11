@@ -1453,3 +1453,7 @@ function _defineProperty(e, t, a) {
             })
         }()
 }();
+$('.basicAutoComplete').autoComplete({
+    minLength: 1,
+    bootstrapVersion: '4' // Set bootstrap version so not to conflict with jQuery-ui
+});

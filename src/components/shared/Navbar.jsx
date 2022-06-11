@@ -1,11 +1,10 @@
 // import SignIn from "../home/SignIn"
 import Link from "next/link"
 import { useRouter } from "next/router";
-// import Adblocker from "../home/Adblocker";
+import Search from "../shared/Search";
 
 export default function Navbar({ genres }) {
   const router = useRouter();
-
   return (
     <>
       {/* <Adblocker /> */}
@@ -22,17 +21,7 @@ export default function Navbar({ genres }) {
             aria-controls="navbarUserNav" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
-          <div className="order-lg-3">
-            <form className="form-group">
-              <div className="input-group input-group-sm">
-                <span className="input-group-text text-muted">
-                  <i className="fi-search"></i>
-                </span>
-                <input type="text" className="form-control" placeholder="Enter keywords..." />
-              </div>
-              <button type="button" className="btn btn-translucent-primary btn-sm">Search</button>
-            </form>
-          </div>
+          <Search />
           {/* <a className="btn btn-sm text-primary d-none d-lg-block order-lg-3" href="#signin-modal" data-bs-toggle="modal">
             <i className="fi-user me-2"></i>Sign in
           </a> */}

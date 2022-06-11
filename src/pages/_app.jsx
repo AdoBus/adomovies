@@ -8,6 +8,7 @@ import '../../assets/styles/flatpickr.min.css';
 import '../../assets/styles/tiny-slider.css';
 import '../../assets/styles/lightgallery-bundle.min.css';
 import '../../assets/styles/nprogress.css'
+import 'react-bootstrap-typeahead/css/Typeahead.css';
 
 Router.events.on('routeChangeStart', (url) => {
     NProgress.start()
