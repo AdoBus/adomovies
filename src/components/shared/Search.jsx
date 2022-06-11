@@ -54,7 +54,7 @@ export default function Search() {
     return (
         <>
             <div className="order-lg-3">
-                <form action='' method='post' id='searchForm' className="form-group" style={{'paddingTop':'5px !important', 'paddingBottom':'5px !important'}} onSubmit={handleSubmit}>
+                <form id='searchForm' className="form-group" style={{'paddingTop':'5px !important', 'paddingBottom':'5px !important'}} onSubmit={handleSubmit}>
                     <div className="input-group input-group-sm" style={{"paddingLeft":"initial !important","paddingRight":"initial !important"}}>
                         <span className="input-group-text text-muted">
                             <i className="fi-search"></i>
