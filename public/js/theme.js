@@ -1131,8 +1131,6 @@ function _defineProperty(e, t, a) {
             return new bootstrap.Tooltip(e, {
                 trigger: "hover"
             })
-        }), [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]')).map(function(e) {
-            return new bootstrap.Popover(e)
         }), [].slice.call(document.querySelectorAll(".toast")).map(function(e) {
             return new bootstrap.Toast(e)
         }),

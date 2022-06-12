@@ -1,3 +1,5 @@
+import Image from "next/image"
+
 export default function Casts({movie}) {
     return (
         <>
@@ -12,7 +14,7 @@ export default function Casts({movie}) {
                         {/* <!-- Item --> */}
                         <a className="card h-100 shadow-sm border-0">
                             <div className="card-img-top card-img-hover">
-                                <img width="300" height="400" src={`/api/getImage?q=${c.profile_path}`} alt={c.name} />
+                                <Image width="137" height="205.5" src={c.profile_path ? `/api/getImage?q=${c.profile_path}` : '/img/errors/grey.jpg'} alt={c.name} />
                             </div>
                             <div className="card-body text-center">
                                 <p className="mb-0 text-nav fs-sm"><strong>{c.name}</strong></p>

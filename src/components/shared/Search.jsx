@@ -73,7 +73,7 @@ export default function Search() {
                                     <Fragment>
                                         <img
                                             alt={option.title}
-                                            src={`/api/getImage?q=${option.poster_path}`}
+                                            src={option.poster_path ? `/api/getImage?q=${option.poster_path}`: '/img/errors/grey.jpg'}
                                             style={{
                                                 height: '50px',
                                                 marginRight: '10px',

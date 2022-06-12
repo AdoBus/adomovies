@@ -7,10 +7,9 @@ import TopReview from '../../../components/shared/TopReview'
 import ExtraDetails from '../../../components/shared/ExtraDetails'
 import SimilarMovie from '../../../components/shared/SimilarMovies'
 import YoutubeIframe from '../../../components/shared/YoutubeIframe'
+import SeasonEpisodes from '../../../components/shared/SeasonEpisodes'
 import Script from 'next/script'
-import dynamic from 'next/dynamic'
-
-const SeasonEpisodes = dynamic(() => import("../../../components/shared/SeasonEpisodes"), { ssr: false })
+import React from "react";
 
 export const getServerSideProps = async ({ res, req, query }) => {
     const { q } = query
@@ -57,6 +56,36 @@ export const getServerSideProps = async ({ res, req, query }) => {
     }
 }
 
+// Lets catch client side error on seasons listing due to bootstrap not defined
+class ErrorBoundary extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = { hasError: false };
+    }
+
+    static getDerivedStateFromError(error) {
+        return { hasError: true };
+    }
+
+    render() {
+        if (this.state.hasError) {
+            return (
+                <>
+                    <section className="container">
+                        <article className="card border-0 shadow-sm card-hover card-horizontal">
+                            <div className="card-body">
+                                <p>Something went wrong while displaying episodes</p>
+                            </div>
+                        </article>
+                    </section>
+                </>
+            );
+        }
+        return this.props.children;
+    }
+}
+
+
 export default function Streaming({ genres, series, torrent, episodes }) {
     return (
         <>
@@ -75,7 +104,9 @@ export default function Streaming({ genres, series, torrent, episodes }) {
             <MovieDetails movie={series} torrent={torrent} />
 
             {series.seasons.length >= 1 ?
-                <SeasonEpisodes series={series} episodes={episodes} />
+                <ErrorBoundary>
+                    <SeasonEpisodes series={series} episodes={episodes} />
+                </ErrorBoundary>
                 : ''
             }
 

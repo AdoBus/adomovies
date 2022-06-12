@@ -18,9 +18,10 @@ export default function Custom404() {
                                 </span>
                                 {/* <!-- Overlay content--> */}
                                 <div className="position-relative zindex-5">
-                                    <h1 className="display-3 text-light">Page Not Found.</h1>
+                                    <h1 className="display-3 text-light">Internal Server Error.</h1>
                                     <p className="mb-lg-4 mb-3 pb-lg-3 fs-lg text-light opacity-70">
-                                        Sorry, we can’t find the page you are looking for. We suggest you go to homepage while we are fixing the problem.
+                                        Sorry, something went wrong on our end. We are currently trying to solve the problem.
+                                        In the meantime you can:
                                     </p>
                                     <svg className="d-lg-block d-none mb-4" xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="none">
                                         <g clipPath="url(#A)">
@@ -42,7 +43,7 @@ export default function Custom404() {
                             </div>
                             <div className="col-lg-6 offset-lg-2 order-lg-2 order-1">
                                 <div className="ratio ratio-1x1 mx-auto" style={{ 'maxWidth': '636px' }}>
-                                    <img src="/img/errors/404.svg"></img>
+                                    <img src="/img/errors/500.svg"></img>
                                 </div>
                             </div>
                         </div>
