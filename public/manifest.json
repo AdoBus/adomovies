@@ -1,12 +1,20 @@
 {
-    "theme_color": "#FFF",
-    "background_color": "#FFF",
+    "background_color": "#ffffff",
+    "description": "Adomovies it's an online platform where you can stream and download movies for free. Adomovies however does not store any files or videos. Any files or videos are provided through third part apis.",
+    "dir": "ltr",
     "display": "standalone",
-    "scope": "/",
-    "start_url": "/",
     "name": "Adomovies",
+    "orientation": "any",
+    "scope": "/",
     "short_name": "Adomovies",
-    "description": "Stream Latest Movies and TV Shows For Free",
+    "start_url": "/",
+    "theme_color": "#fff",
+    "categories": [],
+    "screenshots": [{
+        "src": "https://adomovies.com",
+        "sizes": "192x192",
+        "type": "image/png"
+    }],
     "icons": [{
             "src": "/icon-192x192.png",
             "sizes": "192x192",

@@ -13,7 +13,9 @@ export default function MovieDetails({ movie, torrent }) {
         <>
             <section className="container mt-4 pt-2 pl-4 pr-4 pb-4">
                 <article className="card border-0 shadow-sm card-hover card-horizontal">
-                    <a rel="noreferrer" target="_blank" href={movie.homepage} className="card-img-top" style={{ backgroundImage: `url(/api/getImage?q=${movie.poster_path})` }}></a>
+                    <a rel="noreferrer" target="_blank" href={movie.homepage} className="card-img-top"
+                        style={{ backgroundImage: `url(/api/getImage?q=${movie.poster_path})` }}>
+                    </a>
                     <div className="card-body">
                         <a rel="noreferrer" target="_blank" href={movie.homepage} className="fs-xs text-uppercase text-decoration-none">{movie.status}</a>
                         <h3 className="fs-base pt-1 mb-2">
@@ -59,12 +61,16 @@ export default function MovieDetails({ movie, torrent }) {
                                 {torrent.data.movie.torrents ?
                                     <>
                                         {torrent.data.movie.torrents.map(t_link => (
-                                            <a key={t_link.hash} href={t_link.url} className="btn btn-sm btn-outline-primary"><i className='fi-cloud-download'></i> {t_link.quality}</a>
+                                            <a key={t_link.hash} href={t_link.url} className="btn btn-sm btn-outline-primary">
+                                                <i className='fi-cloud-download'></i> {t_link.quality}
+                                            </a>
                                         ))}
                                     </>
                                     : ''
                                 }
-                                <a className="btn btn-sm btn-outline-primary" id="play-button" href="#youtube-modal" data-bs-toggle="modal"><i className='fi-youtube'></i> Trailers</a>
+                                <a className="btn btn-sm btn-outline-primary" id="play-button" href="#youtube-modal" data-bs-toggle="modal">
+                                    <i className='fi-youtube'></i> Trailers
+                                </a>
                             </div>
                         </div>
                     </div>
