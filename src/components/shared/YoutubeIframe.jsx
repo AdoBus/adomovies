@@ -21,7 +21,7 @@ export default function YoutubeIframe({ movie }) {
                                         playerVars: {
                                             autoplay: 0
                                         },
-                                    }} onReady={_onReady} />: ''
+                                    }} onReady={_onReady} />: null
                                 ))}
                             </div>
                         </div>

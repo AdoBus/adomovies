@@ -43,7 +43,7 @@ export default function Custom404() {
                             </div>
                             <div className="col-lg-6 offset-lg-2 order-lg-2 order-1">
                                 <div className="ratio ratio-1x1 mx-auto" style={{ 'maxWidth': '636px' }}>
-                                    <img src="/img/errors/500.svg"></img>
+                                    <img src="/img/errors/500.svg" alt='500'></img>
                                 </div>
                             </div>
                         </div>

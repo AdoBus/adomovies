@@ -1,9 +1,16 @@
 import FooterLinks from "../home/FooterLinks";
 import PoweredBy from "../home/PoweredBy";
+import dynamic from 'next/dynamic';
+
+const Scripts = dynamic(
+  () => import('../../pages/uitls'),
+  { ssr: false }
+)
 
 export default function Footer() {
     return (
         <>
+            <Scripts/>
             <footer className="footer pt-lg-5 pt-4 bg-secondary">
                 <FooterLinks />
                 <PoweredBy />

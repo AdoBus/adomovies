@@ -8,17 +8,6 @@ const Pagination = dynamic(() => import("../../components/shared/Pagination"), {
 export default function Tv({ genres, discover }) {
     return (
         <>
-            <Script src="https://code.jquery.com/jquery-3.6.0.min.js"
-                integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous" />
-            <Script src='/js/bootstrap.bundle.min.js' />
-            <Script src='/js/smooth-scroll.polyfills.min.js' />
-            <Script src='/js/lightgallery.min.js' />
-            <Script src='/js/lg-zoom.min.js' />
-            <Script src='/js/lg-fullscreen.min.js' />
-            <Script src='/js/lg-video.min.js' />
-            <Script src='/js/theme.js' />
-            <Script src='/js/tiny-slider.js' />
-            <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5496971688522015" crossOrigin="anonymous" />
             <Navbar genres={genres} />
             <div className="container mt-5 pt-5 p-0">
                 <div className="row g-0 mt-n3">
@@ -34,11 +23,11 @@ export default function Tv({ genres, discover }) {
 }
 
 export const getServerSideProps = async () => {
-    const genres_api = await fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.tmdbkey}&language=en-US`)
+    const genres_api = await fetch(`${process.env.tmdburl}/3/genre/movie/list?api_key=${process.env.tmdbkey}&language=en-US`)
     const genres = await genres_api.json()
 
     const discover_api = await fetch(
-        `https://api.themoviedb.org/3/discover/tv?api_key=${process.env.tmdbkey}&language=en-US&page=1&sort_by=popularity.desc`)
+        `${process.env.tmdburl}/3/discover/tv?api_key=${process.env.tmdbkey}&language=en-US&page=1&sort_by=popularity.desc`)
     const discover = await discover_api.json()
 
     return {

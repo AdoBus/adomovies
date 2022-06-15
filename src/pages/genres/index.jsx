@@ -9,15 +9,6 @@ const Pagination = dynamic(() => import("../../components/shared/Pagination"), {
 export default function Genres({ genres, discover, genres_id, media_type, genres_name, tv_genre }) {
     return (
         <>
-            <Script src='/js/bootstrap.bundle.min.js' />
-            <Script src='/js/smooth-scroll.polyfills.min.js' />
-            <Script src='/js/lightgallery.min.js' />
-            <Script src='/js/lg-zoom.min.js' />
-            <Script src='/js/lg-fullscreen.min.js' />
-            <Script src='/js/lg-video.min.js' />
-            <Script src='/js/theme.js' />
-            <Script src='/js/tiny-slider.js' />
-            <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5496971688522015" crossOrigin="anonymous" />
             <Navbar genres={genres} />
             <div className="container mt-5 pt-5 p-0">
                 <div className="row g-0 mt-n3">
@@ -38,14 +29,14 @@ export const getServerSideProps = async ({ query }) => {
     var media = m
     let genre_id = []
 
-    const genres_api = await fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.tmdbkey}&language=en-US`)
+    const genres_api = await fetch(`${process.env.tmdburl}/3/genre/movie/list?api_key=${process.env.tmdbkey}&language=en-US`)
 
     const genres = await genres_api.json()
 
     if (media === 'movie') {
         genre_id.push(id[0])
     } else {
-        const tv_genres_api = await fetch(`https://api.themoviedb.org/3/genre/tv/list?api_key=${process.env.tmdbkey}&language=en-US`)
+        const tv_genres_api = await fetch(`${process.env.tmdburl}/3/genre/tv/list?api_key=${process.env.tmdbkey}&language=en-US`)
         const tv_genres = await tv_genres_api.json()
 
         tv_genres.genres.map(genre => {
@@ -54,7 +45,7 @@ export const getServerSideProps = async ({ query }) => {
     }
 
     const discover_api = await fetch(
-        `https://api.themoviedb.org/3/discover/${media}?api_key=${process.env.tmdbkey}&language=en-US&page=1&with_genres=${genre_id[0]}&sort_by=popularity.desc`)
+        `${process.env.tmdburl}/3/discover/${media}?api_key=${process.env.tmdbkey}&language=en-US&page=1&with_genres=${genre_id[0]}&sort_by=popularity.desc`)
 
     const discover = await discover_api.json()
 

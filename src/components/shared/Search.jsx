@@ -49,7 +49,7 @@ export default function Search() {
 
     useEffect(() => {
         router.prefetch('/search')
-    }, [])
+    }, [router])
 
     return (
         <>

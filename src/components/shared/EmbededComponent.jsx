@@ -40,15 +40,17 @@ export default function EmbededComponent({ movie, season_number }) {
                                 frameBorder="0" allow="fullscreen 'src'" scrolling="no" allowtransparency="true"></iframe>
                             }
                         </>
-                        : movie.videos.results.map(video => (
-                            video.type === 'Teaser' ? <YouTube videoId={video.key} opts={{
-                                height: '500',
-                                width: '100%',
-                                playerVars: {
-                                    autoplay: 0
-                                },
-                            }} onReady={_onReady} /> : ''
-                        ))}
+                        : 
+                            movie.videos.results.filter(video => video.type === 'Teaser' ).slice(0,1).map(teaser => (
+                                <YouTube key={teaser.key} videoId={teaser.key} opts={{
+                                    height: '500',
+                                    width: '100%',
+                                    playerVars: {
+                                        autoplay: 0
+                                    },
+                                }} onReady={_onReady} />
+                            ))
+                        }
                 </div>
             </section>
         </>

@@ -14,6 +14,7 @@ const nextConfig = withPWA({
     },
     env: {
         tmdbkey: '18f3f02b0654a16553d20e9dd898b7a5',
+        tmdburl: 'https://api.themoviedb.org'
     },
 })
 

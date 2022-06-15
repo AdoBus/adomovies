@@ -13,9 +13,9 @@ export const getServerSideProps = async ({ res, req, query }) => {
     const { q } = query
     var id = q.split('-')
 
-    const genres_api = await fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.tmdbkey}&language=en-US`)
+    const genres_api = await fetch(`${process.env.tmdburl}/3/genre/movie/list?api_key=${process.env.tmdbkey}&language=en-US`)
     const movie_api = await fetch(
-        `https://api.themoviedb.org/3/movie/${id[0]}?api_key=${process.env.tmdbkey}&language=en-US&append_to_response=videos,credits,reviews,similar`
+        `${process.env.tmdburl}/3/movie/${id[0]}?api_key=${process.env.tmdbkey}&language=en-US&append_to_response=videos,credits,reviews,similar`
     )
 
     const { genres } = await genres_api.json()
@@ -59,15 +59,6 @@ export const getServerSideProps = async ({ res, req, query }) => {
 export default function Streaming({ genres, movie, torrent }) {
     return (
         <>
-            <Script src='/js/bootstrap.bundle.min.js' />
-            <Script src='/js/smooth-scroll.polyfills.min.js' />
-            <Script src='/js/lightgallery.min.js' />
-            <Script src='/js/lg-zoom.min.js' />
-            <Script src='/js/lg-fullscreen.min.js' />
-            <Script src='/js/lg-video.min.js' />
-            <Script src='/js/theme.js' />
-            <Script src='/js/tiny-slider.js' />
-            <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5496971688522015" crossOrigin="anonymous" />
             <Navbar genres={genres} />
             <EmbededComponent movie={movie} />
 
