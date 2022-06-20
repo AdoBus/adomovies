@@ -1,29 +1,30 @@
 import Footer from "../../components/shared/Footer";
 import Navbar from "../../components/shared/Navbar"
-import Script from "next/script";
-import SortBy from "../../components/shared/GenresSort";
 import dynamic from "next/dynamic";
+import Layout from "../../components/shared/LayoutComponent";
 
 const Pagination = dynamic(() => import("../../components/shared/Pagination"), { ssr: false })
 
-export default function SearchPage({genres, results, q}) {
+export default function SearchPage({ genres, results, q }) {
     return (
-        <>
-            <Navbar genres={genres} />
-            <div className="container mt-5 pt-5 p-0">
-                <div className="row g-0 mt-n3">
-                    <div id="xyzz" name="2" className="col-lg-12 col-xl-12 position-relative overflow-hidden pb-5 pt-4 px-3 px-xl-4 px-xxl-5">
-                        <h2 className="h5 mb-5 mt-md-3 mt-5">Search Results: {q}</h2>
-                        <Pagination discover={results} pagination_type="search" query={q}/>
+        <Layout title={`Adomovies - Search Results: ${q}`}>
+            <>
+                <Navbar genres={genres} />
+                <div className="container mt-5 pt-5 p-0">
+                    <div className="row g-0 mt-n3">
+                        <div id="xyzz" name="2" className="col-lg-12 col-xl-12 position-relative overflow-hidden pb-5 pt-4 px-3 px-xl-4 px-xxl-5">
+                            <h2 className="h5 mb-5 mt-md-3 mt-5">Search Results: {q}</h2>
+                            <Pagination discover={results} pagination_type="search" query={q} />
+                        </div>
                     </div>
                 </div>
-            </div>
-            <Footer />
-        </>
+                <Footer />
+            </>
+        </Layout>
     )
 }
 export const getServerSideProps = async ({ query }) => {
-    const {q} = query
+    const { q } = query
 
     const genres_api = await fetch(`${process.env.tmdburl}/3/genre/movie/list?api_key=${process.env.tmdbkey}&language=en-US`)
 
@@ -36,7 +37,7 @@ export const getServerSideProps = async ({ query }) => {
         props: {
             genres: genres.genres,
             results: search,
-            q:q
+            q: q
         }
     };
 }

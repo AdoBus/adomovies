@@ -7,11 +7,9 @@ import $ from 'jquery'
 export default function Search() {
     const SEARCH_URI = '/api/search';
 
-    const [isLoading, setIsLoading] = useState(false);
     const [options, setOptions] = useState([]);
 
     const handleSearch = (query) => {
-        setIsLoading(true);
 
         fetch(`${SEARCH_URI}?q=${query}`)
             .then((resp) => resp.json())
@@ -27,7 +25,6 @@ export default function Search() {
                 ));
 
                 setOptions(options);
-                setIsLoading(false);
             });
     };
     const filterBy = () => true;
@@ -40,11 +37,16 @@ export default function Search() {
 
     const handleSubmit = useCallback((e) => {
         e.preventDefault()
-        console.log(getFormData())
+
+        if (getFormData() === "") {
+            return false;
+        }
+
         router.push({
             pathname: '/search',
             query: `q=${getFormData()}`,
-        }, { shallow: false })
+            shallow: false
+        })
     }, [router])
 
     useEffect(() => {
@@ -54,8 +56,8 @@ export default function Search() {
     return (
         <>
             <div className="order-lg-3">
-                <form id='searchForm' className="form-group" style={{'paddingTop':'5px !important', 'paddingBottom':'5px !important'}} onSubmit={handleSubmit}>
-                    <div className="input-group input-group-sm" style={{"paddingLeft":"initial !important","paddingRight":"initial !important"}}>
+                <form id='searchForm' className="form-group" style={{ 'paddingTop': '5px !important', 'paddingBottom': '5px !important' }} onSubmit={handleSubmit}>
+                    <div className="input-group input-group-sm">
                         <span className="input-group-text text-muted">
                             <i className="fi-search"></i>
                         </span>
@@ -73,7 +75,7 @@ export default function Search() {
                                     <Fragment>
                                         <img
                                             alt={option.title}
-                                            src={option.poster_path ? `/api/getImage?q=${option.poster_path}`: '/img/errors/grey.jpg'}
+                                            src={option.poster_path ? `/api/getImage?q=${option.poster_path}` : '/img/errors/grey.jpg'}
                                             style={{
                                                 height: '50px',
                                                 marginRight: '10px',

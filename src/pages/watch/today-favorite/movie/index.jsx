@@ -7,7 +7,7 @@ import TopReview from '../../../../components/shared/TopReview'
 import ExtraDetails from '../../../../components/shared/ExtraDetails'
 import SimilarMovie from '../../../../components/shared/SimilarMovies'
 import YoutubeIframe from '../../../../components/shared/YoutubeIframe'
-import Script from 'next/script'
+import Layout from '../../../../components/shared/LayoutComponent'
 
 
 export const getServerSideProps = async ({ res, req, query }) => {
@@ -59,25 +59,27 @@ export const getServerSideProps = async ({ res, req, query }) => {
 
 export default function Streaming({ genres, movie, torrent }) {
     return (
-        <>
-            <Navbar genres={genres} />
-            <EmbededComponent movie={movie} />
-           
-            <MovieDetails movie={movie} torrent={torrent} />
-           
-            <section className="container mt-3 mb-3">
-                <div className="row">
-                    <div className="col-lg-10 col-xl-9 radius-4 p-4">
-                        <Casts movie={movie} />
-                        <TopReview movie={movie} />
+        <Layout title={`${movie.title} - ${movie.overview}`} meta={movie.overview}>
+            <>
+                <Navbar genres={genres} />
+                <EmbededComponent movie={movie} />
+
+                <MovieDetails movie={movie} torrent={torrent} />
+
+                <section className="container mt-3 mb-3">
+                    <div className="row">
+                        <div className="col-lg-10 col-xl-9 radius-4 p-4">
+                            <Casts movie={movie} />
+                            <TopReview movie={movie} />
+                        </div>
+                        <ExtraDetails movie={movie} />
                     </div>
-                    <ExtraDetails movie={movie} />
-                </div>
-            </section>
-           
-            <SimilarMovie movie={movie} route="watch/movie?q=" />
-            <YoutubeIframe movie={movie} />
-            <Footer />
-        </>
+                </section>
+
+                <SimilarMovie movie={movie} route="watch/movie?q=" />
+                <YoutubeIframe movie={movie} />
+                <Footer />
+            </>
+        </Layout>
     )
 }

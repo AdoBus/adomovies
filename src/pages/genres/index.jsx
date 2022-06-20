@@ -1,25 +1,27 @@
 import Footer from "../../components/shared/Footer";
 import Navbar from "../../components/shared/Navbar"
-import Script from "next/script";
 import SortBy from "../../components/shared/GenresSort";
 import dynamic from "next/dynamic";
+import Layout from "../../components/shared/LayoutComponent"
 
 const Pagination = dynamic(() => import("../../components/shared/Pagination"), { ssr: false })
 
 export default function Genres({ genres, discover, genres_id, media_type, genres_name, tv_genre }) {
     return (
-        <>
-            <Navbar genres={genres} />
-            <div className="container mt-5 pt-5 p-0">
-                <div className="row g-0 mt-n3">
-                    <div id="xyzz" name="2" className="col-lg-12 col-xl-12 position-relative overflow-hidden pb-5 pt-4 px-3 px-xl-4 px-xxl-5">
-                        <SortBy discover={discover} genres_id={genres_id} genres_name={genres_name} media_type={media_type} />
-                        <Pagination discover={discover} media_type={media_type} genres_id={genres_id} tv_genre={tv_genre} pagination_type="discover"/>
+        <Layout title={`Adomovies - Best ${genres_name} ${media_type === "movie" ? 'Movies' : 'Tv Shows'}`}>
+            <>
+                <Navbar genres={genres} />
+                <div className="container mt-5 pt-5 p-0">
+                    <div className="row g-0 mt-n3">
+                        <div id="xyzz" name="2" className="col-lg-12 col-xl-12 position-relative overflow-hidden pb-5 pt-4 px-3 px-xl-4 px-xxl-5">
+                            <SortBy discover={discover} genres_id={genres_id} genres_name={genres_name} media_type={media_type} />
+                            <Pagination discover={discover} media_type={media_type} genres_id={genres_id} tv_genre={tv_genre} pagination_type="discover" />
+                        </div>
                     </div>
                 </div>
-            </div>
-            <Footer />
-        </>
+                <Footer />
+            </>
+        </Layout>
     );
 }
 

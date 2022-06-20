@@ -9,6 +9,7 @@ import SimilarMovie from '../../../../components/shared/SimilarMovies'
 import YoutubeIframe from '../../../../components/shared/YoutubeIframe'
 import dynamic from 'next/dynamic'
 import React from 'react'
+import Layout from '../../../../components/shared/LayoutComponent'
 
 const SeasonEpisodes = dynamic(() => import("../../../../components/shared/SeasonEpisodes"), { ssr: false })
 
@@ -88,32 +89,34 @@ class ErrorBoundary extends React.Component {
 
 export default function Streaming({ genres, series, torrent, episodes }) {
     return (
-        <>
-            <Navbar genres={genres} />
-            <EmbededComponent movie={series} season_number={episodes.season_number} />
+        <Layout title={`${series.name} - ${series.overview}`} meta={series.overview}>
+            <>
+                <Navbar genres={genres} />
+                <EmbededComponent movie={series} season_number={episodes.season_number} />
 
-            <MovieDetails movie={series} torrent={torrent} />
+                <MovieDetails movie={series} torrent={torrent} />
 
-            {series.seasons.length >= 1 &&
-                <ErrorBoundary>
-                    <SeasonEpisodes series={series} episodes={episodes} />
-                </ErrorBoundary>
-            }
+                {series.seasons.length >= 1 &&
+                    <ErrorBoundary>
+                        <SeasonEpisodes series={series} episodes={episodes} />
+                    </ErrorBoundary>
+                }
 
 
-            <section className="container mt-3 mb-3">
-                <div className="row">
-                    <div className="col-lg-10 col-xl-9 radius-4 p-4">
-                        <Casts movie={series} />
-                        <TopReview movie={series} />
+                <section className="container mt-3 mb-3">
+                    <div className="row">
+                        <div className="col-lg-10 col-xl-9 radius-4 p-4">
+                            <Casts movie={series} />
+                            <TopReview movie={series} />
+                        </div>
+                        <ExtraDetails movie={series} />
                     </div>
-                    <ExtraDetails movie={series} />
-                </div>
-            </section>
+                </section>
 
-            <SimilarMovie movie={series} route="watch/tv?q=" />
-            <YoutubeIframe movie={series} />
-            <Footer />
-        </>
+                <SimilarMovie movie={series} route="watch/tv?q=" />
+                <YoutubeIframe movie={series} />
+                <Footer />
+            </>
+        </Layout>
     )
 }
