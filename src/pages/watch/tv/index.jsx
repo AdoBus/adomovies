@@ -56,7 +56,7 @@ export const getServerSideProps = async ({ res, req, query }) => {
     }
 }
 
-// Lets catch client side error on seasons listing due to bootstrap not defined
+// Let's catch client side error on seasons listing due to bootstrap not defined
 class ErrorBoundary extends React.Component {
     constructor(props) {
         super(props);
