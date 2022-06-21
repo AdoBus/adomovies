@@ -39,7 +39,7 @@ export default function SeasonEpisodes({ series, episodes }) {
                                 episodes.episodes.map(episode => (
                                     <div key={episode.id} className="col-md-2 col-6">
                                         <a id={`episode${episode.episode_number}`} href="#iframeContainer"
-                                            onClick={() => $('#iframe').attr('src', `https://www.2embed.ru/embed/tmdb/tv?id=${series.id}&s=${episode.season_number}&e=${episode.episode_number}`)}
+                                            onClick={() => $('#iframe').attr('src', `https://www.2embed.to/embed/tmdb/tv?id=${series.id}&s=${episode.season_number}&e=${episode.episode_number}`)}
                                             style={{ 'overflow': 'hidden', 'textOverflow': 'ellipsis' }}
                                             type="button" className="btn btn-secondary w-100"
                                             data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-trigger="hover"
