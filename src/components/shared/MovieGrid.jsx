@@ -10,10 +10,11 @@ export default function MovieGrid({ movies, divID, divInfo, style, route, total_
                         <div key={index} className="col-md-2 col-6 mb-3">
                             {/* <!-- Item --> */}
                             <Link href={`/${route}${movie.id}-${route === 'watch/tv?q=' ? '1-' : ''}${movie.original_title ? movie.original_title : movie.original_name}`}>
-                                <a className="card h-100 shadow-sm card-hover border-0">
+                                <a className="card card-light h-100 shadow-sm card-hover border-0">
                                     <div className="card-img-top card-img-hover">
                                         <span className="img-overlay opacity-65"></span>
-                                        <Image width="195" height="288" src={movie.poster_path ? `/api/getImage?q=${movie.poster_path}` : '/img/errors/grey.jpg'} alt={movie.original_title ? movie.original_title : movie.original_name} />
+                                        <Image width="195" height="288" src={movie.poster_path ? `/api/getImage?q=${movie.poster_path}` :
+                                            '/img/errors/grey.jpg'} alt={movie.original_title ? movie.original_title : movie.original_name} />
                                         <div className="content-overlay start-0 top-0 d-flex align-items-center justify-content-center w-100 h-100 p-3">
                                             <div className="w-100 p-1">
                                                 <div className="mb-2">
@@ -28,12 +29,12 @@ export default function MovieGrid({ movies, divID, divInfo, style, route, total_
                                         </div>
                                     </div>
                                     <div className="card-body text-center">
-                                        <p className="mb-0 text-nav fs-sm">{movie.original_title ? movie.original_title : movie.original_name}</p>
+                                        <p className="mb-0 fs-sm text-light opacity-70">{movie.original_title ? movie.original_title : movie.original_name}</p>
                                     </div>
                                 </a>
                             </Link>
                         </div>
-                    ) : <>Something went wrong</>}
+                    ) : <>No movies found here</>}
             </div>
         </>
     )

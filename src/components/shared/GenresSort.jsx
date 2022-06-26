@@ -5,13 +5,16 @@ export default function SortBy({ discover, genres_id, genres_name, media_type })
         <>
             <div className="d-flex flex-sm-row flex-column align-items-sm-center mt-5 mb-5 align-items-stretch my-2">
                 <div className="d-flex align-items-center flex-shrink-0">
-                    <label className="fs-sm me-2 pe-1 text-nowrap" htmlFor="sortby">
+                    <label className="fs-sm me-2 pe-1 text-nowrap text-light opacity-70" htmlFor="sortby">
                         <i className="fi-tv text-muted mt-n1 me-2"></i>Media Type:</label>
                     <div className="dropdown w-sm-50" data-bs-toggle="select">
-                        <button className="btn btn-outline-secondary dropdown-toggle ps-2 ps-sm-3" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <span id="xyz" className="dropdown-toggle-label">{media_type === 'movie' ? <>Movies</> : <>Tv Series</>}</span>
+                        <button className="btn btn-dark btn-outline-secondary 
+                        dropdown-toggle ps-2 ps-sm-3" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span id="xyz" className="dropdown-toggle-label">
+                                {media_type === 'movie' ? <>Movies</> : <>Tv Series</>}
+                            </span>
                         </button>
-                        <ul className="dropdown-menu">
+                        <ul className="dropdown-menu dropdown-menu-dark">
                             <li>
                                 <Link href={genres_id ? `/genres?q=${genres_id}-${genres_name}&m=movie` : `/top-rated?q=movie`}>
                                     <a className="dropdown-item">
@@ -20,7 +23,7 @@ export default function SortBy({ discover, genres_id, genres_name, media_type })
                                 </Link>
                             </li>
                             <li>
-                                <Link href={genres_id ? `/genres?q=${genres_id}-${genres_name}&m=tv`: `/top-rated?q=tv`}>
+                                <Link href={genres_id ? `/genres?q=${genres_id}-${genres_name}&m=tv` : `/top-rated?q=tv`}>
                                     <a className="dropdown-item">
                                         <span className="dropdown-item-label">Tv Series</span>
                                     </a>

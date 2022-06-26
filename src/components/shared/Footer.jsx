@@ -11,7 +11,7 @@ export default function Footer() {
     return (
         <>
             <Scripts/>
-            <footer className="footer pt-lg-5 pt-4 bg-secondary">
+            <footer className="footer pt-lg-5 pt-4 bg-faded-light">
                 <FooterLinks />
                 <PoweredBy />
             </footer>

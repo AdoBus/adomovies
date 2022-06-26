@@ -10,11 +10,12 @@ export default function Navbar({ genres }) {
       {/* <Adblocker /> */}
       {/* <SignIn /> */}
       {/* <!-- Navbar with user account dropdown --> */}
-      <header className="navbar navbar-expand-lg navbar-light bg-light shadow-sm fixed-top navbar-stuck">
+      <header className="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm fixed-top navbar-stuck">
         <div className="container">
           <Link href='/'>
             <a className="navbar-brand d-flex justify-content-star me-2 me-xl-4">
-              <img className="d-block me-2" src="/img/logo/logo.svg" width="30" alt="Adomovies.com" /><h5 className="mt-2">Adomovies.com</h5>
+              <img style={{ marginTop: "-11px" }} className="d-block me-2" src="/img/logo/logo.svg" width="30" alt="Adomovies.com" />
+              <h5 className="mt-2 text-light">Adomovies.com</h5>
             </a>
           </Link>
           <button type="button" className="navbar-toggler ms-auto" data-bs-toggle="collapse" data-bs-target="#navbarUserNav"
@@ -34,7 +35,7 @@ export default function Navbar({ genres }) {
               </li>
               <li className={`nav-item dropdown ${router.pathname == "/genres" ? "active" : ""}`}>
                 <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">GENRE</a>
-                <ul className="dropdown-menu row">
+                <ul className="dropdown-menu dropdown-menu-dark row">
                   {genres.map(genre => (
                     <li key={genre.id} className="col-6">
                       <Link href={`/genres?q=${genre.id}-${genre.name}&m=movie`}>

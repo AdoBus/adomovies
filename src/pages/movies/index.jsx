@@ -13,7 +13,7 @@ export default function Movies({ genres, discover }) {
                 <div className="container mt-5 pt-5 p-0">
                     <div className="row g-0 mt-n3">
                         <div id="xyzz" name="2" className="col-lg-12 col-xl-12 position-relative overflow-hidden pb-5 pt-4 px-3 px-xl-4 px-xxl-5">
-                            <h2 className="h5 mb-5 mt-md-3 mt-5">Porpular Movies</h2>
+                            <h2 className="h5 mb-5 mt-md-3 mt-5 text-light">Porpular Movies</h2>
                             <Pagination discover={discover} media_type='movie' pagination_type="discover" />
                         </div>
                     </div>

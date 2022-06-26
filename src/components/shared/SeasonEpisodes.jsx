@@ -12,16 +12,16 @@ export default function SeasonEpisodes({ series, episodes }) {
     return (
         <>
             <section className="container">
-                <article className="card border-0 shadow-sm card-hover card-horizontal">
+                <article className="card card-light border-0 shadow-sm card-hover card-horizontal">
                     <div className="card-body">
                         <div className="mb-2">
-                            <div className="dropdown w-sm-50 border-end-sm" data-bs-toggle="select">
-                                <button className="btn btn-link dropdown-toggle ps-2 ps-sm-3" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <div className="dropdown w-sm-50" data-bs-toggle="select">
+                                <button className="btn dropdown-toggle ps-2 ps-sm-3" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     <i className="fi-align-justify me-2"></i>
-                                    <span id="xyz" className="dropdown-toggle-label">{episodes.name ? episodes.name : 'Select season'}</span>
+                                    <span id="xyz" className="dropdown-toggle-label text-light opacity-70">{episodes.name ? episodes.name : 'Select season'}</span>
                                 </button>
                                 <input type="hidden" value="New York" />
-                                <ul className="dropdown-menu">
+                                <ul className="dropdown-menu dropdown-menu-dark">
                                     {series.seasons.slice(0, series.seasons.length).map(season => (
                                         <li key={season.id}>
                                             <Link href={`/watch/tv/?q=${series.id}-${season.season_number}-${series.name}`}>
@@ -39,11 +39,12 @@ export default function SeasonEpisodes({ series, episodes }) {
                                 episodes.episodes.map(episode => (
                                     <div key={episode.id} className="col-md-2 col-6">
                                         <a id={`episode${episode.episode_number}`} href="#iframeContainer"
-                                            onClick={() => $('#iframe').attr('src', `https://www.2embed.to/embed/tmdb/tv?id=${series.id}&s=${episode.season_number}&e=${episode.episode_number}`)}
+                                            onClick={() => $('#iframe').attr('src', `https://www.2embed.ru/embed/tmdb/tv?id=${series.id}&s=${episode.season_number}&e=${episode.episode_number}`)}
                                             style={{ 'overflow': 'hidden', 'textOverflow': 'ellipsis' }}
-                                            type="button" className="btn btn-secondary w-100"
+                                            type="button" className="btn btn-outline-light w-100"
                                             data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-trigger="hover"
-                                            title={`Episode ${episode.episode_number}`} data-bs-content={episode.name}>Eps {episode.episode_number}: {episode.name}
+                                            title={`Episode ${episode.episode_number}`} data-bs-content={episode.name}>
+                                                <strong>Eps {episode.episode_number}: {episode.name}</strong>
                                         </a>
                                     </div>
                                 )) : null}

@@ -2,7 +2,6 @@ import YouTube from 'react-youtube';
 import Link from 'next/link';
 
 const _onReady = ((event) => {
-    // access to player in all event handlers via event.target
     event.target.pauseVideo();
 })
 
@@ -31,12 +30,12 @@ export default function EmbededComponent({ movie, season_number }) {
                                 </Link>
                             </li>
                         }
-                        <li className="breadcrumb-item active" aria-current="page">
+                        <li className="breadcrumb-item text-light" aria-current="page">
                             {movie.original_title ? movie.original_title : movie.name}
                         </li>
                     </ol>
                 </nav>
-                <p className="h6 bg-warning p-3 rounded-2">
+                <p className="h6 card-light text-light opacity-70 p-3 rounded-2">
                     <strong>If you get an error when trying to stream, switch to another streaming server or refresh the page.</strong>
                 </p>
             </section>
@@ -47,9 +46,9 @@ export default function EmbededComponent({ movie, season_number }) {
                     {movie.status === 'Released' || movie.status === 'Ended' || movie.status === 'Returning Series' || movie.status === 'Canceled' ?
                         <>
                             {movie.hasOwnProperty("seasons") ?
-                                <iframe id='iframe' src={`https://www.2embed.to/embed/tmdb/tv?id=${movie.id}&s=${season_number}&e=1`} width="100%" height="500px" frameBorder="0" allow="fullscreen 'src'"></iframe>
+                                <iframe id='iframe' src={`https://www.2embed.ru/embed/tmdb/tv?id=${movie.id}&s=${season_number}&e=1`} width="100%" height="500px" frameBorder="0" allow="fullscreen 'src'"></iframe>
                                 :
-                                <iframe src={`https://www.2embed.to/embed/tmdb/movie?id=${movie.id}`} width="100%" height="500px"
+                                <iframe src={`https://www.2embed.ru/embed/tmdb/movie?id=${movie.id}`} width="100%" height="500px"
                                     frameBorder="0" allow="fullscreen 'src'" scrolling="no" allowtransparency="true"></iframe>
                             }
                         </>

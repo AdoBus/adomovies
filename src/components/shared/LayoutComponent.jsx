@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import { Fragment } from 'react'
 
 export default function Layout({
     children,
@@ -14,7 +15,9 @@ export default function Layout({
                 <meta name="theme-color" content="#fff" />
                 <meta name="description" content={meta} />
             </Head>
-            {children}
+            <div className="bg-dark">
+                {children}
+            </div>
         </div>
     )
 }
