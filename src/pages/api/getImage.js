@@ -7,7 +7,7 @@ const handler = nc()
 
         res.setHeader('Content-Type', 'image/png')
 
-        fetch(`https://www.themoviedb.org/t/p/w440_and_h660_face${query}`)
+        fetch(`https://image.tmdb.org/t/p/original${query}`)
             .then(response => response.buffer())
             .then(data => {
                 return res.end(data)
