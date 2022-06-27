@@ -18,9 +18,9 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v3  
+    - run: pm2 delete next
     - run: npm i
     - run: npm install sharp
     - run: npm run build --if-present
-    - run: pm2 delete next
     - run: pm2 start npm --name "next" -- start
