@@ -67,8 +67,8 @@ export default function Pagination({ discover, media_type, genres_id, tv_genre, 
                                         </a>
                                     </Link>
                                 </div>
-                                : <>We can&apost find what your looking for.</>
-                        ) : <>Something went wrong</>}
+                                : <>Something went wrong.</>
+                        ) : <>Something went wrong.</>}
                 </div>
             </InfiniteScroll>
         </>
