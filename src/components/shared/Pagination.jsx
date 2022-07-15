@@ -38,7 +38,7 @@ export default function Pagination({ discover, media_type, genres_id, tv_genre, 
                 <div id="pagination" name={media_type === 'movie' ? genres_id : tv_genre} className="row g-4" style={{ "display": "show" }}>
                     {movies.length > 0 ?
                         movies.map((movie, index) =>
-                            movie.media_type != 'person' ?
+                            movie.media_type != 'person' &&
                                 <div key={index} className="col-md-2 col-6 mb-3">
                                     {/* <!-- Item --> */}
                                     <Link href={`/watch/${movie.media_type ? movie.media_type : media_type}?q=${movie.id}-${movie.original_title ?
@@ -67,7 +67,6 @@ export default function Pagination({ discover, media_type, genres_id, tv_genre, 
                                         </a>
                                     </Link>
                                 </div>
-                                : <>Something went wrong.</>
                         ) : <>Something went wrong.</>}
                 </div>
             </InfiniteScroll>
