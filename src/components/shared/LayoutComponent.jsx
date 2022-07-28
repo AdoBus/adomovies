@@ -7,7 +7,7 @@ export default function Layout({
     meta
 }) {
     return (
-        <div>
+        <Fragment>
             <Head>
                 <title>{title}</title>
                 <link rel="manifest" href="/manifest.json" />
@@ -18,6 +18,6 @@ export default function Layout({
             <div className="bg-dark">
                 {children}
             </div>
-        </div>
+        </Fragment>
     )
 }

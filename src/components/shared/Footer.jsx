@@ -10,7 +10,6 @@ const Scripts = dynamic(
 export default function Footer() {
     return (
         <>
-            <Scripts/>
             <footer className="footer pt-lg-5 pt-4 bg-faded-light">
                 <FooterLinks />
                 <PoweredBy />
@@ -19,6 +18,7 @@ export default function Footer() {
                 <span className="btn-scroll-top-tooltip text-muted fs-sm me-2">Top</span>
                 <i className="btn-scroll-top-icon fi-chevron-up">   </i>
             </a>
+            <Scripts/>
         </>
     )
 }

@@ -4,9 +4,7 @@ import nc from 'next-connect'
 const handler = nc()
     .get((req, res) => {
         const query = req.query.q
-
         res.setHeader('Content-Type', 'image/png')
-
         fetch(`https://image.tmdb.org/t/p/original${query}`)
             .then(response => response.buffer())
             .then(data => {

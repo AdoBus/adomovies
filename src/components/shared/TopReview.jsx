@@ -34,14 +34,16 @@ export default function TopReview({ movie }) {
                             </div>
                             <span className="text-muted fs-sm">{moment(review.created_at).format('LL')}</span>
                         </div>
-                        <ReactReadMoreReadLess
-                            charLimit={800}
-                            readMoreText={"Read more"}
-                            readLessText={"Read less"}
-                            readMoreStyle={{ color: "#33cabb" }}
-                            readLessStyle={{ color: "#33cabb" }}>
-                            {review.content}
-                        </ReactReadMoreReadLess>
+                        <div className="text-light opacity-70 mt-2">
+                            <ReactReadMoreReadLess
+                                charLimit={800}
+                                readMoreText={"Read more"}
+                                readLessText={"Read less"}
+                                readMoreStyle={{ color: "#33cabb" }}
+                                readLessStyle={{ color: "#33cabb" }}>
+                                {review.content}
+                            </ReactReadMoreReadLess>
+                        </div>
                     </>
                 )) : <p>We don&apos;t have any review so far.</p>}
         </>
