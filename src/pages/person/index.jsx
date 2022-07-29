@@ -10,7 +10,7 @@ import PersonTvAndMovieDropdown from '../../components/shared/PersonTvAndMovieDr
 export default function Person({ genres, person }) {
     return (
         <>
-            <Layout>
+            <Layout title={`Adomovies - ${person.name}`} meta={person.biography}>
                 <Navbar genres={genres} />
                 <div className="container mt-5 pt-5">
                     <div className="row g-0 mt-5">
