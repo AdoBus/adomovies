@@ -17,7 +17,8 @@ export default function MovieDetails({ movie, torrent }) {
                         style={{ backgroundImage: `url(/api/getImage?q=${movie.poster_path})` }}>
                     </a>
                     <div className="card-body">
-                        <a rel="noreferrer" target="_blank" href={movie.homepage} className="fs-xs text-uppercase text-decoration-none">{movie.status}</a>
+                        <a rel="noreferrer" target="_blank" href={movie.homepage} className="fs-xs text-uppercase text-decoration-none">{movie.status} </a>
+                        <span className="badge text-dark bg-warning fs-xs">{movie.adult === true && "Adult Film"}</span>
                         <h3 className="fs-base pt-1 mb-2">
                             <a href={movie.homepage} rel="noreferrer" target="_blank" className="nav-link text-light opacity-70">
                                 {movie.title ? movie.title : movie.name} <span className="badge bg-info fs-xs">{movie.tagline}</span>
