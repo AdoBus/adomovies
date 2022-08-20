@@ -42,7 +42,7 @@ export const getServerSideProps = async ({ query }) => {
         const tv_genres = await tv_genres_api.json()
 
         tv_genres.genres.map(genre => {
-            genre.name.includes(id[1]) === true ? genre_id.push(genre.id) : null
+            genre.name.includes(id[1]) === true && genre_id.push(genre.id)
         })
     }
 
