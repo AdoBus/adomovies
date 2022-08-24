@@ -5,7 +5,7 @@ import moment from "moment";
 export default function TopReview({ movie }) {
     return (
         <>
-            <div className="mt-5 d-flex align-items-end align-items-lg-center justify-content-between pb-md-2">
+            <div className="mt-3 d-flex align-items-end align-items-lg-center justify-content-between pb-md-2">
                 <div className="d-flex w-100 align-items-center justify-content-between justify-content-lg-start">
                     <h2 className="h5 mb-0 me-md-4 text-light">Top Review</h2><span className="badge bg-info fs-xs">TMDB</span>
                 </div>
