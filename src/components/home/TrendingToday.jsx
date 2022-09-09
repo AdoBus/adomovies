@@ -66,7 +66,7 @@ export default function TrendingToday({ trending, genres }) {
                                                 <strong>IMDB RATING</strong>: {t.vote_average}
                                             </div>
                                             <div className="fs-sm opacity-70">
-                                                {trending[0].overview}
+                                                {t.overview}
                                             </div>
                                         </a>
                                     </Link>
