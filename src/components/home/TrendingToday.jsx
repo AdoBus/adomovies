@@ -1,43 +1,12 @@
 import Link from "next/link"
 import moment from "moment"
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
 
-
-const responsive = {
-    superLargeDesktop: {
-        breakpoint: { max: 4000, min: 3000 },
-        items: 1
-    },
-    desktop: {
-        breakpoint: { max: 3000, min: 1024 },
-        items: 1
-    },
-    tablet: {
-        breakpoint: { max: 1024, min: 464 },
-        items: 1
-    },
-    mobile: {
-        breakpoint: { max: 464, min: 0 },
-        items: 1
-    }
-};
 
 export default function TrendingToday({ trending, genres }) {
     return (
         <>
             <section className="bg-position-top-center mt-5 mb-5 bg-repeat-0 pt-5">
-                <Carousel
-                    responsive={responsive}
-                    swipeable={true}
-                    autoPlay={true}
-                    autoPlaySpeed={8000}
-                    ssr={true}
-                    infinite={true}
-                    transitionDuration={5000}
-                    removeArrowOnDeviceType={["tablet", "mobile", "desktop"]}
-                >
-                    {trending.map(t => (
+                    {trending.slice(0, 1).map(t => (
                         <div key={t.id} className="card trend-img border-0 overflow-hidden"
                             style={{
                                 backgroundImage: `url(api/getImage?q=${t.backdrop_path})`,
@@ -79,7 +48,6 @@ export default function TrendingToday({ trending, genres }) {
                             </div>
                         </div>
                     ))}
-                </Carousel>
             </section>
         </>
     )
