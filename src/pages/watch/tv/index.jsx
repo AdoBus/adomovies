@@ -72,7 +72,7 @@ class ErrorBoundary extends React.Component {
             return (
                 <>
                     <section className="container">
-                        <article className="card border-0 shadow-sm card-hover card-horizontal">
+                        <article className="card card-light border-0 shadow-sm card-hover card-horizontal">
                             <div className="card-body">
                                 <p>Something went wrong while displaying episodes</p>
                             </div>
