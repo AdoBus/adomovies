@@ -58,7 +58,7 @@ export default function MovieDetails({ movie, torrent }) {
                         </div>
                         <div className="">
                             <div className="btn-group" role="group" aria-label="Outline button group">
-                                {torrent.data.movie.torrents ?
+                                {torrent && torrent.data.movie.torrents ?
                                     <>
                                         {torrent.data.movie.torrents.map(t_link => (
                                             <a key={t_link.hash} href={t_link.url} className="btn btn-sm btn-outline-light">
