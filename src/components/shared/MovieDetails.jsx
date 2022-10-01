@@ -69,7 +69,7 @@ export default function MovieDetails({ movie, torrent }) {
                                     : ''
                                 }
                                 <a className="btn btn-sm btn-outline-light" id="play-button" href="#youtube-modal" data-bs-toggle="modal">
-                                    <i className='fi-youtube'></i> Trailers
+                                    <i className='fi-youtube'></i> Trailer
                                 </a>
                             </div>
                         </div>
