@@ -24,7 +24,7 @@ export default function SeasonEpisodes({ series, episodes }) {
                                 <ul className="dropdown-menu dropdown-menu-dark">
                                     {series.seasons.slice(0, series.seasons.length).map(season => (
                                         <li key={season.id}>
-                                            <Link href={`/watch/tv/?q=${series.id}-${season.season_number}-${series.name}`}>
+                                            <Link href={`/watch/tv/${series.id}-${season.season_number}-${series.name}`}>
                                                 <a className="dropdown-item">
                                                     <span className="dropdown-item-label">Season {season.season_number}</span>
                                                 </a>
