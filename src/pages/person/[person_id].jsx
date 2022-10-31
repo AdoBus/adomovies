@@ -38,9 +38,9 @@ export default function Person({ genres, person }) {
     )
 }
 
-export async function getServerSideProps({req, res, query}) {
-    const { q } = query
-    var id = q.split('-')
+export async function getServerSideProps({query}) {
+    const { person_id } = query
+    var id = person_id.split('-')
 
     const genres_api = await fetch(`${process.env.tmdburl}/3/genre/movie/list?api_key=${process.env.tmdbkey}&language=en-US`)
     const person_api = await fetch(`${process.env.tmdburl}/3/person/${id}?api_key=${process.env.tmdbkey}&append_to_response=movie_credits,tv_credits,external_ids`)

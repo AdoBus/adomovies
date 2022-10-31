@@ -9,9 +9,10 @@ import SimilarMovie from '../../../components/shared/SimilarMovies'
 import YoutubeIframe from '../../../components/shared/YoutubeIframe'
 import Layout from '../../../components/shared/LayoutComponent'
 
-export const getServerSideProps = async ({ res, req, query }) => {
-    const { q } = query
-    var id = q.split('-')
+export const getServerSideProps = async (context) => {
+    const { movie_id } = context.query;
+
+    var id = movie_id.split('-')
 
     const genres_api = await fetch(`${process.env.tmdburl}/3/genre/movie/list?api_key=${process.env.tmdbkey}&language=en-US`)
     const movie_api = await fetch(
@@ -45,7 +46,7 @@ export const getServerSideProps = async ({ res, req, query }) => {
             }
         }
     }
-
+    const res = context.res
     res.setHeader(
         'Cache-Control',
         'public, s-maxage=3600, stale-while-revalidate=3660'
@@ -79,7 +80,7 @@ export default function Streaming({ genres, movie, torrent }) {
                     </div>
                 </section>
 
-                <SimilarMovie movie={movie} route="watch/movie?q=" />
+                <SimilarMovie movie={movie} route="watch/movie/" />
                 <YoutubeIframe movie={movie} />
                 <Footer />
             </>

@@ -41,8 +41,8 @@ export default function Pagination({ discover, media_type, genres_id, tv_genre, 
                             movie.media_type != 'person' &&
                                 <div key={index} className="col-md-2 col-6 mb-3">
                                     {/* <!-- Item --> */}
-                                    <Link href={`/watch/${movie.media_type ? movie.media_type : media_type}?q=${movie.id}-${movie.original_title ?
-                                        movie.original_title : movie.original_name}`}>
+                                    <Link href={`/watch/${movie.media_type ? movie.media_type : media_type}/${movie.id}-${movie.original_title ?
+                                        movie.original_title.replaceAll(' ', '-') : movie.original_name.replaceAll(' ', '-')}`}>
                                         <a className="card h-100 card-light shadow-sm card-hover border-0">
                                             <div className="card-img-top card-img-hover">
                                                 <span className="img-overlay opacity-65"></span>

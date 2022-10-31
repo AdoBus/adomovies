@@ -16,14 +16,14 @@ export default function SortBy({ discover, genres_id, genres_name, media_type })
                         </button>
                         <ul className="dropdown-menu dropdown-menu-dark">
                             <li>
-                                <Link href={genres_id ? `/genres?q=${genres_id}-${genres_name}&m=movie` : `/top-rated?q=movie`}>
+                                <Link href={genres_id ? `/genres/movie/${genres_id}-${genres_name}` : `/top-rated?q=movie`}>
                                     <a className="dropdown-item">
                                         <span className="dropdown-item-label">Movies</span>
                                     </a>
                                 </Link>
                             </li>
                             <li>
-                                <Link href={genres_id ? `/genres?q=${genres_id}-${genres_name}&m=tv` : `/top-rated?q=tv`}>
+                                <Link href={genres_id ? `/genres/tv/${genres_id}-${genres_name}` : `/top-rated?q=tv`}>
                                     <a className="dropdown-item">
                                         <span className="dropdown-item-label">Tv Series</span>
                                     </a>

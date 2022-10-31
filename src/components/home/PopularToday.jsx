@@ -13,8 +13,8 @@ export default function PopularToday({ movies, series }) {
                 </div>
             </div>
             {/* <!-- Gallery grid with gutters --> */}
-            <MovieGrid movies={movies} route="watch/movie?q=" divID="popularMovie" divInfo='row g-4' total_vid="18" style="show" />
-            <MovieGrid movies={series} route="watch/tv?q=" divID="popularSeries" divInfo='row g-4' total_vid="18" style="none" />
+            <MovieGrid movies={movies} route="watch/movie/" divID="popularMovie" divInfo='row g-4' total_vid="18" style="show" />
+            <MovieGrid movies={series} route="watch/tv/" divID="popularSeries" divInfo='row g-4' total_vid="18" style="none" />
         </section>
     )
 }

@@ -26,9 +26,8 @@ export default function Genres({ genres, discover, genres_id, media_type, genres
 }
 
 export const getServerSideProps = async ({ query }) => {
-    const { q, m } = query
-    var id = q.split('-')
-    var media = m
+    const media = query.genre[0]
+    const id = query.genre[1].split('-')
     let genre_id = []
 
     const genres_api = await fetch(`${process.env.tmdburl}/3/genre/movie/list?api_key=${process.env.tmdbkey}&language=en-US`)
