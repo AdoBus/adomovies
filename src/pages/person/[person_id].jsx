@@ -26,8 +26,8 @@ export default function Person({ genres, person }) {
                                         <PersonTvAndMovieDropdown />
                                     </div>
                                 </div>
-                                <PersonTvAndMovies route="watch/movie?q=" media_credits={person.movie_credits.cast} divID="popularMovie" style="show"/>
-                                <PersonTvAndMovies route="watch/tv?q=" media_credits={person.tv_credits.cast} divID="popularSeries" style="none"/>
+                                <PersonTvAndMovies route="watch/movie/" media_credits={person.movie_credits.cast} divID="popularMovie" style="show"/>
+                                <PersonTvAndMovies route="watch/tv/" media_credits={person.tv_credits.cast} divID="popularSeries" style="none"/>
                             </div>
                         </div>
                     </div>
