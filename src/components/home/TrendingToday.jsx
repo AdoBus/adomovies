@@ -18,7 +18,7 @@ export default function TrendingToday({ trending, genres }) {
                     <div className="card-footer content-overlay border-0 pt-0 pb-4">
                         <div className="d-sm-flex justify-content-between align-items-end pt-5 mt-2 mt-sm-5">
                             <Link href={`watch/today-favorite/${trending[0].media_type}/${trending[0].id}-1-${trending[0].original_title ?
-                                 trending[0].original_title.replaceAll(' ', '-') : trending[0].original_name.replaceAll(' ', '-')}`}>
+                                 trending[0].original_title.toString().replaceAll(' ', '-') : trending[0].original_name.toString().replaceAll(' ', '-')}`}>
                                 <a className="text-decoration-none text-light pe-2">
                                     <h3 className="h5 text-light mb-1">
                                         {trending[0].original_title ? trending[0].original_title : trending[0].original_name}
