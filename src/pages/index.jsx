@@ -13,9 +13,9 @@ export default function Index({ movies, trending, series, genres, latest_movie, 
           <Navbar genres={genres} />
           <TrendingToday trending={trending} genres={genres} />
           <PopularToday movies={movies} series={series} />
-          <LatestMoviesAndTVs latest={latest_movie} type="Latest Movies" route="watch/movie?q=" />
-          <LatestMoviesAndTVs latest={latest_series} route="watch/tv?q=" type="Latest TV Series" />
-          <LatestMoviesAndTVs latest={upcoming_movies} type="Upcoming Movies" route="watch/movie?q=" />
+          <LatestMoviesAndTVs latest={latest_movie} type="Latest Movies" route="watch/movie/" />
+          <LatestMoviesAndTVs latest={latest_series} route="watch/tv/" type="Latest TV Series" />
+          <LatestMoviesAndTVs latest={upcoming_movies} type="Upcoming Movies" route="watch/movie/" />
         </div>
         <Footer />
     </Layout>
