@@ -9,7 +9,7 @@ export default function TrendingToday({ trending, genres }) {
                 <div key={trending[0].id} className="card trend-img border-0 overflow-hidden"
                     style={{
                         backgroundImage: `url(api/getImage?q=${trending[0].backdrop_path})`,
-                        padding: "100px", backgroundSize: "auto"
+                        padding: "100px", backgroundSize: "cover"
                     }}>
                     <span className="img-gradient-overlay"></span>
                     <div className="card-body content-overlay pb-0">
