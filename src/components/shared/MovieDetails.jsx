@@ -68,9 +68,11 @@ export default function MovieDetails({ movie, torrent }) {
                                     </>
                                     : ''
                                 }
-                                <a className="btn btn-sm btn-outline-light" id="play-button" href="#youtube-modal" data-bs-toggle="modal">
-                                    <i className='fi-youtube'></i> Trailer
-                                </a>
+                                {movie.videos.results.filter(video => video.type === "Trailer").length > 0 &&
+                                    <a className="btn btn-sm btn-outline-light" id="play-button" href="#youtube-modal" data-bs-toggle="modal">
+                                        <i className='fi-youtube'></i> Trailer
+                                    </a>
+                                }
                             </div>
                         </div>
                     </div>
