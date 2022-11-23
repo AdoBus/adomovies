@@ -10,6 +10,9 @@ import YoutubeIframe from '../../../components/shared/YoutubeIframe'
 import SeasonEpisodes from '../../../components/shared/SeasonEpisodes'
 import React from "react";
 import Layout from '../../../components/shared/LayoutComponent'
+import Link from 'next/link'
+import EpisodesError from '../../../components/shared/EpisodesErrors'
+
 
 export const getServerSideProps = async (context) => {
     const { tv_id } = context.query
@@ -60,7 +63,11 @@ export const getServerSideProps = async (context) => {
 class ErrorBoundary extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { hasError: false };
+        this.state = {
+            hasError: false,
+            'series': props.children.props.series,
+            'episodes': props.children.props.episodes,
+        };
     }
 
     static getDerivedStateFromError(error) {
@@ -70,15 +77,7 @@ class ErrorBoundary extends React.Component {
     render() {
         if (this.state.hasError) {
             return (
-                <>
-                    <section className="container">
-                        <article className="card card-light border-0 shadow-sm card-hover card-horizontal">
-                            <div className="card-body">
-                                <p>Something went wrong while displaying episodes</p>
-                            </div>
-                        </article>
-                    </section>
-                </>
+                <EpisodesError url={`/watch/tv/${this.state.series.id}-${this.state.series.name.replaceAll(' ', '-')}`}/>
             );
         }
         return this.props.children;

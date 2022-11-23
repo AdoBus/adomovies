@@ -10,6 +10,7 @@ import YoutubeIframe from '../../../../components/shared/YoutubeIframe'
 import dynamic from 'next/dynamic'
 import React from 'react'
 import Layout from '../../../../components/shared/LayoutComponent'
+import EpisodesError from '../../../../components/shared/EpisodesErrors'
 
 const SeasonEpisodes = dynamic(() => import("../../../../components/shared/SeasonEpisodes"), { ssr: false })
 
@@ -62,7 +63,11 @@ export const getServerSideProps = async ({ res, req, query }) => {
 class ErrorBoundary extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { hasError: false };
+        this.state = {
+            hasError: false,
+            'series': props.children.props.series,
+            'episodes': props.children.props.episodes,
+        };
     }
 
     static getDerivedStateFromError(error) {
@@ -72,15 +77,7 @@ class ErrorBoundary extends React.Component {
     render() {
         if (this.state.hasError) {
             return (
-                <>
-                    <section className="container">
-                        <article className="card border-0 shadow-sm card-hover card-horizontal">
-                            <div className="card-body">
-                                <p>Something went wrong while displaying episodes</p>
-                            </div>
-                        </article>
-                    </section>
-                </>
+               <EpisodesError url={`/watch/today-favorite/tv/${this.state.series.id}-${this.state.series.name.replaceAll(' ', '-')}`}/>
             );
         }
         return this.props.children;
