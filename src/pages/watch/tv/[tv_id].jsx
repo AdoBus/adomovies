@@ -92,7 +92,7 @@ export default function Streaming({ genres, series, torrent, episodes }) {
                 <Navbar genres={genres} />
                 <EmbededComponent movie={series} season_number={episodes.season_number} />
 
-                <MovieDetails movie={series} torrent={torrent} />
+                <MovieDetails movie={series} type="tv" torrent={torrent} />
 
                 {series.seasons.length >= 1 &&
                     <ErrorBoundary>

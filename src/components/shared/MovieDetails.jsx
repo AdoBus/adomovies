@@ -1,4 +1,5 @@
 import moment from "moment";
+import Link from "next/link";
 
 const formatCash = n => {
     if (n < 1e3) return n;
@@ -8,7 +9,7 @@ const formatCash = n => {
     if (n >= 1e12) return +(n / 1e12).toFixed(1) + "T";
 };
 
-export default function MovieDetails({ movie, torrent }) {
+export default function MovieDetails({ movie, type, torrent }) {
     return (
         <>
             <section className="container mt-4 pt-2 pl-4 pr-4 pb-4">
@@ -27,9 +28,11 @@ export default function MovieDetails({ movie, torrent }) {
                         <p className="fs-sm text-muted">{movie.overview}</p>
                         <div className="d-flex flex-wrap flex-column flex-sm-row">
                             {movie.genres.map(genre => (
-                                <a key={genre.id} href="#" className="btn btn-translucent-light btn-xs rounded-pill fs-sm me-2 mb-2" >
-                                    <strong>{genre.name}</strong>
-                                </a>
+                                <Link href={`/genres/${type}/${genre.id}-${genre.name}`}>
+                                    <a key={genre.id} className="btn btn-translucent-light btn-xs rounded-pill fs-sm me-2 mb-2" >
+                                        <strong>{genre.name}</strong>
+                                    </a>
+                                </Link>
                             ))}
                         </div>
                         <div className="row mb-3 text-light opacity-70">

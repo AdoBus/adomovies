@@ -68,7 +68,7 @@ export default function Streaming({ genres, movie, torrent }) {
                 <Navbar genres={genres} />
                 <EmbededComponent movie={movie} />
 
-                <MovieDetails movie={movie} torrent={torrent} />
+                <MovieDetails movie={movie} type="movie" torrent={torrent} />
 
                 <section className="container mt-3 mb-3">
                     <div className="row">
