@@ -28,8 +28,8 @@ export default function MovieDetails({ movie, type, torrent }) {
                         <p className="fs-sm text-muted">{movie.overview}</p>
                         <div className="d-flex flex-wrap flex-column flex-sm-row">
                             {movie.genres.map(genre => (
-                                <Link href={`/genres/${type}/${genre.id}-${genre.name}`}>
-                                    <a key={genre.id} className="btn btn-translucent-light btn-xs rounded-pill fs-sm me-2 mb-2" >
+                                <Link key={genre.id} href={`/genres/${type}/${genre.id}-${genre.name}`}>
+                                    <a className="btn btn-translucent-light btn-xs rounded-pill fs-sm me-2 mb-2" >
                                         <strong>{genre.name}</strong>
                                     </a>
                                 </Link>

@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import MovieGrid from "../shared/MovieGrid";
 import PersonTvAndMovieDropdown from '../shared/PersonTvAndMovieDropdown'
 
