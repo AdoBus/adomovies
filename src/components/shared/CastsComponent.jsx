@@ -43,7 +43,7 @@ export default function Casts({ movie }) {
                             <a>
                                 <figure className="figure">
                                     <Image className="rounded-1 figure-img" width="178" height="287.5"
-                                        src={c.profile_path ? `/api/getImage?q=${c.profile_path}` : '/img/errors/grey.jpg'} alt={c.name} />
+                                        src={c.profile_path ? `https://image.tmdb.org/t/p/original${c.profile_path}` : '/img/errors/grey.jpg'} alt={c.name} />
                                     <figcaption className="figure-caption text-light"><strong>{c.name}</strong></figcaption>
                                     <figcaption className="figure-caption">{c.character}</figcaption>
                                 </figure>

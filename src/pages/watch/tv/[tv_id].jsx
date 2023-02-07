@@ -10,7 +10,6 @@ import YoutubeIframe from '../../../components/shared/YoutubeIframe'
 import SeasonEpisodes from '../../../components/shared/SeasonEpisodes'
 import React from "react";
 import Layout from '../../../components/shared/LayoutComponent'
-import Link from 'next/link'
 import EpisodesError from '../../../components/shared/EpisodesErrors'
 
 

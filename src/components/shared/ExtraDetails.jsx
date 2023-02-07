@@ -63,7 +63,7 @@ export default function ExtraDetails({movie}) {
             {movie.production_companies.map(company => (
                 <div key={company.name} className="mb-3 text-light opacity-70">
                     <a className="d-flex align-items-center text-decoration-none" href="#">
-                        <Image className="rounded-circle" src={company.logo_path ? `/api/getImage?q=${company.logo_path}` : '/img/errors/grey.jpg'} alt={company.name} height="44" width="44" />
+                        <Image className="rounded-circle" src={company.logo_path ? `https://image.tmdb.org/t/p/original${company.logo_path}` : '/img/errors/grey.jpg'} alt={company.name} height="44" width="44" />
                         <div className="ps-2">
                             <h6 className="fs-sm lh-base mb-1 text-light opacity-70">{company.name}</h6>
                             <div className="d-flex fs-xs text-light opacity-70">

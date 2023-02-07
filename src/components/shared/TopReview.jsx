@@ -45,7 +45,7 @@ export default function TopReview({ movie }) {
                                         review.author_details.avatar_path.includes('/http') ?
                                             <img className="rounded-circle me-1" src={review.author_details.avatar_path.replace('/http', 'http')} width="48" alt="Avatar" />
                                             :
-                                            <img className="rounded-circle me-1" src={`/api/getImage?q=${review.author_details.avatar_path}`} width="48" alt="Avatar" />
+                                            <img className="rounded-circle me-1" src={`https://image.tmdb.org/t/p/original${review.author_details.avatar_path}`} width="48" alt="Avatar" />
                                         : <img className="rounded-circle me-1" src="/img/errors/grey.jpg" alt="No image" width="48" />}
                                     <div className="ps-2">
                                         <h6 className="fs-base mb-0 text-light">{review.author}</h6>

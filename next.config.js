@@ -10,7 +10,7 @@ const nextConfig = withPWA({
         disable: process.env.NODE_ENV === 'development'
     },
     images: {
-        domains: ['www.themoviedb.org', 'www.youtube.com'],
+        domains: ['www.themoviedb.org', 'www.youtube.com', 'image.tmdb.org'],
     },
     env: {
         tmdbkey: '18f3f02b0654a16553d20e9dd898b7a5',

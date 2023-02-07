@@ -12,7 +12,7 @@ export default function PersonTvAndMovies({ route, media_credits, divID, style }
                         <a>
                             <figure className="figure">
                                 <Image className="rounded-1 figure-img" width="130px" height="195px" alt={c.title}
-                                    src={c.poster_path ? `/api/getImage?q=${c.poster_path}` : '/img/errors/grey.jpg'} />
+                                    src={c.poster_path ? `https://image.tmdb.org/t/p/original${c.poster_path}` : '/img/errors/grey.jpg'} />
                                 <figcaption className="figure-caption">{c.title ? c.title : c.name}</figcaption>
                             </figure>
                         </a>

@@ -8,7 +8,7 @@ export default function TrendingToday({ trending, genres }) {
             <section className="bg-position-top-center mt-5 mb-5 bg-repeat-0 pt-5">
                 <div key={trending[0].id} className="card trend-img border-0 overflow-hidden"
                     style={{
-                        backgroundImage: `url(api/getImage?q=${trending[0].backdrop_path})`,
+                        backgroundImage: `url(https://image.tmdb.org/t/p/original${trending[0].backdrop_path})`,
                         padding: "100px", backgroundSize: "cover"
                     }}>
                     <span className="img-gradient-overlay"></span>
