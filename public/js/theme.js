@@ -1410,13 +1410,6 @@ function _defineProperty(e, t, a) {
             for (var e = document.querySelectorAll(".parallax"), t = 0; t < e.length; t++) new Parallax(e[t])
         }(), null !== document.querySelector(".rellax") && new Rellax(".rellax"),
         function() {
-            var e = document.querySelectorAll(".file-uploader");
-            if (0 !== e.length) {
-                "undefined" != typeof FilePondPluginFileValidateType && FilePond.registerPlugin(FilePondPluginFileValidateType), "undefined" != typeof FilePondPluginFileValidateSize && FilePond.registerPlugin(FilePondPluginFileValidateSize), "undefined" != typeof FilePondPluginImagePreview && FilePond.registerPlugin(FilePondPluginImagePreview), "undefined" != typeof FilePondPluginImageCrop && FilePond.registerPlugin(FilePondPluginImageCrop), "undefined" != typeof FilePondPluginImageResize && FilePond.registerPlugin(FilePondPluginImageResize), "undefined" != typeof FilePondPluginImageTransform && FilePond.registerPlugin(FilePondPluginImageTransform);
-                for (var t = 0; t < e.length; t++) FilePond.create(e[t])
-            }
-        }(),
-        function() {
             var r = document.querySelectorAll("[data-bs-binded-element]");
             if (0 !== r.length)
                 for (var e = 0; e < r.length; e++) ! function(e) {

@@ -55,7 +55,7 @@ export default function Search() {
 
     return (
         <>
-            <div className="order-lg-3">
+            <div className="order-lg-3 me-3">
                 <form id='searchForm' className="form-group form-group-light"
                     style={{ 'paddingTop': '5px !important', 'paddingBottom': '5px !important' }} onSubmit={handleSubmit}>
                     <div className="input-group input-group-sm">

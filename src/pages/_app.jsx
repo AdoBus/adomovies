@@ -33,6 +33,11 @@ function MyApp({ Component, pageProps }) {
                     name="viewport"
                     content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"
                 />
+                <link href="https://unpkg.com/filepond@^4/dist/filepond.css" rel="stylesheet" />
+                <link
+                    href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css"
+                    rel="stylesheet"
+                />
             </Head>
             <Component key={router.asPath} {...pageProps} />
         </>
