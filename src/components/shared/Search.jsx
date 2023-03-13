@@ -15,13 +15,12 @@ export default function Search() {
             .then((resp) => resp.json())
             .then(({ results }) => {
                 const options = results.map((i) => (
-                    i.media_type !== 'person' ?
-                        {
-                            poster_path: i.poster_path,
-                            id: i.id,
-                            title: i.title ? i.title : i.original_name,
-                        } :
-                        ''
+                    {
+                        poster_path: i.poster_path,
+                        id: i.id,
+                        title: i.title ? i.title : i.original_name,
+                        profile_path: i.profile_path
+                    }
                 ));
 
                 setOptions(options);
@@ -76,9 +75,10 @@ export default function Search() {
                                     <Fragment>
                                         <img
                                             alt={option.title}
-                                            src={option.poster_path ? `https://image.tmdb.org/t/p/original${option.poster_path}` : '/img/errors/grey.jpg'}
+                                            src={option.poster_path ? `https://image.tmdb.org/t/p/original${option.poster_path}`
+                                                : option.profile_path ? `https://image.tmdb.org/t/p/original${option.profile_path}` : '/img/errors/grey.jpg'}
                                             style={{
-                                                height: '50px',
+                                                height: '65px',
                                                 marginRight: '10px',
                                                 width: '50px',
                                                 borderRadius: '10px'

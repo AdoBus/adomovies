@@ -15,6 +15,8 @@ const handler = nc()
             url = `${process.env.tmdburl}/3/${media_type}/top_rated?api_key=${process.env.tmdbkey}&language=en-US&page=${page}`
         } else if (type === "search") {
             url = `${process.env.tmdburl}/3/search/multi?api_key=${process.env.tmdbkey}&language=en-US&page=${page}&include_adult=false&query=${query}`
+        }else if (type === "people"){
+            url = `${process.env.tmdburl}/3/person/${media_type}?api_key=${process.env.tmdbkey}&language=en-US&page=${page}`
         } else {
             return { "Status Code": 402 }
         }

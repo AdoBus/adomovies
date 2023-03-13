@@ -18,7 +18,7 @@ export default function Lists({ genres, discover }) {
                         <span className="img-gradient-overlay"></span>
                         <div className="card-body content-overlay pb-0">
                             <h2 className="h3 text-light mb-3">
-                                <i className="fi-lock me-2"></i> Marvel
+                                <i className="fi-lock me-2"></i>Marvel
                             </h2>
                             <div className="flex-sm-row mb-3">
                                 <img className="rounded-circle me-3" src="https://finder-react.createx.studio/_next/image?url=%2Fimages%2Favatars%2F03.jpg&w=48&q=75"
