@@ -33,8 +33,8 @@ export default function MyListPagination({ header }) {
                                 <img className="rounded-3" src="https://image.tmdb.org/t/p/original/jr8tSoJGj33XLgFBy6lmZhpGQNu.jpg" alt="Image" />
                             </div>
                             <h3 className="mb-0 fs-lg text-light">
-                                <Link href="/list/1">
-                                    <a className="nav-link stretched-link">Marvel</a>
+                                <Link className="nav-link stretched-link" href="/list/1">
+                                    Marvel
                                 </Link>
                             </h3>
                             <ul className="list-inline mb-0 fs-s">

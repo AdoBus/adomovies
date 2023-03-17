@@ -2,6 +2,7 @@ import Head from "next/head"
 import NProgress from "nprogress"
 import Router from "next/router"
 import { useRouter } from 'next/router'
+import { SessionProvider } from "next-auth/react"
 
 import '../../assets/styles/theme.min.css';
 import '../../assets/styles/flatpickr.min.css';
@@ -39,7 +40,9 @@ function MyApp({ Component, pageProps }) {
                     rel="stylesheet"
                 />
             </Head>
-            <Component key={router.asPath} {...pageProps} />
+            <SessionProvider session={pageProps.session}>
+                <Component key={router.asPath} {...pageProps} />
+            </SessionProvider>
         </>
     )
 }

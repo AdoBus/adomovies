@@ -2125,7 +2125,7 @@ progress {
 .form-control:focus {
     color: #454056;
     background-color: #fff;
-    border-color: #feab98;
+    border-color: #33cabb;
     outline: 0;
     box-shadow: inset 0 1px 2px transparent, 0 0 0 .125rem rgba(253, 86, 49, .25)
 }
@@ -2402,7 +2402,7 @@ textarea.form-control-lg {
 }
 
 .form-select:focus {
-    border-color: #feab98;
+    border-color: #33cabb;
     outline: 0;
     box-shadow: inset 0 1px 2px transparent, 0 0 0 .125rem rgba(253, 86, 49, .25)
 }
@@ -2480,7 +2480,7 @@ textarea.form-control-lg {
 }
 
 .form-check-input:focus {
-    border-color: #feab98;
+    border-color: #33cabb;
     outline: 0;
     box-shadow: 0
 }
@@ -3126,16 +3126,16 @@ fieldset:disabled .btn {
 
 .btn-primary:hover {
     color: #000;
-    background-color: #fd6f50;
-    border-color: #fd6746
+    background-color: #33cabb;
+    border-color: #33cabb
 }
 
 .btn-check:focus+.btn-primary,
 .btn-primary:focus {
     color: #000;
-    background-color: #fd6f50;
-    border-color: #fd6746;
-    box-shadow: unset, 0 0 0 0 rgba(215, 73, 42, .5)
+    background-color: #33cabb;
+    border-color: #33cabb;
+    box-shadow: unset, 0 0 0 0 #33cabb
 }
 
 .btn-check:checked+.btn-primary,
@@ -3144,8 +3144,8 @@ fieldset:disabled .btn {
 .btn-primary.active,
 .show>.btn-primary.dropdown-toggle {
     color: #000;
-    background-color: #fd785a;
-    border-color: #fd6746
+    background-color: #33cabb;
+    border-color: #33cabb
 }
 
 .btn-check:checked+.btn-primary:focus,
@@ -7153,7 +7153,7 @@ fieldset:disabled .btn {
 
 .link-primary:hover,
 .link-primary:focus {
-    color: #fd785a
+    color: #33cabb
 }
 
 .link-accent {
@@ -14135,7 +14135,7 @@ input[type=search]::-webkit-search-results-decoration {
 
 .was-validated :valid:not(:required):not(.btn):focus,
 .is-valid:not(:required):not(.btn):focus {
-    border-color: #feab98 !important;
+    border-color: #33cabb !important;
     box-shadow: 0 0 0 .125rem rgba(253, 86, 49, .25)
 }
 

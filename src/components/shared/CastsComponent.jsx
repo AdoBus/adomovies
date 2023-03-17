@@ -40,14 +40,12 @@ export default function Casts({ movie }) {
                 {movie.credits.cast.map(c => (
                     <div key={c.name} className="mt-3 me-3">
                         <Link href={`/people/${c.id}-${c.name.replaceAll(' ', '-')}`}>
-                            <a>
-                                <figure className="figure">
-                                    <Image className="rounded-1 figure-img" width="178" height="287.5"
-                                        src={c.profile_path ? `https://image.tmdb.org/t/p/original${c.profile_path}` : '/img/errors/grey.jpg'} alt={c.name} />
-                                    <figcaption className="figure-caption text-light"><strong>{c.name}</strong></figcaption>
-                                    <figcaption className="figure-caption">{c.character}</figcaption>
-                                </figure>
-                            </a>
+                            <figure className="figure">
+                                <Image className="rounded-1 figure-img" width="178" height="288"
+                                    src={c.profile_path ? `https://image.tmdb.org/t/p/original${c.profile_path}` : '/img/errors/grey.jpg'} alt={c.name} />
+                                <figcaption className="figure-caption text-light"><strong>{c.name}</strong></figcaption>
+                                <figcaption className="figure-caption">{c.character}</figcaption>
+                            </figure>
                         </Link>
                     </div>
                 ))}

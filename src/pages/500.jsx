@@ -34,8 +34,8 @@ export default function Custom404() {
                                         </defs>
                                     </svg>
                                     <div className="pt-3">
-                                        <Link href="/">
-                                            <a className="btn btn-lg btn-primary w-sm-auto w-100 mb-3 me-sm-4">Go to homepage</a>
+                                        <Link className="btn btn-lg btn-primary w-sm-auto w-100 mb-3 me-sm-4" href="/">
+                                            Go to homepage
                                         </Link>
                                         <a className="btn btn-lg btn-outline-light w-sm-auto w-100 mb-3" href="#">Contact Us</a>
                                     </div>

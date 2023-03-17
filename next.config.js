@@ -1,20 +1,15 @@
-/** @type {import('next').NextConfig} */
-const withPWA = require("next-pwa");
 
-const nextConfig = withPWA({
+const nextEnv = require('next-env');
+const dontenvLoad = require('dotenv-load')
+
+dontenvLoad()
+const withNextEnv = nextEnv();
+
+const nextConfig = withNextEnv({
     reactStrictMode: true,
-    pwa: {
-        dest: "public",
-        register: true,
-        skipWaiting: true,
-        disable: process.env.NODE_ENV === 'development'
-    },
+    swcMinify: true,
     images: {
-        domains: ['www.themoviedb.org', 'www.youtube.com', 'image.tmdb.org'],
-    },
-    env: {
-        tmdbkey: '18f3f02b0654a16553d20e9dd898b7a5',
-        tmdburl: 'https://api.themoviedb.org'
+        domains: ['www.themoviedb.org', 'www.youtube.com', 'image.tmdb.org', 'finder-react.createx.studio'],
     },
 })
 

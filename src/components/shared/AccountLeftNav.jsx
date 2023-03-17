@@ -13,30 +13,20 @@ export default function AccountLeftNav() {
             </a>
             <div id="account-menu" className="d-md-block collapse">
                 <nav className="card-nav pt-3">
-                    <Link href="/account/profile">
-                    <a className={`card-nav-link ${router.pathname == "/account/profile" ? "active" : ""}`}>
-                            <i className="fi-user me-2"></i>Personal Info
-                        </a>
+                    <Link className={`card-nav-link ${router.pathname == "/account/profile" ? "active" : ""}`} href="/account/profile">
+                        <i className="fi-user me-2"></i>Personal Info
                     </Link>
-                    <Link href="/account/password">
-                        <a className={`card-nav-link ${router.pathname == "/account/password" ? "active" : ""}`}>
+                    <Link className={`card-nav-link ${router.pathname == "/account/password" ? "active" : ""}`} href="/account/password">
                             <i className="fi-lock me-2"></i>Password & Security
-                        </a>
                     </Link>
-                    <Link href="/account/my-favorites">
-                        <a className={`card-nav-link ${router.pathname == "/account/my-favorites" ? "active" : ""}`}>
+                    <Link className={`card-nav-link ${router.pathname == "/account/my-favorites" ? "active" : ""}`} href="/account/my-favorites">
                             <i className="fi-heart me-2"></i>My Favorites
-                        </a>
                     </Link>
-                    <Link href="/account/my-watchlists">
-                        <a className={`card-nav-link ${router.pathname == "/account/my-watchlists" ? "active" : ""}`}>
+                    <Link className={`card-nav-link ${router.pathname == "/account/my-watchlists" ? "active" : ""}`} href="/account/my-watchlists">
                             <i className="fi-bookmark me-2"></i>My Watchlists
-                        </a>
                     </Link>
-                    <Link href="/account/my-lists">
-                        <a className={`card-nav-link ${router.pathname == "/account/my-lists" ? "active" : ""}`}>
+                    <Link className={`card-nav-link ${router.pathname == "/account/my-lists" ? "active" : ""}`} href="/account/my-lists">
                             <i className="fi-list me-2"></i>My Lists
-                        </a>
                     </Link>
                     <a className="card-nav-link" href="/real-estate/account-wishlist">
                         <i className="fi-logout me-2"></i>Sign Out

@@ -13,25 +13,23 @@ export default function NavProfileMobile() {
                         <div className="fs-xs py-2">(302) 555-0107<br />robert_fox@email.com</div>
                     </div>
                 </div>
-                <Link href="/account/profile">
-                    <a className="dropdown-item">
-                        <i className="fi-user me-2"></i>Personal Info
-                    </a>
+                <Link className="dropdown-item" href="/account/profile">
+                    <i className="fi-user me-2"></i>Personal Info
                 </Link>
-                <a className="dropdown-item" href="car-finder-account-security.html">
-                    <i className="fi-lock me-2"></i>Password &amp; Security
-                </a>
-                <a className="dropdown-item" href="car-finder-account-security.html">
-                    <i className="fi-heart me-2"></i>My Favourites
-                </a>
-                <a className="dropdown-item" href="car-finder-account-security.html">
-                    <i className="fi-bookmark me-2"></i>My Watchlists
-                </a>
-                <a className="dropdown-item" href="car-finder-account-security.html">
-                    <i className="fi-list me-2"></i>My Lists
-                </a>
+                <Link className="dropdown-item" href="/account/password">
+                    <i className="fi-lock me-2"></i>Password & Security
+                </Link>
+                <Link className="dropdown-item" href="/account/my-favorites">
+                    <i className="fi-heart me-2"></i>My Favorites
+                </Link>
+                <Link className="dropdown-item" href="/account/my-watchlists">
+                    <i className="fi-bookmarj me-2"></i>My Watchlists
+                </Link>
+                <Link className="dropdown-item" href="/account/my-lists">
+                    <i className="fi-bookmarj me-2"></i>My Lists
+                </Link>
                 <div className="dropdown-divider"></div>
-                <a className="dropdown-item" href="signin-dark.html">Sign Out</a>
+                <a href="signin-dark.html">Sign Out</a>
             </div>
         </li>
     )

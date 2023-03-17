@@ -17,9 +17,8 @@ export default function TrendingToday({ trending, genres }) {
                     </div>
                     <div className="card-footer content-overlay border-0 pt-0 pb-4">
                         <div className="d-sm-flex justify-content-between align-items-end pt-5 mt-2 mt-sm-5">
-                            <Link href={`watch/today-favorite/${trending[0].media_type}/${trending[0].id}-1-${trending[0].original_title ?
+                            <Link className="text-decoration-none text-light pe-2" href={`watch/today-favorite/${trending[0].media_type}/${trending[0].id}-1-${trending[0].original_title ?
                                  trending[0].original_title.replaceAll(' ', '-') : trending[0].original_name.replaceAll(' ', '-')}`}>
-                                <a className="text-decoration-none text-light pe-2">
                                     <h3 className="h5 text-light mb-1">
                                         {trending[0].original_title ? trending[0].original_title : trending[0].original_name}
                                     </h3>
@@ -37,12 +36,11 @@ export default function TrendingToday({ trending, genres }) {
                                     <div className="fs-sm opacity-70">
                                         {trending[0].overview}
                                     </div>
-                                </a>
                             </Link>
                             <div className="btn-group ms-n2 ms-sm-0 mt-3">
-                                <Link href={`watch/today-favorite/${trending[0].media_type}/${trending[0].id}-1-${trending[0].original_title ?
+                                <Link className="btn btn-primary px-3" href={`watch/today-favorite/${trending[0].media_type}/${trending[0].id}-1-${trending[0].original_title ?
                                      trending[0].original_title.replaceAll(' ', '-') : trending[0].original_name.replaceAll(' ', '-')}`}>
-                                    <a className="btn btn-primary px-3">Watch <i className="fi-play"></i></a>
+                                    Watch <i className="fi-play"></i>
                                 </Link>
                             </div>
                         </div>

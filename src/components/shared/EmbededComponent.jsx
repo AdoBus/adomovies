@@ -14,19 +14,19 @@ export default function EmbededComponent({ movie, season_number }) {
                     <ol className="breadcrumb">
                         <li className="breadcrumb-item">
                             <Link href="/">
-                                <a>Home</a>
+                                Home
                             </Link>
                         </li>
                         {movie.hasOwnProperty("seasons") ?
                             <li className="breadcrumb-item">
                                 <Link href="/tv">
-                                    <a>Tv</a>
+                                    Tv
                                 </Link>
                             </li>
                             :
                             <li className="breadcrumb-item">
                                 <Link href="/movies">
-                                    <a>Movies</a>
+                                    Movies
                                 </Link>
                             </li>
                         }
@@ -46,10 +46,9 @@ export default function EmbededComponent({ movie, season_number }) {
                     {movie.status === 'Released' || movie.status === 'Ended' || movie.status === 'Returning Series' || movie.status === 'Canceled' ?
                         <>
                             {movie.hasOwnProperty("seasons") ?
-                                <iframe id='iframe' src={`https://autoembed.to/tv/tmdb/${movie.id}-${season_number}-1`}
-                                    width="100%" height="500px" allow="fullscreen 'src'"></iframe>
+                                <iframe id='iframe' src={`https://www.2embed.to/embed/tmdb/tv?id=${movie.id}&s=${season_number}&e=1`} width="100%" height="500px" frameBorder="0" allow="fullscreen 'src'"></iframe>
                                 :
-                                <iframe src={`https://autoembed.to/movie/tmdb/${movie.id}`} width="100%" height="500px"
+                                <iframe src={`https://www.2embed.to/embed/tmdb/movie?id=${movie.id}`} width="100%" height="500px"
                                     allow="fullscreen 'src'" allowtransparency="true"></iframe>
                             }
                         </>
