@@ -11,10 +11,21 @@ import dynamic from 'next/dynamic'
 import React from 'react'
 import Layout from '../../../../components/shared/LayoutComponent'
 import EpisodesError from '../../../../components/shared/EpisodesErrors'
+import { getSession } from 'next-auth/react'
 
 const SeasonEpisodes = dynamic(() => import("../../../../components/shared/SeasonEpisodes"), { ssr: false })
 
 export const getServerSideProps = async ({ res, req, query }) => {
+    const session = await getSession({ req })
+    if (!session) {
+        return {
+            redirect: {
+                destination: '/welcome',
+                permanent: false,
+            },
+        }
+    }
+
     const { tv_id } = query
     var id = tv_id.split('-')
 
@@ -77,7 +88,7 @@ class ErrorBoundary extends React.Component {
     render() {
         if (this.state.hasError) {
             return (
-               <EpisodesError url={`/watch/today-favorite/tv/${this.state.series.id}-${this.state.series.name.replaceAll(' ', '-')}`}/>
+                <EpisodesError url={`/watch/today-favorite/tv/${this.state.series.id}-${this.state.series.name.replaceAll(' ', '-')}`} />
             );
         }
         return this.props.children;

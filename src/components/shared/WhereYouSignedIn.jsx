@@ -5,7 +5,7 @@ export default function WhereYouSignedIn() {
     return (
         <>
             <div className="border-top border-light pt-4 mt-3"></div>
-            <h2 className="h5 text-light pt-2 mb-4">Where you're signed in on</h2>
+            <h2 className="h5 text-light pt-2 mb-4">Where you&apos;re signed in on</h2>
             <div className="d-flex border-bottom border-light pb-3 mb-3">
                 <i className="fi-device-desktop fs-5 text-light me-1"></i>
                 <div className="ps-2 text-light">

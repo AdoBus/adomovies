@@ -37,8 +37,8 @@ export default function Pagination({ discover, media_type, genres_id, tv_genre, 
                     {data.length > 0 ?
                         data.map((d, index) =>
                             "profile_path" in d ?
-                                <PaginationGrid href={`people/${d.id}-${d.name.replaceAll(' ', '-')}`} imageUrl={d.profile_path} title={d.name} /> :
-                                <PaginationGrid
+                                <PaginationGrid key={index} href={`people/${d.id}-${d.name.replaceAll(' ', '-')}`} imageUrl={d.profile_path} title={d.name} /> :
+                                <PaginationGrid key={index}
                                     href={`/watch/${d.media_type ? d.media_type : media_type}/${d.id}-${media_type === 'tv' ? '1-' : ''}${d.original_title ?
                                         d.original_title.replaceAll(' ', '-') : d.original_name.replaceAll(' ', '-')}`}
                                     imageUrl={d.poster_path}

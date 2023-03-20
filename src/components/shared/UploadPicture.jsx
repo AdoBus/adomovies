@@ -22,7 +22,7 @@ export default function UploadPicture() {
                 "undefined" != typeof FilePondPluginImageTransform && FilePond.registerPlugin(FilePondPluginImageTransform);
             for (var t = 0; t < e.length; t++) FilePond.create(e[t])
         }
-    }, [router])
+    }, [FilePond, FilePondPluginFileValidateSize, FilePondPluginFileValidateType, FilePondPluginImageCrop, FilePondPluginImagePreview, FilePondPluginImageResize, FilePondPluginImageTransform, router])
     return (
 
         <div className="filepond--root file-uploader border-light bg-faded-light filepond--hopper"

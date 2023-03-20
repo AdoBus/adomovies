@@ -8,9 +8,19 @@ import ExtraDetails from '../../../components/shared/ExtraDetails'
 import SimilarMovie from '../../../components/shared/SimilarMovies'
 import YoutubeIframe from '../../../components/shared/YoutubeIframe'
 import Layout from '../../../components/shared/LayoutComponent'
+import { getSession } from 'next-auth/react';
 
-export const getServerSideProps = async (context) => {
-    const { movie_id } = context.query;
+export const getServerSideProps = async ({req, query, res}) => {
+    const session = await getSession({ req })
+    if (!session) {
+        return {
+            redirect: {
+                destination: '/welcome',
+                permanent: false,
+            },
+        }
+    }
+    const { movie_id } = query;
 
     var id = movie_id.split('-')
 
@@ -58,7 +68,6 @@ export const getServerSideProps = async (context) => {
             }
         }
     }
-    const res = context.res
     res.setHeader(
         'Cache-Control',
         'public, s-maxage=3600, stale-while-revalidate=3660'

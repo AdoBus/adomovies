@@ -3,6 +3,7 @@ import Navbar from "../../components/shared/Navbar"
 import SortBy from "../../components/shared/GenresSort";
 import dynamic from "next/dynamic";
 import Layout from "../../components/shared/LayoutComponent"
+import { getSession } from "next-auth/react";
 
 const Pagination = dynamic(() => import("../../components/shared/Pagination"), { ssr: false })
 
@@ -25,7 +26,16 @@ export default function Genres({ genres, discover, genres_id, media_type, genres
     );
 }
 
-export const getServerSideProps = async ({ query }) => {
+export const getServerSideProps = async ({ query, req }) => {
+    const session = await getSession({ req })
+    if (!session) {
+        return {
+            redirect: {
+                destination: '/welcome',
+                permanent: false,
+            },
+        }
+    }
     const media = query.genre[0]
     const id = query.genre[1].split('-')
     let genre_id = []

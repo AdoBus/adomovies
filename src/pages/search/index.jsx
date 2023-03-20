@@ -2,6 +2,7 @@ import Footer from "../../components/shared/Footer";
 import Navbar from "../../components/shared/Navbar"
 import dynamic from "next/dynamic";
 import Layout from "../../components/shared/LayoutComponent";
+import { getSession } from "next-auth/react";
 
 const Pagination = dynamic(() => import("../../components/shared/Pagination"), { ssr: false })
 
@@ -23,7 +24,17 @@ export default function SearchPage({ genres, results, q }) {
         </Layout>
     )
 }
-export const getServerSideProps = async ({ query }) => {
+export const getServerSideProps = async ({ query, req }) => {
+    const session = await getSession({ req })
+    if (!session) {
+        return {
+            redirect: {
+                destination: '/welcome',
+                permanent: false,
+            },
+        }
+    }
+
     const { q } = query
 
     const genres_api = await fetch(`${process.env.tmdburl}/3/genre/movie/list?api_key=${process.env.tmdbkey}&language=en-US`)

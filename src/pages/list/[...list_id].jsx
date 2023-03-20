@@ -3,6 +3,7 @@ import Layout from "../../components/shared/LayoutComponent";
 import Navbar from "../../components/shared/Navbar";
 import Footer from "../../components/shared/Footer";
 import Pagination from "../../components/shared/Pagination";
+import { getSession } from "next-auth/react";
 
 export default function Lists({ genres, discover }) {
     return (
@@ -55,7 +56,16 @@ export default function Lists({ genres, discover }) {
     )
 }
 
-export const getServerSideProps = async () => {
+export const getServerSideProps = async ({req}) => {
+    const session = await getSession({ req })
+    if (!session) {
+        return {
+            redirect: {
+                destination: '/welcome',
+                permanent: false,
+            },
+        }
+    }
     const genres_api = await fetch(`${process.env.tmdburl}/3/genre/movie/list?api_key=${process.env.tmdbkey}&language=en-US`)
     const genres = await genres_api.json()
     const discover_api = await fetch(

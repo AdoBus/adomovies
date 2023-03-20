@@ -1,16 +1,10 @@
-import {
-    MongoClient
-} from 'mongodb';
-import {
-    hash
-} from 'bcryptjs';
-import {
-    render
-} from "@react-email/render";
+import { MongoClient } from 'mongodb';
+import { hash } from 'bcryptjs';
+import { render } from "@react-email/render";
 import WelcomeTemplate from "../../emails/WelcomeTemplate";
-import {
-    sendEmail
-} from "../../../../lib/send_email";
+import { sendEmail } from "../../../../lib/send_email";
+
+
 async function handler(req, res) {
     //Only POST mothod is accepted
     if (req.method === 'POST') {
@@ -19,25 +13,20 @@ async function handler(req, res) {
             email,
             password,
             fullname,
-            gender,
-            phone,
-            address,
-            country,
-            avatar
         } = req.body;
         //Validate
         if (!email || !email.includes('@') || !password) {
             res.status(422).json({
-                message: 'Invalid Data'
+                error: 'Invalid informations provided'
             });
             return;
         }
         //Connect with database
         const client = await MongoClient.connect(
-            process.env.MONGODB_URI, {
-                useNewUrlParser: true,
-                useUnifiedTopology: true
-            }
+            process.env.MONGODB_URI_DEV, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true
+        }
         );
         const db = client.db();
         //Check existing
@@ -48,30 +37,39 @@ async function handler(req, res) {
             });
         //Send error response if duplicate user is found
         if (checkExisting) {
-            res.status(422).json({
-                message: 'User already exists'
+            res.json({
+                error: 'User already exists'
             });
             client.close();
-            return;
         }
+
+        function generateRandomString(length) {
+            var result = '';
+            var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            var charactersLength = characters.length;
+            for (var i = 0; i < length; i++) {
+              result += characters.charAt(Math.floor(Math.random() * charactersLength));
+            }
+            return result;
+          }
+
         //Hash password
         const status = await db.collection('users').insertOne({
             email,
             password: await hash(password, 12),
             fullname,
-            gender,
-            phone,
-            address,
-            country,
-            avatar,
-            verified: false
+            verified: false,
+            verified_key: generateRandomString(60)
         });
 
-        await sendEmail({
-            to: "adolphgasper@gmail.com",
-            subject: "Welcome to NextAPI",
-            html: render(WelcomeTemplate()),
-        });
+        if (status.acknowledged === true){
+            const user = await db.collection('users').findOne({email})
+            await sendEmail({
+                to: user.email,
+                subject: "Welcome to Adomovies.com",
+                html: render(WelcomeTemplate(user)),
+            });
+        }
 
         //Send success response
         res.status(201).json({
@@ -83,7 +81,7 @@ async function handler(req, res) {
     } else {
         //Response for other than POST method
         res.status(500).json({
-            message: 'Route not valid'
+            error: 'Route not valid'
         });
     }
 }

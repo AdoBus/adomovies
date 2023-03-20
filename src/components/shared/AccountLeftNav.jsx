@@ -3,11 +3,11 @@ import AccountLeftNavProfile from "./AccountLeftNavProfile";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-export default function AccountLeftNav() {
+export default function AccountLeftNav({session}) {
     const router = useRouter()
     return (
         <div className="card card-body card-light border-0 shadow-sm pb-1 me-lg-1">
-            <AccountLeftNavProfile />
+            <AccountLeftNavProfile session={session} />
             <a className="btn btn-outline-light d-block d-md-none w-100 mb-3 collapsed" href="#account-menu" data-bs-toggle="collapse" aria-expanded="false">
                 <i className="fi-align-justify me-2"></i>Menu
             </a>

@@ -26,7 +26,7 @@ const responsive = {
 const WelcomeSectionFive = ({tv}) => {
     return (
         <div className="container p-0 mb-5 pb-5">
-            <h4 class="display-6 text-white text-center mb-3">"Don't Leave Your Couch</h4>
+            <h4 class="display-6 text-white text-center mb-3">Don&quot;t Leave Your Couch</h4>
             <p className="fs-lg text-light opacity-70 text-center mb-5">
                 Your love for lazy days at home will be satisfied with our 24/7 availability of
                 over 300 Live TV series.
@@ -39,7 +39,7 @@ const WelcomeSectionFive = ({tv}) => {
                 removeArrowOnDeviceType={["tablet", "mobile"]}
             >
                 {tv.results.map((tv, index) => (
-                    <div class="row align-items-center">
+                    <div key={index} class="row align-items-center">
                         <div class="col-xl-4 d-none d-xl-block">
                             <Image width="416" height="400" class="rounded-3" src={tv.backdrop_path ? `https://image.tmdb.org/t/p/original${tv.backdrop_path}` : '/img/errors/grey.jpg'} alt="Agent picture" />
                         </div>

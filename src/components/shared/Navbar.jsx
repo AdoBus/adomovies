@@ -15,12 +15,8 @@ export default function Navbar({ genres }) {
           <NavBrand />
           <Search />
           {session.status === 'authenticated' ?
-            <NavProfile profile={session.data.user} />
-            : session.status === 'loading' ?
-              <></> :
-              <a className="btn btn-sm text-primary d-none d-lg-block order-lg-3" >
-                <i className="fi-user me-2"></i>Sign in
-              </a>
+            <NavProfile profile={session.data.user} /> :
+            <></>
           }
           <NavItems genres={genres} />
         </div>

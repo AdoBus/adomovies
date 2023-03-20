@@ -10,7 +10,7 @@ export default function SeasonEpisodes({ series, episodes }) {
                 return new bootstrap.Popover(popoverTriggerEl)
             })
         } catch {
-            console.log('popover error')
+            return
         }
     }, [])
     return (

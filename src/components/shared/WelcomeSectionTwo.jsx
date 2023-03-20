@@ -42,7 +42,7 @@ const WelcomeSectionTwo = ({movies}) => {
                             removeArrowOnDeviceType={["tablet", "mobile"]}
                         >
                             {movies.results.map((movie, index) => (
-                                <Image className="rounded-1" width="274" height="411" alt={movie.name}
+                                <Image key={index} className="rounded-1" width="274" height="411" alt={movie.name}
                                     src={movie.poster_path ? `https://image.tmdb.org/t/p/original${movie.poster_path}` : '/img/errors/grey.jpg'} />
                             ))}
                         </Carousel>

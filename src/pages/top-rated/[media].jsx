@@ -3,6 +3,7 @@ import SortBy from "../../components/shared/GenresSort";
 import Footer from "../../components/shared/Footer";
 import dynamic from "next/dynamic";
 import Layout from "../../components/shared/LayoutComponent";
+import { getSession } from "next-auth/react";
 
 const Pagination = dynamic(() => import("../../components/shared/Pagination"), { ssr: false })
 
@@ -25,8 +26,23 @@ export default function Tv({ genres, topRated, media_type }) {
     )
 }
 
-export const getServerSideProps = async ({ query }) => {
-    const { q } = query
+export const getServerSideProps = async ({ query, req, res }) => {
+    const session = await getSession({ req })
+    if (!session) {
+        return {
+            redirect: {
+                destination: '/welcome',
+                permanent: false,
+            },
+        }
+    }
+    const q = query.media
+    
+    if (q !== 'movie' && q !== 'tv'){
+        return {
+            notFound: true
+        }
+    }
 
     const genres_api = await fetch(`${process.env.tmdburl}/3/genre/movie/list?api_key=${process.env.tmdbkey}&language=en-US`)
     const genres = await genres_api.json()

@@ -5,24 +5,35 @@ import LatestMoviesAndTVs from "../components/home/LatestMoviesAndTVs";
 import Footer from "../components/shared/Footer"
 import Layout from "../components/shared/LayoutComponent";
 import React from "react";
+import { getSession } from 'next-auth/react';
 
 export default function Index({ movies, trending, series, genres, latest_movie, latest_series, upcoming_movies }) {
   return (
     <Layout>
-        <div className="container mt-5">
-          <Navbar genres={genres} />
-          <TrendingToday trending={trending} genres={genres} />
-          <PopularToday movies={movies} series={series} />
-          <LatestMoviesAndTVs latest={latest_movie} type="Latest Movies" route="watch/movie/" />
-          <LatestMoviesAndTVs latest={latest_series} route="watch/tv/" type="Latest TV Series" />
-          <LatestMoviesAndTVs latest={upcoming_movies} type="Upcoming Movies" route="watch/movie/" />
-        </div>
-        <Footer />
+      <div className="container mt-5">
+        <Navbar genres={genres} />
+        <TrendingToday trending={trending} genres={genres} />
+        <PopularToday movies={movies} series={series} />
+        <LatestMoviesAndTVs latest={latest_movie} type="Latest Movies" route="watch/movie/" />
+        <LatestMoviesAndTVs latest={latest_series} route="watch/tv/" type="Latest TV Series" />
+        <LatestMoviesAndTVs latest={upcoming_movies} type="Upcoming Movies" route="watch/movie/" />
+      </div>
+      <Footer />
     </Layout>
   )
 }
 
 export async function getServerSideProps({ req, res }) {
+  const session = await getSession({ req })
+  if (!session) {
+    return {
+      redirect: {
+        destination: '/welcome',
+        permanent: false,
+      },
+    }
+  }
+
   const trending_all_api = await fetch(`${process.env.tmdburl}/3/trending/all/day?api_key=${process.env.tmdbkey}`)
   const trending_movies_api = await fetch(`${process.env.tmdburl}/3/trending/movie/day?api_key=${process.env.tmdbkey}`)
   const popular_series_api = await fetch(`${process.env.tmdburl}/3/trending/tv/day?api_key=${process.env.tmdbkey}`)

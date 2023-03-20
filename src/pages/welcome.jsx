@@ -10,7 +10,8 @@ import WelcomeSectionThree from "../components/shared/WelcomeSectionThree";
 import WelcomeSectionFour from "../components/shared/WelcomeSectionFour";
 import WelcomeSectionFive from "../components/shared/WelcomeSectionFive";
 import WelcomeSectionSix from "../components/shared/WelcomeSectionSix";
-
+import { getSession } from 'next-auth/react';
+import SignUp from "../components/home/SignUp";
 
 
 export default function Lists({ movies, tv, people }) {
@@ -30,11 +31,21 @@ export default function Lists({ movies, tv, people }) {
             </main>
             <Footer />
             <SignIn />
+            <SignUp/>
         </Layout>
     )
 }
 
-export const getServerSideProps = async () => {
+export const getServerSideProps = async ({req}) => {
+    const session = await getSession({ req })
+    if (session) {
+        return {
+            redirect: {
+                destination: '/',
+                permanent: false,
+            },
+        }
+    }
     const movies_api = await fetch(`${process.env.tmdburl}/3/discover/movie/?api_key=${process.env.tmdbkey}`)
     const movies = await movies_api.json()
     const tv_api = await fetch(`${process.env.tmdburl}/3/trending/tv/day?api_key=${process.env.tmdbkey}`)

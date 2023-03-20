@@ -1,9 +1,11 @@
 import { signIn } from "next-auth/react"
 import toast from "react-hot-toast";
 import { useState } from "react";
+import { useRouter } from "next/router";
 
 export default function SignIn() {
     const [userInfo, setUserInfo] = useState({ email: "", password: "" })
+    const router = useRouter()
     const handleSubmit = async (e) => {
         e.preventDefault()
         if (userInfo.email === "" || userInfo.password === "") {
@@ -33,6 +35,7 @@ export default function SignIn() {
                         return `😔 ${data.error}`
                     } else {
                         document.getElementById(`closeModal`)?.click()
+                        router.push(`/`)
                         return `🍿 Welcome back cinephile!`
                     }
                 }),
@@ -59,7 +62,7 @@ export default function SignIn() {
                             <button id="closeModal" className="btn-close btn-close-white position-absolute top-0 end-0 mt-3 me-3 text-light" type="button" data-bs-dismiss="modal"></button>
                             <div className="row mx-0 align-items-center">
                                 <div className="col-md-6  p-4 p-sm-5">
-                                    <h2 className="h3 mb-4 mb-sm-5 text-light">Greetings!<br />It's good to see you've returned.</h2>
+                                    <h2 className="h3 mb-4 mb-sm-5 text-light">Greetings!<br />It&apos;s good to see you&apos;ve returned.</h2>
                                     <img className="d-block mx-auto" src="/img/signin-modal/signin.svg" alt="Illustartion" width="344" />
                                     <div className="mt-4 mt-sm-5 text-light opacity-70">Don&apos;t have an account?{' '}
                                         <a className="text-light" href="#signup-modal" data-bs-toggle="modal" data-bs-dismiss="modal">Sign up here</a>

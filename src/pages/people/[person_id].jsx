@@ -6,6 +6,7 @@ import Biography from "../../components/shared/Biography";
 import PersonInfoComponents from "../../components/shared/PersonInfoComponents";
 import PersonTvAndMovies from "../../components/shared/PersonTvAndMovies";
 import PersonTvAndMovieDropdown from '../../components/shared/PersonTvAndMovieDropdown'
+import { getSession } from 'next-auth/react';
 
 export default function Person({ genres, person }) {
     return (
@@ -26,8 +27,8 @@ export default function Person({ genres, person }) {
                                         <PersonTvAndMovieDropdown />
                                     </div>
                                 </div>
-                                <PersonTvAndMovies route="watch/movie/" media_credits={person.movie_credits.cast} divID="popularMovie" style="show"/>
-                                <PersonTvAndMovies route="watch/tv/" media_credits={person.tv_credits.cast} divID="popularSeries" style="none"/>
+                                <PersonTvAndMovies route="watch/movie/" media_credits={person.movie_credits.cast} divID="popularMovie" style="show" />
+                                <PersonTvAndMovies route="watch/tv/" media_credits={person.tv_credits.cast} divID="popularSeries" style="none" />
                             </div>
                         </div>
                     </div>
@@ -38,7 +39,16 @@ export default function Person({ genres, person }) {
     )
 }
 
-export async function getServerSideProps({query}) {
+export async function getServerSideProps({ query, req }) {
+    const session = await getSession({ req })
+    if (!session) {
+        return {
+            redirect: {
+                destination: '/welcome',
+                permanent: false,
+            },
+        }
+    }
     const { person_id } = query
     var id = person_id.split('-')
 

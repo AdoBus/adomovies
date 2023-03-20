@@ -2,12 +2,13 @@ import React from "react";
 import UploadPicture from "./UploadPicture";
 import FormInputs from "./ProfileFormInputs";
 
-export default function ProfileForm({ countries }) {
+export default function ProfileForm({ session, countries }) {
+    const { user } = session
     return (
         <>
             <div className="pt-2 row">
                 <div className="mb-2 mb-m-4 col-lg-9 col-md-12 col-sm-8">
-                    <FormInputs countries={countries}/>
+                    <FormInputs user={user} countries={countries}/>
                 </div>
                 <div className="mb-4 col-lg-3 col-md-12 col-sm-4">
                     <UploadPicture />

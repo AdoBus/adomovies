@@ -38,7 +38,7 @@ export default function NavItems({ genres }) {
                         </Link>
                     </li>
                     <li className={`nav-item ${router.pathname == "/top-rated" && "active"}`}>
-                        <Link className="nav-link" href="/top-rated?q=movie">
+                        <Link className="nav-link" href="/top-rated/movie">
                             TOP RATED
                         </Link>
                     </li>

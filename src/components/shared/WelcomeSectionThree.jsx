@@ -9,17 +9,17 @@ const WelcomeSectionThree = () => {
                     <div class="step">
                         <div class="step-progress">
                             <span class="step-progress-end"></span>
-                            <span class="step-number bg-success shadow-hover">1</span>
+                            <span style={{ "backgroundColor": "#33cabb" }} class="step-number shadow-hover">1</span>
                         </div>
                         <div class="step-label">
                             <h3 class="h5 mb-2 pb-1 text-light">Always free</h3>
                             <p class="mb-0">
-                                At last, you've found a movie website that truly offers free content. You can watch anytime without needing to subscribe or pay any fees.
+                                At last, you&apos;ve found a movie website that truly offers free content. You can watch anytime without needing to subscribe or pay any fees.
                             </p>
                         </div>
                     </div>
                     <div class="step">
-                        <div class="step-progress"><span class="step-progress-end"></span><span class="step-number bg-success shadow-hover">2</span></div>
+                        <div class="step-progress"><span class="step-progress-end"></span><span style={{ "backgroundColor": "#33cabb" }} class="step-number shadow-hover">2</span></div>
                         <div class="step-label">
                             <h3 class="h5 mb-2 pb-1 text-light">A lot to watch</h3>
                             <p class="mb-0">
@@ -28,7 +28,7 @@ const WelcomeSectionThree = () => {
                         </div>
                     </div>
                     <div class="step">
-                        <div class="step-progress"><span class="step-progress-end"></span><span class="step-number bg-success shadow-hover">3</span></div>
+                        <div class="step-progress"><span class="step-progress-end"></span><span style={{ "backgroundColor": "#33cabb" }} class="step-number  shadow-hover">3</span></div>
                         <div class="step-label">
                             <h3 class="h5 mb-2 pb-1 text-light">Device friendly</h3>
                             <p class="mb-0">
@@ -37,12 +37,12 @@ const WelcomeSectionThree = () => {
                         </div>
                     </div>
                     <div class="step">
-                        <div class="step-progress"><span class="step-progress-end"></span><span class="step-number bg-success shadow-hover">4</span></div>
+                        <div class="step-progress"><span class="step-progress-end"></span><span style={{ "backgroundColor": "#33cabb" }} class="step-number shadow-hover">4</span></div>
                         <div class="step-label">
                             <h3 class="h5 mb-2 pb-1 text-light">Access worldwide</h3>
                             <p class="mb-0">
                                 Experience the ultimate entertainment with access to the largest collection of content from numerous countries worldwide.
-                                Our service offers more variety than any other platform, ensuring that you'll always find something new and exciting to watch..</p>
+                                Our service offers more variety than any other platform, ensuring that you&apos;ll always find something new and exciting to watch..</p>
                         </div>
                     </div>
                 </div>

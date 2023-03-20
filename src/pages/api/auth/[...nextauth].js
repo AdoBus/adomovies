@@ -14,7 +14,7 @@ export default NextAuth({
             async authorize(credentials) {
                 //Connect to DB
                 const client = await MongoClient.connect(
-                    "mongodb://root:rootpassword@localhost:27017/adomovies",
+                    process.env.MONGODB_URI_DEV,
                     { useNewUrlParser: true }
                 );
 
@@ -30,6 +30,11 @@ export default NextAuth({
                 if (!result) {
                     client.close();
                     throw new Error('Invalid Email Or Password!');
+                }
+
+                if (result.verified === false){
+                    client.close();
+                    throw new Error('Please verify your email!');
                 }
 
                 //Check hased password with DB password
@@ -52,10 +57,10 @@ export default NextAuth({
     },
     jwt: {
         encryption: false,
-        // secret: process.env.NEXT_AUTH_SECRET
+        secret: process.env.JWT_SECRET,
     },
     callbacks: {
-        async jwt({ token, user, account }) {
+        async jwt({token, user, account }) {
             if (account) {
                 token.user = user
             }

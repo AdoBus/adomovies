@@ -42,7 +42,7 @@ const WelcomeSectionFour = ({ people }) => {
                             removeArrowOnDeviceType={["tablet", "mobile"]}
                         >
                             {people.results.map((person, index) => (
-                                <Image className="rounded-1" width="274" height="411" alt={person.name}
+                                <Image key={index} className="rounded-1" width="274" height="411" alt={person.name}
                                     src={person.profile_path ? `https://image.tmdb.org/t/p/original${person.profile_path}` : '/img/errors/grey.jpg'} />
                             ))}
                         </Carousel>

@@ -15,7 +15,7 @@ const WelcomeSectionOne = () => {
                             <h1 class="display-5 text-light opacity-150 mt-sm-5 my-4">
                                 Welcome <span style={{ "color": "#33cabb" }}>Adomovies.com</span>
                             </h1>
-                            <h4 class="display-8 text-white mb-5">We're excited to have you join our community of avid viewers</h4>
+                            <h4 class="display-8 text-white mb-5">We&apos;re excited to have you join our community of avid viewers</h4>
                             <button type="button" style={{ "backgroundColor": "#33cabb" }} class="btn btn-success text-dark d-block w-100" href="#signin-modal" data-bs-toggle="modal">
                                 GET STARTED
                             </button>

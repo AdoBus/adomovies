@@ -8,7 +8,7 @@ export default function MyListPagination({ header }) {
             <AccountMoviesAndTvHeader header={header} />
             <div className="row row-cols-md-2 row-cols-lg-3 row-cols-sm-2 row-cols-1 g-3 g-xl-4">
                 {[1, 2, 4, 6, 6, 7, 9, 9, 0].map(i => (
-                    <div className="col pb-2">
+                    <div key={i} className="col pb-2">
                         <div className="position-relative">
                             <div className="position-relative mb-3">
                                 <div className="dropdown position-absolute zindex-5 top-0 end-0 mt-3 me-3">

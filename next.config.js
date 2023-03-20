@@ -11,6 +11,24 @@ const nextConfig = withNextEnv({
     images: {
         domains: ['www.themoviedb.org', 'www.youtube.com', 'image.tmdb.org', 'finder-react.createx.studio'],
     },
+    webpack: (
+        config,
+        { isServer } // { dev, isWorker, defaultLoaders, webpack }
+    ) => {
+        if (!isServer) {
+            // don't resolve fs to avoid errors during build webpack build
+            config.resolve.fallback = {
+                fs: false,
+                module: false,
+                net: false,
+                path: false,
+                process: false,
+                dns: false,
+                tls: false,
+            };
+        }
+        return config;
+    }
 })
 
 module.exports = nextConfig

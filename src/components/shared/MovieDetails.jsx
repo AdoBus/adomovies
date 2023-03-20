@@ -1,5 +1,8 @@
 import moment from "moment";
 import Link from "next/link";
+import { Tooltip } from 'react-tooltip'
+import 'react-tooltip/dist/react-tooltip.css'
+
 
 const formatCash = n => {
     if (n < 1e3) return n;
@@ -21,9 +24,18 @@ export default function MovieDetails({ movie, type, torrent }) {
                         <a rel="noreferrer" target="_blank" href={movie.homepage} className="fs-xs text-uppercase text-decoration-none">{movie.status} </a>
                         <span className="badge text-dark bg-warning fs-xs">{movie.adult === true && "Adult Film"}</span>
                         <h3 className="fs-base pt-1 mb-2">
-                            <a href={movie.homepage} rel="noreferrer" target="_blank" className="nav-link text-light opacity-70">
+                            <a className="nav-link text-light opacity-70 mb-3">
                                 {movie.title ? movie.title : movie.name} <span className="badge bg-info fs-xs">{movie.tagline}</span>
                             </a>
+                            <button type="button" class="btn btn-danger btn-icon ms-3 rounded-circle" data-tooltip-id="my-tooltip" data-tooltip-content="Mark as favorite" data-tooltip-place="bottom">
+                                    <i class="fi-heart"></i>
+                                </button>
+                                <button type="button" class="btn btn-info btn-icon ms-3 rounded-circle" data-tooltip-id="my-tooltip" data-tooltip-content="Add to your watchlist" data-tooltip-place="bottom">
+                                    <i class="fi-bookmark"></i>
+                                </button>
+                                <button type="button" class="btn btn-secondary btn-icon ms-3 rounded-circle" data-tooltip-id="my-tooltip" data-tooltip-content="Add to list" data-tooltip-place="bottom">
+                                    <i class="fi-list"></i>
+                                </button>
                         </h3>
                         <p className="fs-sm text-muted">{movie.overview}</p>
                         <div className="d-flex flex-wrap flex-column flex-sm-row">
@@ -78,6 +90,7 @@ export default function MovieDetails({ movie, type, torrent }) {
                         </div>
                     </div>
                 </article>
+                <Tooltip id="my-tooltip" />
             </section>
         </>
     )

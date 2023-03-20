@@ -8,10 +8,21 @@ import ExtraDetails from '../../../../components/shared/ExtraDetails'
 import SimilarMovie from '../../../../components/shared/SimilarMovies'
 import YoutubeIframe from '../../../../components/shared/YoutubeIframe'
 import Layout from '../../../../components/shared/LayoutComponent'
+import { getSession } from 'next-auth/react';
 
 
-export const getServerSideProps = async (context) => {
-    const { movie_id } = context.query
+export const getServerSideProps = async ({req, res, query}) => {
+    const session = await getSession({ req })
+    if (!session) {
+        return {
+            redirect: {
+                destination: '/welcome',
+                permanent: false,
+            },
+        }
+    }
+
+    const { movie_id } = query
     var id = movie_id.split('-')
 
     const genres_api = await fetch(`${process.env.tmdburl}/3/genre/movie/list?api_key=${process.env.tmdbkey}&language=en-US`)
@@ -60,7 +71,7 @@ export const getServerSideProps = async (context) => {
         }
     }
 
-    context.res.setHeader(
+    res.setHeader(
         'Cache-Control',
         'public, s-maxage=3600, stale-while-revalidate=3660'
     )

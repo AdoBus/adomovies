@@ -11,10 +11,21 @@ import SeasonEpisodes from '../../../components/shared/SeasonEpisodes'
 import React from "react";
 import Layout from '../../../components/shared/LayoutComponent'
 import EpisodesError from '../../../components/shared/EpisodesErrors'
+import { getSession } from 'next-auth/react';
 
 
-export const getServerSideProps = async (context) => {
-    const { tv_id } = context.query
+export const getServerSideProps = async ({query, req, res}) => {
+    const session = await getSession({ req })
+    if (!session) {
+        return {
+            redirect: {
+                destination: '/welcome',
+                permanent: false,
+            },
+        }
+    }
+
+    const { tv_id } = query
     var id = tv_id.split('-')
 
     const genres_api = await fetch(`${process.env.tmdburl}/3/genre/movie/list?api_key=${process.env.tmdbkey}&language=en-US`)
@@ -43,7 +54,7 @@ export const getServerSideProps = async (context) => {
         }
     }
 
-    context.res.setHeader(
+    res.setHeader(
         'Cache-Control',
         'public, s-maxage=3600, stale-while-revalidate=3660'
     )
@@ -76,7 +87,7 @@ class ErrorBoundary extends React.Component {
     render() {
         if (this.state.hasError) {
             return (
-                <EpisodesError url={`/watch/tv/${this.state.series.id}-${this.state.series.name.replaceAll(' ', '-')}`}/>
+                <EpisodesError url={`/watch/tv/${this.state.series.id}-${this.state.series.name.replaceAll(' ', '-')}`} />
             );
         }
         return this.props.children;
