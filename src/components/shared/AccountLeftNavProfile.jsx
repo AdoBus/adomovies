@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import Image from "next/image";
 
 export default function AccountLeftNavProfile({ session }) {
     const { user } = session
@@ -10,7 +11,7 @@ export default function AccountLeftNavProfile({ session }) {
                     "boxSizing": "border-box", "display": "block", "overflow": "hidden", "width": "initial", "height": "initial", "background": "none", "opacity": "1",
                     "border": "0px", "margin": "0px", "padding": "0px", "position": "absolute", "inset": "0px"
                 }}>
-                    <img alt="Annette Black" light="0" sizes="100vw" src={avatar} onError={() => setAvatar('/img/profile/popcorn.jpg')} />
+                    <Image width="48" height="48" alt={user.fullname} light="0" sizes="100vw" src={avatar} onError={() => setAvatar('/img/profile/popcorn.jpg')} />
                 </span>
             </div>
             <div className="pt-md-2 pt-lg-0 ps-3 ps-md-0 ps-lg-3">

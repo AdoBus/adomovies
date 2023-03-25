@@ -46,7 +46,7 @@ export const getServerSideProps = async ({req}) => {
             },
         }
     }
-    const movies_api = await fetch(`${process.env.tmdburl}/3/discover/movie/?api_key=${process.env.tmdbkey}`)
+    const movies_api = await fetch(`${process.env.tmdburl}/3/trending/movie/day?api_key=${process.env.tmdbkey}`)
     const movies = await movies_api.json()
     const tv_api = await fetch(`${process.env.tmdburl}/3/trending/tv/day?api_key=${process.env.tmdbkey}`)
     const tv = await tv_api.json()

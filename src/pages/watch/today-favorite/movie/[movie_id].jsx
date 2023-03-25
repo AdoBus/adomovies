@@ -11,7 +11,7 @@ import Layout from '../../../../components/shared/LayoutComponent'
 import { getSession } from 'next-auth/react';
 
 
-export const getServerSideProps = async ({req, res, query}) => {
+export const getServerSideProps = async ({ req, res, query }) => {
     const session = await getSession({ req })
     if (!session) {
         return {
@@ -81,18 +81,19 @@ export const getServerSideProps = async ({req, res, query}) => {
             genres: genres,
             movie: movie,
             torrent: torrent,
+            session:session
         }
     }
 }
 
-export default function Streaming({ genres, movie, torrent }) {
+export default function Streaming({ genres, movie, torrent, session }) {
     return (
         <Layout title={`${movie.title} - ${movie.overview}`} meta={movie.overview}>
             <>
                 <Navbar genres={genres} />
                 <EmbededComponent movie={movie} />
 
-                <MovieDetails movie={movie} type="movie" torrent={torrent} />
+                <MovieDetails session={session} movie={movie} type="movie" torrent={torrent} />
 
                 <section className="container mt-3 mb-3">
                     <div className="row">

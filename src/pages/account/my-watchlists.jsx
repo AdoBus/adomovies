@@ -7,7 +7,7 @@ import ProfileBreadCumb from "../../components/shared/ProfileBreadCumb"
 import AccountMoviesAndTv from "../../components/shared/AccountMoviesAndTv";
 import { getSession } from 'next-auth/react';
 
-export default function Watchlists({ genres, session }) {
+export default function Watchlists({ genres, session, watchlist }) {
     return (
         <Layout title="Adomovies - Porpular Movies">
             <main className="page-wrapper">
@@ -19,7 +19,7 @@ export default function Watchlists({ genres, session }) {
                             <AccountLeftNav session={session} />
                         </div>
                         <div className="col-lg-8 col-md-7 mb-5">
-                            <AccountMoviesAndTv header="Watchlists"/>
+                            <AccountMoviesAndTv session={session} type="watchlist" medias={watchlist} header="Watchlist" />
                         </div>
                     </div>
                 </div>
@@ -29,7 +29,7 @@ export default function Watchlists({ genres, session }) {
     )
 }
 
-export const getServerSideProps = async ({req}) => {
+export const getServerSideProps = async ({ req }) => {
     const session = await getSession({ req })
     if (!session) {
         return {
@@ -41,10 +41,25 @@ export const getServerSideProps = async ({req}) => {
     }
     const genres_api = await fetch(`${process.env.tmdburl}/3/genre/movie/list?api_key=${process.env.tmdbkey}&language=en-US`)
     const genres = await genres_api.json()
+
+    const watchlist_api = await fetch('http://127.0.0.1:3000/api/collection-list', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            user_id: session.user._id,
+            type: 'watchlist'
+        })
+    })
+
+    const watchlist = await watchlist_api.json()
+
     return {
         props: {
             genres: genres.genres,
-            session: session
+            session: session,
+            watchlist: watchlist.results
         }
     }
 }

@@ -7,7 +7,7 @@ import ProfileBreadCumb from "../../components/shared/ProfileBreadCumb"
 import AccountMoviesAndTv from "../../components/shared/AccountMoviesAndTv";
 import { getSession } from 'next-auth/react';
 
-export default function Favorites({ genres, session }) {
+export default function Favorites({ genres, session, favorites }) {
     return (
         <Layout title="Adomovies - Porpular Movies">
             <main className="page-wrapper">
@@ -19,7 +19,7 @@ export default function Favorites({ genres, session }) {
                             <AccountLeftNav session={session} />
                         </div>
                         <div className="col-lg-8 col-md-7 mb-5">
-                            <AccountMoviesAndTv header="Favorites"/>
+                            <AccountMoviesAndTv session={session} type="favorite" medias={favorites} header="Favorites"/>
                         </div>
                     </div>
                 </div>
@@ -41,10 +41,23 @@ export const getServerSideProps = async ({req}) => {
     }
     const genres_api = await fetch(`${process.env.tmdburl}/3/genre/movie/list?api_key=${process.env.tmdbkey}&language=en-US`)
     const genres = await genres_api.json()
+
+    const favorites_api = await fetch('http://127.0.0.1:3000/api/collection-list', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            user_id: session.user._id,
+            type: 'favorite'
+        })
+    })
+    const favorites = await favorites_api.json()
     return {
         props: {
             genres: genres.genres,
-            session: session
+            session: session,
+            favorites: favorites.results
         }
     }
 }

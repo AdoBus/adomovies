@@ -65,6 +65,7 @@ export const getServerSideProps = async ({query, req, res}) => {
             series: series,
             episodes: episodes,
             torrent: torrent,
+            session: session
         }
     }
 }
@@ -95,14 +96,14 @@ class ErrorBoundary extends React.Component {
 }
 
 
-export default function Streaming({ genres, series, torrent, episodes }) {
+export default function Streaming({ genres, series, torrent, episodes, session }) {
     return (
         <Layout title={`${series.name} - ${series.overview}`} meta={series.overview}>
             <>
                 <Navbar genres={genres} />
                 <EmbededComponent movie={series} season_number={episodes.season_number} />
 
-                <MovieDetails movie={series} type="tv" torrent={torrent} />
+                <MovieDetails session={session} movie={series} type="tv" torrent={torrent} />
 
                 {series.seasons.length >= 1 &&
                     <ErrorBoundary>

@@ -1,18 +1,11 @@
-import moment from "moment";
-import Link from "next/link";
 import { Tooltip } from 'react-tooltip'
 import 'react-tooltip/dist/react-tooltip.css'
+import MovieDetailsInfo from "./MovieDetailsInfo";
+import MovieDetailsTitle from "./MovieDetailsTitle";
+import MovieDetailsTorrent from "./MovieDetailsTorrent";
 
 
-const formatCash = n => {
-    if (n < 1e3) return n;
-    if (n >= 1e3 && n < 1e6) return +(n / 1e3).toFixed(1) + "K";
-    if (n >= 1e6 && n < 1e9) return +(n / 1e6).toFixed(1) + "M";
-    if (n >= 1e9 && n < 1e12) return +(n / 1e9).toFixed(1) + "B";
-    if (n >= 1e12) return +(n / 1e12).toFixed(1) + "T";
-};
-
-export default function MovieDetails({ movie, type, torrent }) {
+export default function MovieDetails({ movie, type, torrent, session }) {
     return (
         <>
             <section className="container mt-4 pt-2 pl-4 pr-4 pb-4">
@@ -21,73 +14,9 @@ export default function MovieDetails({ movie, type, torrent }) {
                         style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original${movie.backdrop_path})`, padding: "100px", backgroundSize: "cover" }}>
                     </a>
                     <div className="card-body">
-                        <a rel="noreferrer" target="_blank" href={movie.homepage} className="fs-xs text-uppercase text-decoration-none">{movie.status} </a>
-                        <span className="badge text-dark bg-warning fs-xs">{movie.adult === true && "Adult Film"}</span>
-                        <h3 className="fs-base pt-1 mb-2">
-                            <a className="nav-link text-light opacity-70 mb-3">
-                                {movie.title ? movie.title : movie.name} <span className="badge bg-info fs-xs">{movie.tagline}</span>
-                            </a>
-                            <button type="button" class="btn btn-danger btn-icon ms-3 rounded-circle" data-tooltip-id="my-tooltip" data-tooltip-content="Mark as favorite" data-tooltip-place="bottom">
-                                    <i class="fi-heart"></i>
-                                </button>
-                                <button type="button" class="btn btn-info btn-icon ms-3 rounded-circle" data-tooltip-id="my-tooltip" data-tooltip-content="Add to your watchlist" data-tooltip-place="bottom">
-                                    <i class="fi-bookmark"></i>
-                                </button>
-                                <button type="button" class="btn btn-secondary btn-icon ms-3 rounded-circle" data-tooltip-id="my-tooltip" data-tooltip-content="Add to list" data-tooltip-place="bottom">
-                                    <i class="fi-list"></i>
-                                </button>
-                        </h3>
-                        <p className="fs-sm text-muted">{movie.overview}</p>
-                        <div className="d-flex flex-wrap flex-column flex-sm-row">
-                            {movie.genres.map(genre => (
-                                <Link className="btn btn-translucent-light btn-xs rounded-pill fs-sm me-2 mb-2" key={genre.id} href={`/genres/${type}/${genre.id}-${genre.name}`}>
-                                    <strong>{genre.name}</strong>
-                                </Link>
-                            ))}
-                        </div>
-                        <div className="row mb-3 text-light opacity-70">
-                            <div className="fs-sm col-md-4 pt-2 mb-1">
-                                <strong>Release date</strong>: {moment(movie.last_air_date ? movie.last_air_date : movie.release_date).format('LL')}
-                            </div>
-                            <div className="fs-sm col-md-4 pt-2 mb-1">
-                                <strong>IMDb Rating</strong>: {movie.vote_average}
-                            </div>
-                            <div className="fs-sm col-md-4 pt-2 mb-1">
-                                <strong>Duration</strong>: {movie.runtime ? movie.runtime : movie.episode_run_time} min
-                            </div>
-                            <div className="row">
-                                <div className="fs-sm col-md-4 pt-2 mb-1">
-                                    <strong>Country</strong>: {movie.production_countries.slice(0, 1).map(p_country => (p_country.name))}
-                                </div>
-                                <div className="fs-sm col-md-4 pt-2 mb-1">
-                                    <strong>Production</strong>: {movie.production_companies.map(company => (
-                                        company.name
-                                    )).join(', ')}
-                                </div>
-                                <div className="fs-sm col-md-4 pt-2 mb-1">
-                                    <strong>Revenue</strong>: {movie.budget ? `$${formatCash(movie.revenue)}` : 'No Data'}
-                                </div>
-                            </div>
-                        </div>
-                        <div className="">
-                            <div className="btn-group" role="group" aria-label="Outline button group">
-                                {torrent && torrent.data.movie.torrents ?
-                                    <>
-                                        {torrent.data.movie.torrents.map(t_link => (
-                                            <a key={t_link.hash} href={t_link.url} className="btn btn-sm btn-outline-light">
-                                                <i className='fi-cloud-download'></i> {t_link.quality}
-                                            </a>
-                                        ))}
-                                    </>
-                                    : ''
-                                }
-                                {movie.videos.results.filter(video => video.type === "Trailer").length > 0 &&
-                                    <a className="btn btn-sm btn-outline-light" id="play-button" href="#youtube-modal" data-bs-toggle="modal">
-                                        <i className='fi-youtube'></i> Trailer
-                                    </a>
-                                }
-                            </div>
-                        </div>
+                        <MovieDetailsTitle session={session} movie={movie} type={type} />
+                        <MovieDetailsInfo movie={movie} />
+                        <MovieDetailsTorrent movie={movie} torrent={torrent} />
                     </div>
                 </article>
                 <Tooltip id="my-tooltip" />

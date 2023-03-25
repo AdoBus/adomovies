@@ -78,18 +78,19 @@ export const getServerSideProps = async ({req, query, res}) => {
             genres: genres,
             movie: movie,
             torrent: torrent,
+            session:session
         }
     }
 }
 
-export default function Streaming({ genres, movie, torrent }) {
+export default function Streaming({ genres, movie, torrent, session }) {
     return (
         <Layout title={`${movie.title} - ${movie.overview}`} meta={movie.overview}>
             <>
                 <Navbar genres={genres} />
                 <EmbededComponent movie={movie} />
 
-                <MovieDetails movie={movie} type="movie" torrent={torrent} />
+                <MovieDetails session={session} movie={movie} type="movie" torrent={torrent} />
 
                 <section className="container mt-3 mb-3">
                     <div className="row">
