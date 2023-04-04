@@ -1,7 +1,6 @@
 import React from "react";
 import toast from "react-hot-toast";
 import { useState } from "react";
-import { useRouter } from "next/router";
 
 const SignUp = () => {
     const [userInfo, setUserInfo] = useState(
@@ -117,39 +116,39 @@ const SignUp = () => {
                                         <div class="text-light opacity-70 px-3">Or</div>
                                         <hr class="hr-light w-100" />
                                     </div>
-                                    <form onSubmit={handleSubmit} class="needs-validation" novalidate="">
+                                    <form onSubmit={handleSubmit} class="needs-validation" noValidate="">
                                         <div class="mb-4">
-                                            <label class="form-label text-light" for="signup-name">Full name</label>
+                                            <label class="form-label text-light" htmlFor="signup-name">Full name</label>
                                             <input class="form-control form-control-light" onChange={({ target }) =>
                                                 setUserInfo({ ...userInfo, fullname: target.value })} type="text" id="signup-name" placeholder="Enter your full name" required="" />
                                         </div>
                                         <div class="mb-4">
-                                            <label class="form-label text-light" for="signup-email">Email address</label>
+                                            <label class="form-label text-light" htmlFor="signup-email">Email address</label>
                                             <input class="form-control form-control-light" onChange={({ target }) =>
                                                 setUserInfo({ ...userInfo, email: target.value })} type="email" id="signup-email" placeholder="Enter your email" required="" />
                                         </div>
                                         <div class="mb-4">
-                                            <label class="form-label text-light" for="signup-password">Password <span class="fs-sm opacity-50">min. 8 char</span></label>
+                                            <label class="form-label text-light" htmlFor="signup-password">Password <span class="fs-sm opacity-50">min. 8 char</span></label>
                                             <div class="password-toggle">
                                                 <input class="form-control form-control-light" onChange={({ target }) =>
-                                                    setUserInfo({ ...userInfo, password: target.value })} type="password" id="signup-password" minlength="8" required="" />
+                                                    setUserInfo({ ...userInfo, password: target.value })} type="password" id="signup-password" minLength="8" required="" />
                                                 <label class="password-toggle-btn" aria-label="Show/hide password">
                                                     <input class="password-toggle-check" type="checkbox" /><span class="password-toggle-indicator"></span>
                                                 </label>
                                             </div>
                                         </div>
                                         <div class="mb-4">
-                                            <label class="form-label text-light" for="signup-password-confirm">Confirm password</label>
+                                            <label class="form-label text-light" htmlFor="signup-password-confirm">Confirm password</label>
                                             <div class="password-toggle">
                                                 <input class="form-control form-control-light" onChange={({ target }) =>
-                                                    setUserInfo({ ...userInfo, confirm_password: target.value })} type="password" id="signup-password-confirm" minlength="8" required="" />
+                                                    setUserInfo({ ...userInfo, confirm_password: target.value })} type="password" id="signup-password-confirm" minLength="8" required="" />
                                                 <label class="password-toggle-btn" aria-label="Show/hide password">
                                                     <input class="password-toggle-check" type="checkbox" /><span class="password-toggle-indicator"></span>
                                                 </label>
                                             </div>
                                         </div>
                                         <div class="form-check form-check-light mb-4">
-                                            <label class="form-check-label" for="agree-to-terms"><span class="opacity-70">By joining, I agree to the</span> <a href="#" class="text-light">Terms of use</a> <span class="opacity-70">and</span> <a href="#" class="text-light">Privacy policy</a></label>
+                                            <label class="form-check-label" htmlFor="agree-to-terms"><span class="opacity-70">By joining, I agree to the</span> <a href="#" class="text-light">Terms of use</a> <span class="opacity-70">and</span> <a href="#" class="text-light">Privacy policy</a></label>
                                         </div>
                                         <button class="btn btn-primary btn-lg w-100" type="submit">Sign up</button>
                                     </form>

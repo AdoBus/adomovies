@@ -6,11 +6,11 @@ import { getSession } from "next-auth/react";
 
 const Pagination = dynamic(() => import("../../components/shared/Pagination"), { ssr: false })
 
-export default function Movies({ genres, people }) {
+export default function Movies({ genres, people, session }) {
     return (
         <Layout title="Adomovies - Porpular Movies">
             <>
-                <Navbar genres={genres} />
+                <Navbar session={session} genres={genres} />
                 <div className="container mt-5 pt-5 p-0">
                     <div className="row g-0 mt-n3">
                         <div id="xyzz" name="2" className="col-lg-12 col-xl-12 position-relative overflow-hidden pb-5 pt-4 px-3 px-xl-4 px-xxl-5">
@@ -45,7 +45,8 @@ export const getServerSideProps = async ({req}) => {
     return {
         props: {
             genres: genres.genres,
-            people: people
+            people: people,
+            session: session
         }
     }
 }

@@ -8,11 +8,11 @@ import PersonTvAndMovies from "../../components/shared/PersonTvAndMovies";
 import PersonTvAndMovieDropdown from '../../components/shared/PersonTvAndMovieDropdown'
 import { getSession } from 'next-auth/react';
 
-export default function Person({ genres, person }) {
+export default function Person({ genres, person, session }) {
     return (
         <>
             <Layout title={`Adomovies - ${person.name}`} meta={person.biography}>
-                <Navbar genres={genres} />
+                <Navbar session={session} genres={genres} />
                 <div className="container mt-5 pt-5">
                     <div className="row g-0 mt-5">
                         <div className="col-lg-4 col-12 order-lg-1">
@@ -60,7 +60,8 @@ export async function getServerSideProps({ query, req }) {
     return {
         props: {
             genres: genres.genres,
-            person: person
+            person: person,
+            session: session
         }
     }
 }

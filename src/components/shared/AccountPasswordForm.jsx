@@ -4,10 +4,10 @@ import React from "react";
 export default function AccountPasswordForm() {
     return (
         <>
-            <form className="needs-validation pb-4" novalidate="">
+            <form className="needs-validation pb-4" noValidate="">
                 <div className="row align-items-end mb-2">
                     <div className="col-sm-6 mb-2">
-                        <label className="form-label text-light" for="account-password">Current password</label>
+                        <label className="form-label text-light" htmlFor="account-password">Current password</label>
                         <div className="password-toggle">
                             <input className="form-control form-control-light" type="password" id="account-password" required="" />
                             <label className="password-toggle-btn" aria-label="Show/hide password">
@@ -22,7 +22,7 @@ export default function AccountPasswordForm() {
                 </div>
                 <div className="row mb-2">
                     <div className="col-sm-6 mb-3">
-                        <label className="form-label text-light" for="account-password-new">New password</label>
+                        <label className="form-label text-light" htmlFor="account-password-new">New password</label>
                         <div className="password-toggle">
                             <input className="form-control form-control-light" type="password" id="account-password-new" required="" />
                             <label className="password-toggle-btn" aria-label="Show/hide password">
@@ -32,7 +32,7 @@ export default function AccountPasswordForm() {
                         </div>
                     </div>
                     <div className="col-sm-6 mb-3">
-                        <label className="form-label text-light" for="account-password-confirm">Confirm password</label>
+                        <label className="form-label text-light" htmlFor="account-password-confirm">Confirm password</label>
                         <div className="password-toggle">
                             <input className="form-control form-control-light" type="password" id="account-password-confirm" required="" />
                             <label className="password-toggle-btn" aria-label="Show/hide password">

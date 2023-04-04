@@ -40,7 +40,7 @@ export default function AccountMoviesAndTvHeader({ header, total, data, setData 
             </div>
             <div className="d-flex flex-sm-row flex-column align-items-sm-center align-items-stretch justify-content-end pb-4 mb-2 mb-md-3">
                 <div className="d-flex align-items-center ms-sm-4">
-                    <label className="fs-sm text-light me-2 pe-1 text-nowrap" for="review-sorting2"><i className="fi-arrows-sort mt-n1 me-2"></i>Sort by:</label>
+                    <label className="fs-sm text-light me-2 pe-1 text-nowrap" htmlFor="review-sorting2"><i className="fi-arrows-sort mt-n1 me-2"></i>Sort by:</label>
                     <select className="form-select form-select-light form-select-sm" id="review-sorting2">
                         <option>Newest</option>
                         <option>Oldest</option>

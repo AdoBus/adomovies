@@ -24,7 +24,7 @@ export default function NavProfile({profile}) {
     return (
         <>
             <div className="dropdown d-none d-lg-block order-lg-3 my-n2 me-3">
-                <a className="d-block py-2" href="#">
+                <a className="d-block py-2" type="button">
                     <Image className="rounded-circle" src={avatar} onError={() => setAvatar('/img/profile/popcorn.jpg')} width="40" height="40" alt={profile.fullname}/></a>
                 <div className="dropdown-menu dropdown-menu-dark dropdown-menu-end">
                     <div className="d-flex align-items-start border-bottom border-light px-3 py-1 mb-2" style={{ "width": "16rem" }}>

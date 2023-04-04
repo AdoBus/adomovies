@@ -6,13 +6,12 @@ import Footer from "../../components/shared/Footer";
 import ProfileBreadCumb from "../../components/shared/ProfileBreadCumb"
 import ProfileForm from "../../components/shared/ProfileInfoForm"
 import { getSession } from 'next-auth/react';
-import { useSession } from "next-auth/react"
 
-export default function Profile({ genres, countries, session }) {
+export default function Profile({ genres, countries, session, S3 }) {
     return (
         <Layout title="Adomovies - Porpular Movies">
             <main className="page-wrapper">
-                <Navbar genres={genres} />
+                <Navbar session={session} genres={genres} />
                 <div className="pt-5 pb-lg-4 mt-5 mb-sm-2 container">
                     <ProfileBreadCumb />
                     <div className="row">
@@ -21,7 +20,7 @@ export default function Profile({ genres, countries, session }) {
                         </div>
                         <div className="mb-5 col-lg-8 col-md-7">
                             <h1 className="h2 text-light">Personal Info</h1>
-                            <ProfileForm session={session} countries={countries}/>
+                            <ProfileForm S3={S3} session={session} countries={countries} />
                         </div>
                     </div>
                 </div>
@@ -31,7 +30,7 @@ export default function Profile({ genres, countries, session }) {
     )
 }
 
-export const getServerSideProps = async ({req}) => {
+export const getServerSideProps = async ({ req }) => {
     const session = await getSession({ req })
     if (!session) {
         return {
@@ -43,13 +42,19 @@ export const getServerSideProps = async ({req}) => {
     }
     const genres_api = await fetch(`${process.env.tmdburl}/3/genre/movie/list?api_key=${process.env.tmdbkey}&language=en-US`)
     const genres = await genres_api.json()
-    const countries_api = await fetch('https://restcountries.com/v3.1/all')
+    const countries_api = await fetch('https://users.shuledirect.co.tz/user/auth/get-all-countries')
     const countries = await countries_api.json()
+    const S3 = {
+        vc57fccddsd54355: process.env.S3_ACCESS_ID,
+        fxsr679964fhmk553: process.env.S3_SECRET_KEY,
+        lljppojbc4435fv: process.env.S3_REGION,
+    }
     return {
         props: {
             genres: genres.genres,
             countries: countries,
-            session: session
+            session: session,
+            S3: S3
         }
     }
 }

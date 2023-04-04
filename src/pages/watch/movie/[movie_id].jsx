@@ -87,7 +87,7 @@ export default function Streaming({ genres, movie, torrent, session }) {
     return (
         <Layout title={`${movie.title} - ${movie.overview}`} meta={movie.overview}>
             <>
-                <Navbar genres={genres} />
+                <Navbar session={session} genres={genres} />
                 <EmbededComponent movie={movie} />
 
                 <MovieDetails session={session} movie={movie} type="movie" torrent={torrent} />

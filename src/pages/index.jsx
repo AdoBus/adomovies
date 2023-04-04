@@ -7,11 +7,11 @@ import Layout from "../components/shared/LayoutComponent";
 import React from "react";
 import { getSession } from 'next-auth/react';
 
-export default function Index({ movies, trending, series, genres, latest_movie, latest_series, upcoming_movies }) {
+export default function Index({ movies, trending, series, genres, latest_movie, latest_series, upcoming_movies, session }) {
   return (
     <Layout>
       <div className="container mt-5">
-        <Navbar genres={genres} />
+        <Navbar session={session} genres={genres} />
         <TrendingToday trending={trending} genres={genres} />
         <PopularToday movies={movies} series={series} />
         <LatestMoviesAndTVs latest={latest_movie} type="Latest Movies" route="watch/movie/" />
@@ -63,7 +63,8 @@ export async function getServerSideProps({ req, res }) {
       genres: genres.genres,
       latest_movie: latest_movie.results,
       latest_series: latest_series.results,
-      upcoming_movies: upcoming_movies.results
+      upcoming_movies: upcoming_movies.results,
+      session:session
     }
   }
 }

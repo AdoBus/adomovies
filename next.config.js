@@ -9,7 +9,7 @@ const nextConfig = withNextEnv({
     reactStrictMode: true,
     swcMinify: true,
     images: {
-        domains: ['www.themoviedb.org', 'www.youtube.com', 'image.tmdb.org', 'finder-react.createx.studio'],
+        domains: ['www.themoviedb.org', 'www.youtube.com', 'image.tmdb.org', 'adomovies.s3.eu-north-1.amazonaws.com'],
     },
     webpack: (
         config,

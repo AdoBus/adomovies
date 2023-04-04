@@ -3,10 +3,8 @@ import NavBrand from "./NavBrand";
 import NavItems from "./NavItems";
 import NavProfile from "./NavProfile";
 import { Toaster } from "react-hot-toast";
-import { useSession } from "next-auth/react"
 
-export default function Navbar({ genres }) {
-  const session = useSession()
+export default function Navbar({ genres, session }) {
   return (
     <>
 
@@ -14,10 +12,7 @@ export default function Navbar({ genres }) {
         <div className="container">
           <NavBrand />
           <Search />
-          {session.status === 'authenticated' ?
-            <NavProfile profile={session.data.user} /> :
-            <></>
-          }
+            <NavProfile profile={session.user} />
           <NavItems genres={genres} />
         </div>
       </header>

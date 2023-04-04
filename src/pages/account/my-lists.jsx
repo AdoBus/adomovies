@@ -11,7 +11,7 @@ export default function Watchlists({ genres, session }) {
     return (
         <Layout title="Adomovies - Porpular Movies">
             <main className="page-wrapper">
-                <Navbar genres={genres} />
+                <Navbar session={session} genres={genres} />
                 <div className="pt-5 pb-lg-4 mt-5 mb-sm-2 container">
                     <ProfileBreadCumb />
                     <div className="row">

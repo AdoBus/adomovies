@@ -1,5 +1,5 @@
 import React from "react";
-import AccountMoviesAndTvHeader from "./AccountMoviAndTvHeader";
+import AccountMoviesAndTvHeader from "./AccountMovieAndTvHeader";
 import Link from "next/link";
 
 export default function MyListPagination({ header }) {

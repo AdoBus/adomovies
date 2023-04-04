@@ -9,7 +9,7 @@ export default function Lists({ genres, discover }) {
     return (
         <Layout title="Adomovies - Porpular Movies">
             <main className="page-wrapper">
-                <Navbar genres={genres} />
+                <Navbar session={session} genres={genres} />
                 <section className="bg-position-top-center mt-5 mb-5 bg-repeat-0 pt-5">
                     <div className="card radius-0 trend-img border-0 overflow-hidden"
                         style={{

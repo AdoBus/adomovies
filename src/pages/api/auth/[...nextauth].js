@@ -32,7 +32,7 @@ export default NextAuth({
                     throw new Error('Invalid Email Or Password!');
                 }
 
-                if (result.verified === false){
+                if (result.verified === false) {
                     client.close();
                     throw new Error('Please verify your email!');
                 }
@@ -60,15 +60,28 @@ export default NextAuth({
         secret: process.env.JWT_SECRET,
     },
     callbacks: {
-        async jwt({token, user, account }) {
+        async jwt({ token, user, account }) {
             if (account) {
                 token.user = user
             }
             return token;
         },
         async session({ session, token }) {
-            session.user = token.user
-            delete session.user.password
+            const user = token.user
+            // call url to get user info
+            const response = await fetch('http://localhost:3000/api/auth/user-info', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    id: user._id,
+                }),
+            });
+
+            const data = await response.json();
+            session.user = data.user;
+            
             return { ...session };
         },
     },
