@@ -1,6 +1,6 @@
 import { MongoClient } from 'mongodb';
 import { sendEmail } from "../../../../lib/send_email";
-import {getDeviceInfo} from "../../../../lib/get_device_info"
+import { getDeviceInfo } from "../../../../lib/get_device_info"
 
 async function handler(req, res) {
     if (req.method === 'POST') {
@@ -70,6 +70,43 @@ async function handler(req, res) {
 
         // get browser information and ip address
         const deviceInfo = await getDeviceInfo(req)
+
+        // save to userActivities
+        await db.collection("userActivities").insertOne({
+            userId: new ObjectId(userId),
+            activity: "Password updated",
+            deviceInfo: deviceInfo,
+            date: new Date(),
+        });
+
+        // send email to notify user that he or she change the password
+        const email = checkExisting.email
+        const subject = "Password updated"
+        const text = `
+        Hi ${checkExisting.fullname},
+
+        The password for your Adomovies account was changed on ${new Date()}.
+
+        We are notifying you so you can ensure this change is from a trusted user.
+
+        If you have any concerns, please contact us at support@adomovies.com.
+
+        ------------------------------------------
+        Email: ${email}
+        Time: ${new Date()}
+        IP address: ${deviceInfo['ip']}
+        Browser: ${deviceInfo['userAgent']}
+        Location: ${deviceInfo['city']} - ${deviceInfo['country']}
+        ------------------------------------------
+
+        Sincerely,
+        The Team at Adomovies.com
+        `
+        await sendEmail({
+            to: email,
+            subject: subject,
+            text: text
+        });
         res.status(200).json({ message: "Password updated" });
         client.close();
     } else {
