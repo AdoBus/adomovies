@@ -4,11 +4,11 @@ import AccountPasswordHeader from "./AccountPasswordHeader";
 import WhereYouSignedIn from "./WhereYouSignedIn";
 
 
-export default function AccountPassword() {
+export default function AccountPassword({session}) {
     return (
         <>
             <AccountPasswordHeader />
-            <AccountPasswordForm />
+            <AccountPasswordForm session={session} />
             <WhereYouSignedIn/>
         </>
     )

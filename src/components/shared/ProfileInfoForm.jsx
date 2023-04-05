@@ -2,10 +2,11 @@ import React, { useState, useEffect } from "react";
 import UploadPicture from "./UploadPicture";
 import FormInputs from "./ProfileFormInputs";
 import toast from "react-hot-toast"
-import AWS from 'aws-sdk'
+import { Upload } from "@aws-sdk/lib-storage";
+import { S3 } from "@aws-sdk/client-s3";
 
 
-export default function ProfileForm({ session, countries, S3 }) {
+export default function ProfileForm({ session, countries, s3Bucket }) {
     const { user } = session
     const [image, setImage] = useState(null);
     const [userInfo, setUserInfo] = useState(
@@ -27,10 +28,10 @@ export default function ProfileForm({ session, countries, S3 }) {
 
     const handleUpload = async () => {
         if (image) {
-            const s3 = new AWS.S3({
-                accessKeyId: S3.vc57fccddsd54355,
-                secretAccessKey: S3.fxsr679964fhmk553,
-                region: S3.lljppojbc4435fv,
+            const s3 = new S3({
+                accessKeyId: s3Bucket.vc57fccddsd54355,
+                secretAccessKey: s3Bucket.fxsr679964fhmk553,
+                region: s3Bucket.lljppojbc4435fv,
             });
 
             const getBase64 = async (file) => {
@@ -49,8 +50,11 @@ export default function ProfileForm({ session, countries, S3 }) {
                 Body: await getBase64(image),
             };
 
-            s3.upload(params)
-                .promise()
+            new Upload({
+                client: s3,
+                params
+            })
+                .done()
                 .then(() => {
                     console.log('Success')
                 })

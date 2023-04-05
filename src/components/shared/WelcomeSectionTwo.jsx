@@ -29,7 +29,7 @@ const WelcomeSectionTwo = ({movies}) => {
         <div className="container p-0 mb-5 pb-5">
             <div className="row g-0 mt-n3">
                 <div id="xyzz" name="2" className="col-lg-12 col-xl-12 position-relative overflow-hidden pb-5 pt-4 px-3 px-xl-4 px-xxl-5">
-                    <h4 class="display-6 text-white text-center mb-3">What are we watching now?</h4>
+                    <h4 className="display-6 text-white text-center mb-3">What are we watching now?</h4>
                     <p className="fs-lg text-light opacity-70 text-center mb-5">
                         We have more than 10000+ movies and Tv Series in our platform waiting for you.
                     </p>

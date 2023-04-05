@@ -20,7 +20,7 @@ export default function Profile({ genres, countries, session, S3 }) {
                         </div>
                         <div className="mb-5 col-lg-8 col-md-7">
                             <h1 className="h2 text-light">Personal Info</h1>
-                            <ProfileForm S3={S3} session={session} countries={countries} />
+                            <ProfileForm s3Bucket={S3} session={session} countries={countries} />
                         </div>
                     </div>
                 </div>

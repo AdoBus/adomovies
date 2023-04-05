@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.306.0",
+    "@aws-sdk/lib-storage": "^3.306.0",
     "@next-auth/mongodb-adapter": "^1.1.1",
     "@react-email/container": "0.0.7",
     "@react-email/html": "0.0.4",

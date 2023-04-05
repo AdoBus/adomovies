@@ -26,7 +26,7 @@ const responsive = {
 const WelcomeSectionFive = ({tv}) => {
     return (
         <div className="container p-0 mb-5 pb-5">
-            <h4 class="display-6 text-white text-center mb-3">Don&quot;t Leave Your Couch</h4>
+            <h4 className="display-6 text-white text-center mb-3">Don&quot;t Leave Your Couch</h4>
             <p className="fs-lg text-light opacity-70 text-center mb-5">
                 Your love for lazy days at home will be satisfied with our 24/7 availability of
                 over 300 Live TV series.
@@ -39,20 +39,20 @@ const WelcomeSectionFive = ({tv}) => {
                 removeArrowOnDeviceType={["tablet", "mobile"]}
             >
                 {tv.results.map((tv, index) => (
-                    <div key={index} class="row align-items-center">
-                        <div class="col-xl-4 d-none d-xl-block">
-                            <Image width="416" height="400" class="rounded-3" src={tv.backdrop_path ? `https://image.tmdb.org/t/p/original${tv.backdrop_path}` : '/img/errors/grey.jpg'} alt="Agent picture" />
+                    <div key={index} className="row align-items-center">
+                        <div className="col-xl-4 d-none d-xl-block">
+                            <Image width="416" height="400" className="rounded-3" src={tv.backdrop_path ? `https://image.tmdb.org/t/p/original${tv.backdrop_path}` : '/img/errors/grey.jpg'} alt="Agent picture" />
                         </div>
-                        <div class="col-xl-4 col-md-5 col-sm-4">
-                            <img class="rounded-3" src={tv.poster_path ? `https://image.tmdb.org/t/p/original${tv.poster_path}` : '/img/errors/grey.jpg'} alt="Agent picture" />
+                        <div className="col-xl-4 col-md-5 col-sm-4">
+                            <img className="rounded-3" src={tv.poster_path ? `https://image.tmdb.org/t/p/original${tv.poster_path}` : '/img/errors/grey.jpg'} alt="Agent picture" />
                         </div>
-                        <div class="col-xl-4 col-md-7 col-sm-8 px-4 px-sm-3 px-md-0 ms-md-n4 mt-n5 mt-sm-0 py-3">
-                            <div class="card card-light border-0 shadow-sm ms-sm-n5">
-                                <blockquote class="blockquote card-body">
+                        <div className="col-xl-4 col-md-7 col-sm-8 px-4 px-sm-3 px-md-0 ms-md-n4 mt-n5 mt-sm-0 py-3">
+                            <div className="card card-light border-0 shadow-sm ms-sm-n5">
+                                <blockquote className="blockquote card-body">
                                     <h4 className="text-light" style={{ "maxWidth": "22rem" }}>
                                         {tv.name}
                                     </h4>
-                                    <p class="d-sm-none d-lg-block text-light opacity-70">
+                                    <p className="d-sm-none d-lg-block text-light opacity-70">
                                         <ReactReadMoreReadLess
                                             charLimit={206}
                                             readMoreText={"Read more"}
@@ -62,10 +62,10 @@ const WelcomeSectionFive = ({tv}) => {
                                             {tv.overview}
                                         </ReactReadMoreReadLess>
                                     </p>
-                                    <footer class="d-flex justify-content-between">
-                                        <div class="pe-3">
-                                            <a class="text-decoration-none" href="real-estate-vendor-properties.html">
-                                                <h6 class="mb-0">{tv.status}</h6>
+                                    <footer className="d-flex justify-content-between">
+                                        <div className="pe-3">
+                                            <a className="text-decoration-none" href="real-estate-vendor-properties.html">
+                                                <h6 className="mb-0">{tv.status}</h6>
                                             </a>
                                         </div>
                                     </footer>

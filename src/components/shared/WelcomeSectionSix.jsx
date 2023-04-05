@@ -4,20 +4,20 @@ import Image from "next/image";
 
 const WelcomeSectionSix = () => {
     return (
-        <section class="container mb-5 pb-2 pb-lg-5">
-            <div class="row">
-                <div class="col-lg-5 col-md-6">
-                    <div class="d-flex flex-column text-md-start text-center">
-                        <div class="order-md-1 order-2 mx-md-0 mx-auto mb-md-5 mb-4" style={{ "maxWidth": "416px" }}>
-                            <h2 class="mb-md-3 mb-5 text-light">FAQs</h2>
-                            <p class="mb-4 pb-md-2 text-light opacity-70">
+        <section className="container mb-5 pb-2 pb-lg-5">
+            <div className="row">
+                <div className="col-lg-5 col-md-6">
+                    <div className="d-flex flex-column text-md-start text-center">
+                        <div className="order-md-1 order-2 mx-md-0 mx-auto mb-md-5 mb-4" style={{ "maxWidth": "416px" }}>
+                            <h2 className="mb-md-3 mb-5 text-light">FAQs</h2>
+                            <p className="mb-4 pb-md-2 text-light opacity-70">
                                 Everything You Need to Know About Our Free Movie and TV Streaming Service.
                             </p>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 mb-5 offset-lg-1">
-                    <div class="accordion accordion-light" id="accordionFAQ">
+                <div className="col-md-6 mb-5 offset-lg-1">
+                    <div className="accordion accordion-light" id="accordionFAQ">
                         <Faqs
                             title="Is the streaming service completely free?"
                             content="Yes, our streaming service is 100% free. There are no hidden fees, charges or subscriptions."

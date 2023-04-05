@@ -19,7 +19,7 @@ export default function Password({ genres, session }) {
                             <AccountLeftNav session={session} />
                         </div>
                         <div className="col-lg-8 col-md-7 mb-5">
-                            <AccountPassword />
+                            <AccountPassword session={session} />
                         </div>
                     </div>
                 </div>
