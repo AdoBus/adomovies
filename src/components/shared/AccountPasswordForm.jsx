@@ -46,25 +46,36 @@ export default function AccountPasswordForm({ session }) {
             body: JSON.stringify(userInfo),
         })
         const data = await res.json()
-        if (data.error) {
-            toast.error(data.error, {
+
+        await toast.promise(
+            new Promise((resolve, reject) => {
+                if (data.error) {
+                    reject(data);
+                } else {
+                    setTimeout(() => {
+                        resolve(data);
+                    }, 2000);
+                }
+            }),
+            {
+                loading: 'We are updating your password...',
+                success: (() => {
+                    return `Your password updated successful`;
+                }),
+                error: (e) => {
+                    return `${e.error}`;
+                },
+            },
+            {
                 style: {
                     borderRadius: '10px',
                     background: '#1D1929',
                     color: '#fff',
                     border: "solid 1px white"
-                },
-            })
-        } else {
-            toast.success(`Password updated!`, {
-                style: {
-                    borderRadius: '10px',
-                    background: '#1D1929',
-                    color: '#fff',
-                    border: "solid 1px white"
-                },
-            })
-        }
+                }
+            },
+
+        )
     }
     return (
         <>

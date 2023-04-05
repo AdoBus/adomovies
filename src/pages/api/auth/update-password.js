@@ -1,5 +1,6 @@
 import { MongoClient } from 'mongodb';
-
+import { sendEmail } from "../../../../lib/send_email";
+import {getDeviceInfo} from "../../../../lib/get_device_info"
 
 async function handler(req, res) {
     if (req.method === 'POST') {
@@ -67,6 +68,8 @@ async function handler(req, res) {
                 },
             });
 
+        // get browser information and ip address
+        const deviceInfo = await getDeviceInfo(req)
         res.status(200).json({ message: "Password updated" });
         client.close();
     } else {
