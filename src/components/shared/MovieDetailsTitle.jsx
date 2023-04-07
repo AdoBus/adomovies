@@ -3,6 +3,7 @@ import Link from "next/link"
 import { useRouter } from "next/router"
 import saveCollection from "../../helpers/save_collection"
 import getCollection from "../../helpers/get_collection"
+import NewList from "./NewList"
 
 export default function MovieDetailsTitle({ movie, type, session }) {
     const [favorite, setFavorite] = useState(false)
@@ -53,11 +54,7 @@ export default function MovieDetailsTitle({ movie, type, session }) {
                                     List
                                 </span>
                             </a>
-                            <ul class="dropdown-menu dropdown-menu-dark">
-                                <li><a class="dropdown-item" href="car-finder-catalog-list.html">List View</a></li>
-                                <li><a class="dropdown-item" href="car-finder-catalog-grid.html">Grid View</a></li>
-                                <li><a class="dropdown-item" href="car-finder-single.html">Car Single Page</a></li>
-                            </ul>
+                            <NewList />
                         </div>
                     </div>
                 </div>
