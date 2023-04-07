@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import UploadPicture from "./UploadPicture";
 import FormInputs from "./ProfileFormInputs";
 import toast from "react-hot-toast"
-import { Upload } from "@aws-sdk/lib-storage";
-import { S3 } from "@aws-sdk/client-s3";
 
 
 export default function ProfileForm({ session, countries, s3Bucket }) {
@@ -22,17 +20,21 @@ export default function ProfileForm({ session, countries, s3Bucket }) {
     )
 
     useEffect(() => {
-      setUserInfo(prevUserInfo => ({...prevUserInfo, avatar: image ? `https://adomovies.s3.eu-north-1.amazonaws.com/${user._id}-${image.name}` : user.avatar}))
+        setUserInfo(prevUserInfo => ({ ...prevUserInfo, avatar: image ? `https://adomovies.s3.eu-north-1.amazonaws.com/${user._id}-${image.name}` : user.avatar }))
     }, [image, user._id, user.avatar])
-    
+
 
     const handleUpload = async () => {
         if (image) {
-            const s3 = new S3({
+            const AWS = require('aws-sdk')
+
+            AWS.config.update({
                 accessKeyId: s3Bucket.vc57fccddsd54355,
                 secretAccessKey: s3Bucket.fxsr679964fhmk553,
                 region: s3Bucket.lljppojbc4435fv,
             });
+
+            const s3 = new AWS.S3();
 
             const getBase64 = async (file) => {
                 return new Promise((resolve) => {
@@ -50,18 +52,18 @@ export default function ProfileForm({ session, countries, s3Bucket }) {
                 Body: await getBase64(image),
             };
 
-            new Upload({
-                client: s3,
-                params
+            new AWS.S3.ManagedUpload({
+                params,
+                service: s3,
             })
-                .done()
+                .promise()
                 .then(() => {
-                    console.log('Success')
+                    console.log('Success');
                 })
                 .catch((err) => {
-                    console.log(err);
+                    console.log('Error', err);
                 });
-        };
+        }
     }
 
     const handleSubmit = async (e) => {

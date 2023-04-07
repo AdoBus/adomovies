@@ -31,7 +31,7 @@ export default function Search() {
     const router = useRouter()
 
     function getFormData() {
-        return $('.rbt-input').val()
+        return $('.rbt-input').val().replaceAll(' ', '-')
     }
 
     const handleSubmit = useCallback((e) => {

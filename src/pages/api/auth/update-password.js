@@ -79,6 +79,8 @@ async function handler(req, res) {
             date: new Date(),
         });
 
+        console.log(userId)
+
         // send email to notify user that he or she change the password
         const email = checkExisting.email
         const subject = "Password updated"

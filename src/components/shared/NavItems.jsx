@@ -43,7 +43,7 @@ export default function NavItems({ genres }) {
                         </Link>
                     </li>
                     <li className={`nav-item dropdown ${router.pathname.includes(["/people"]) && "active"}`}>
-                        <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">MORE</a>
+                        <a className="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">MORE</a>
                         <ul className="dropdown-menu dropdown-menu-dark row">
                             <li className="col-6">
                                 <Link className={`dropdown-item ${router.pathname == "/people" && "active"}`} href="/people">

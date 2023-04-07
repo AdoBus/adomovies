@@ -46,11 +46,19 @@ export default function MovieDetailsTitle({ movie, type, session }) {
                                 Watchlist
                             </span>
                         </a>
-
-                        <span className="me-3 pe-1 opacity-70 text-light">
-                            <i className="fi-list active opacity-70 text-light me-2"></i>
-                            List
-                        </span>
+                        <div class="nav-item dropdown active">
+                            <a className="text-decoration-none" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <span className="me-3 pe-1 opacity-70 text-light">
+                                    <i className="fi-list active opacity-70 text-light me-2"></i>
+                                    List
+                                </span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-dark">
+                                <li><a class="dropdown-item" href="car-finder-catalog-list.html">List View</a></li>
+                                <li><a class="dropdown-item" href="car-finder-catalog-grid.html">Grid View</a></li>
+                                <li><a class="dropdown-item" href="car-finder-single.html">Car Single Page</a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
