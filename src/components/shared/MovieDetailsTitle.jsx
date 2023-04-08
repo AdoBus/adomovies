@@ -54,7 +54,7 @@ export default function MovieDetailsTitle({ movie, type, session }) {
                                     List
                                 </span>
                             </a>
-                            <NewList />
+                            <NewList user={user} movie={movie.id} type={type} />
                         </div>
                     </div>
                 </div>

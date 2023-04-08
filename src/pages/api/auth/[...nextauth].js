@@ -81,7 +81,7 @@ export default NextAuth({
 
             const data = await response.json();
             session.user = data.user;
-            
+
             return { ...session };
         },
     },

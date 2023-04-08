@@ -37,8 +37,9 @@ async function handle(req, res) {
         delete user.password
 
         res.status(200).json({ user })
+        client.close()
 
-    } catch {
+    } catch(error) {
         console.error(`Error occurred: ${error.message}`)
         res.status(500).json({ error: 'Internal server error' })
     }
