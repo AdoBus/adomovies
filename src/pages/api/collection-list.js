@@ -4,7 +4,7 @@ import { MongoClient } from 'mongodb';
 const handler = nc()
     .post(async (req, res) => {
         const { user_id, type } = req.body
-
+        
         // Check type if is not favorite or watchlist
         if (type !== 'favorite' && type !== 'watchlist') {
             res.status(422).json({
@@ -13,7 +13,7 @@ const handler = nc()
             return;
         }
 
-        const client = new MongoClient(process.env.MONGODB_URI_DEV, {
+        const client = new MongoClient(process.env.mongodb_url, {
             useNewUrlParser: true,
             useUnifiedTopology: true
         });
@@ -29,6 +29,7 @@ const handler = nc()
                 user_id: new ObjectId(user_id),
                 type,
             }).toArray();
+
 
         if (collections) {
             try {

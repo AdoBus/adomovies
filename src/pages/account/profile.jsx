@@ -45,9 +45,9 @@ export const getServerSideProps = async ({ req }) => {
     const countries_api = await fetch('https://users.shuledirect.co.tz/user/auth/get-all-countries')
     const countries = await countries_api.json()
     const S3 = {
-        vc57fccddsd54355: process.env.S3_ACCESS_ID,
-        fxsr679964fhmk553: process.env.S3_SECRET_KEY,
-        lljppojbc4435fv: process.env.S3_REGION,
+        vc57fccddsd54355: process.env.s3_access_id,
+        fxsr679964fhmk553: process.env.s3_secret_key,
+        lljppojbc4435fv: process.env.s3_region,
     }
     return {
         props: {

@@ -15,7 +15,7 @@ async function handle(req, res) {
             return
         }
 
-        const client = await MongoClient.connect(process.env.MONGODB_URI_DEV, {
+        const client = await MongoClient.connect(process.env.mongodb_url, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
         })

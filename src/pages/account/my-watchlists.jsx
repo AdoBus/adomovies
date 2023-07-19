@@ -41,8 +41,8 @@ export const getServerSideProps = async ({ req }) => {
     }
     const genres_api = await fetch(`${process.env.tmdburl}/3/genre/movie/list?api_key=${process.env.tmdbkey}&language=en-US`)
     const genres = await genres_api.json()
-
-    const watchlist_api = await fetch('http://127.0.0.1:3000/api/collection-list', {
+    
+    const watchlist_api = await fetch('http://localhost:3000/api/collection-list', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -54,7 +54,6 @@ export const getServerSideProps = async ({ req }) => {
     })
 
     const watchlist = await watchlist_api.json()
-
     return {
         props: {
             genres: genres.genres,

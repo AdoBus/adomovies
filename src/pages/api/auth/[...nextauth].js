@@ -14,7 +14,7 @@ export default NextAuth({
             async authorize(credentials) {
                 //Connect to DB
                 const client = await MongoClient.connect(
-                    process.env.MONGODB_URI_DEV,
+                    process.env.mongodb_url,
                     { useNewUrlParser: true }
                 );
 
@@ -57,7 +57,7 @@ export default NextAuth({
     },
     jwt: {
         encryption: false,
-        secret: process.env.JWT_SECRET,
+        secret: process.env.jwt_secret,
     },
     callbacks: {
         async jwt({ token, user, account }) {

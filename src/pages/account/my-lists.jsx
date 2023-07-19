@@ -7,7 +7,7 @@ import ProfileBreadCumb from "../../components/shared/ProfileBreadCumb"
 import MyListPagination from "../../components/shared/MyListsPagination";
 import { getSession } from 'next-auth/react';
 
-export default function Watchlists({ genres, session }) {
+export default function Watchlists({ genres, session, user_list }) {
     return (
         <Layout title="Adomovies - Porpular Movies">
             <main className="page-wrapper">
@@ -19,7 +19,7 @@ export default function Watchlists({ genres, session }) {
                             <AccountLeftNav session={session} />
                         </div>
                         <div className="col-lg-8 col-md-7 mb-5">
-                            <MyListPagination header="My Lists"/>
+                            <MyListPagination header="My Lists" user_list={user_list} />
                         </div>
                     </div>
                 </div>
@@ -29,7 +29,7 @@ export default function Watchlists({ genres, session }) {
     )
 }
 
-export const getServerSideProps = async ({req}) => {
+export const getServerSideProps = async ({ req }) => {
     const session = await getSession({ req })
     if (!session) {
         return {
@@ -41,10 +41,24 @@ export const getServerSideProps = async ({req}) => {
     }
     const genres_api = await fetch(`${process.env.tmdburl}/3/genre/movie/list?api_key=${process.env.tmdbkey}&language=en-US`)
     const genres = await genres_api.json()
+
+    const user_list_api = await fetch('http://localhost:3000/api/user-list', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            userId: session.user._id,
+        })
+    })
+
+    const user_list = await user_list_api.json()
+    console.log(user_list)
     return {
         props: {
             genres: genres.genres,
-            session:session
+            session: session,
+            user_list: user_list
         }
     }
 }

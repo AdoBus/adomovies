@@ -2,13 +2,14 @@ import React from "react";
 import AccountMoviesAndTvHeader from "./AccountMovieAndTvHeader";
 import Link from "next/link";
 
-export default function MyListPagination({ header }) {
+export default function MyListPagination({ header, user_list }) {
+    console.log(user_list)
     return (
         <>
             <AccountMoviesAndTvHeader header={header} />
             <div className="row row-cols-md-2 row-cols-lg-3 row-cols-sm-2 row-cols-1 g-3 g-xl-4">
-                {[1, 2, 4, 6, 6, 7, 9, 9, 0].map(i => (
-                    <div key={i} className="col pb-2">
+                {user_list.data.map(list => (
+                    <div key={list} className="col pb-2">
                         <div className="position-relative">
                             <div className="position-relative mb-3">
                                 <div className="dropdown position-absolute zindex-5 top-0 end-0 mt-3 me-3">
@@ -30,27 +31,26 @@ export default function MyListPagination({ header }) {
                                         </li>
                                     </ul>
                                 </div>
-                                <img className="rounded-3" src="https://image.tmdb.org/t/p/original/jr8tSoJGj33XLgFBy6lmZhpGQNu.jpg" alt="Image" />
+                                {list.image ? <img className="rounded-3" src={`https://image.tmdb.org/t/p/original${list.image}`} alt="Image" /> : <img className="rounded-xl" src="/img/welcome/movie_list.png" alt="..." width="100%" />}
                             </div>
                             <h3 className="mb-0 fs-lg text-light">
                                 <Link className="nav-link stretched-link" href="/list/1">
-                                    Marvel
+                                    {list.name}
                                 </Link>
                             </h3>
                             <ul className="list-inline mb-0 fs-s">
                                 <li className="list-inline-item pe-1 text-bold">
                                     <i className="fi-item mt-n1 me-1 align-middle"></i>
-                                    5 Items
+                                    {list.items} {list.items > 1 ? 'Items' : 'Item'}
                                 </li>
                                 <li className="list-inline-item pe-1 text-bold">
-                                    <i className="fi-globe mt-n1 me-1 fs-base text-muted align-middle"></i>
-                                    Private
+                                    {list.isPublic ? <><i className="fi-globe mt-n1 me-1 fs-base text-muted align-middle"></i>  Public</> : <><i className="fi-lock mt-n1 me-1 fs-base text-muted align-middle"></i> Private</>}
                                 </li>
                             </ul>
                         </div>
                     </div>
                 ))}
-            </div>
+            </div >
         </>
     )
 }

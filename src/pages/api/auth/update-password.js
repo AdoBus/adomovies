@@ -21,7 +21,7 @@ async function handler(req, res) {
         }
 
         const client = await MongoClient.connect(
-            process.env.MONGODB_URI_DEV, {
+            process.env.mongodb_url, {
             useNewUrlParser: true,
             useUnifiedTopology: true
         });
@@ -79,7 +79,6 @@ async function handler(req, res) {
             date: new Date(),
         });
 
-        console.log(userId)
 
         // send email to notify user that he or she change the password
         const email = checkExisting.email

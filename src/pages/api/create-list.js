@@ -20,7 +20,7 @@ const handler = nc()
             return;
         }
 
-        const client = new MongoClient(process.env.MONGODB_URI_DEV, {
+        const client = new MongoClient(process.env.mongodb_url, {
             useNewUrlParser: true,
             useUnifiedTopology: true
         });
@@ -50,6 +50,7 @@ const handler = nc()
             description,
             isPublic: isPublic === "true" ? true : false,
         });
+        
         if (status.acknowledged === true) {
             res.status(200).json({
                 message: 'List created',

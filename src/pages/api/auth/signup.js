@@ -23,7 +23,7 @@ async function handler(req, res) {
         }
         //Connect with database
         const client = await MongoClient.connect(
-            process.env.MONGODB_URI_DEV, {
+            process.env.mongodb_url, {
             useNewUrlParser: true,
             useUnifiedTopology: true
         }
