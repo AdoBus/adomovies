@@ -39,7 +39,7 @@ export default function Casts({ movie }) {
             >
                 {movie.credits.cast.map(c => (
                     <div key={c.name} className="mt-3 me-3">
-                        <Link href={`/person/${c.id}-${c.name.replaceAll(' ', '-')}`}>
+                        <Link href={`/person/${c.id}-${String(c.name).replaceAll(' ', '-')}`}>
                             <a>
                                 <figure className="figure">
                                     <Image className="rounded-1 figure-img" width="178" height="287.5"
