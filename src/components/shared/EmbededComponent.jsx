@@ -46,10 +46,10 @@ export default function EmbededComponent({ movie, season_number }) {
                     {movie.status === 'Released' || movie.status === 'Ended' || movie.status === 'Returning Series' || movie.status === 'Canceled' ?
                         <>
                             {movie.hasOwnProperty("seasons") ?
-                                <iframe id='iframe' src={`https://autoembed.to/tv/tmdb/${movie.id}-${season_number}-1`}
-                                    width="100%" height="500px" allow="fullscreen 'src'"></iframe>
+                                <iframe id='iframe' src={`https://vidsrc.xyz/embed/tv/${movie.id}/${season_number}-1`}
+                                    width="100%" height="500px" allow="fullscreen 'src'" referrerpolicy="origin"></iframe>
                                 :
-                                <iframe src={`https://autoembed.to/movie/tmdb/${movie.id}`} width="100%" height="500px"
+                                <iframe src={`https://vidsrc.xyz/embed/movie/${movie.id}`} width="100%" height="500px"
                                     allow="fullscreen 'src'" allowtransparency="true"></iframe>
                             }
                         </>
