@@ -13,4 +13,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    - run: doker stop adomovies_nextjs_1
+    - run: docker rm adomovies_nextjs_1
+    - run: docker stop adomovies_nginx_1
+    - run: docker rm adomovies_nginx_1
+    - run: docker-compose build
     - run: docker-compose up -d
