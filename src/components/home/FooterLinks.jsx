@@ -29,8 +29,8 @@ export default function FooterLinks() {
                     <div className="col-lg-2 col-md-3 col-sm-4">
                         <h3 className="fs-base text-light">Quick links</h3>
                         <ul className="list-unstyled fs-sm">
-                            <li><a className="nav-link text-light opacity-70" rel="noreferrer" target="_blank" href="https://adobus.co.tz/">Ado<b>Bus</b></a></li>
-                            <li><a className="nav-link text-light opacity-70" rel="noreferrer" target="_blank" href="https://adotelevision.vercel.app/">Ado<b>Television</b></a></li>
+                            <li><a className="nav-link text-light opacity-70" rel="noreferrer" target="_blank" href="#">AnyMovies</a></li>
+                            <li><a className="nav-link text-light opacity-70" rel="noreferrer" target="_blank" href="#">TvSeries</a></li>
                         </ul>
                     </div>
                     {/* <!-- Links--> */}
