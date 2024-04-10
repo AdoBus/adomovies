@@ -36,6 +36,7 @@ export default function Casts({ movie }) {
                 ssr={true}
                 infinite={false}
                 removeArrowOnDeviceType={["tablet", "mobile"]}
+                slidesToSlide={5}
             >
                 {movie.credits.cast.map(c => (
                     <div key={c.name} className="mt-3 me-3">

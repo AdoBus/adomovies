@@ -10,7 +10,7 @@ const handler = nc()
         let url;
 
         if (type === "discover") {
-            url = `${process.env.tmdburl}/3/discover/${media_type}?api_key=${process.env.tmdbkey}&language=en-US&page=${page}&with_genres=${genres}&sort_by=popularity.desc`
+            url = `${process.env.tmdburl}/3/discover/${media_type}?api_key=${process.env.tmdbkey}&language=en-US&page=${page}${genres !== 'undefined' && '&with_genres='}${genres}&sort_by=popularity.desc`
         } else if (type === "top-rated") {
             url = `${process.env.tmdburl}/3/${media_type}/top_rated?api_key=${process.env.tmdbkey}&language=en-US&page=${page}`
         } else if (type === "search") {
@@ -18,6 +18,8 @@ const handler = nc()
         } else {
             return { "Status Code": 402 }
         }
+
+        console.log(url)
 
         fetch(url)
             .then(response => response.json())
