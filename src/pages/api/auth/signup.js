@@ -15,7 +15,7 @@ async function handler(req, res) {
             fullname,
         } = req.body;
         //Validate
-        if (!email || !email.includes('@') || !password) {
+        if (!email || !email.includes('@') || !password || !fullname){
             res.status(422).json({
                 error: 'Invalid informations provided'
             });

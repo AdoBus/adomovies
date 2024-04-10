@@ -29,7 +29,7 @@ export default function AccountMoviesAndTvHeader({ header, total, data, setData 
                         </a>
                     </li>
                     <li className="nav-item mb-3" role="presentation">
-                        <a id="tvCollection" className="nav-link text-center" type="button" data-bs-toggle="tab" role="tab" aria-controls="reviews-by-you" aria-selected="false" tabindex="-1">
+                        <a id="tvCollection" className="nav-link text-center" type="button" data-bs-toggle="tab" role="tab" aria-controls="reviews-by-you" aria-selected="false" tabIndex="-1">
                             Tv Series
                         </a>
                     </li>

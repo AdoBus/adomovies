@@ -15,7 +15,7 @@ export default function NavItems({ genres }) {
                             HOME
                         </Link>
                     </li>
-                    <li className={`nav-item dropdown ${router.pathname == "/genres" && "active"}`}>
+                    <li className={`nav-item dropdown ${router.pathname.includes('/genres') && "active"}`}>
                         <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">GENRE</a>
                         <ul className="dropdown-menu dropdown-menu-dark row">
                             {genres.map(genre => (
@@ -37,24 +37,15 @@ export default function NavItems({ genres }) {
                             TV SERIES
                         </Link>
                     </li>
-                    <li className={`nav-item ${router.pathname == "/top-rated" && "active"}`}>
+                    <li className={`nav-item ${router.pathname.includes('/top-rated') && "active"}`}>
                         <Link className="nav-link" href="/top-rated/movie">
                             TOP RATED
                         </Link>
                     </li>
-                    <li className={`nav-item dropdown ${router.pathname.includes(["/people"]) && "active"}`}>
-                        <a className="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">MORE</a>
-                        <ul className="dropdown-menu dropdown-menu-dark row">
-                            <li className="col-6">
-                                <Link className={`dropdown-item ${router.pathname == "/people" && "active"}`} href="/people">
-                                    People
-                                </Link>
-                                <Link className="dropdown-item" href="/lists">
-                                    Lists
-                                </Link>
-                            </li>
-
-                        </ul>
+                    <li className={`nav-item ${router.pathname == "/people" && "active"}`}>
+                        <Link className="nav-link" href="/people">
+                            PEOPLE
+                        </Link>
                     </li>
                     <NavProfileMobile />
                 </ul>

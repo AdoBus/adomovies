@@ -25,9 +25,6 @@ export default function NavProfileMobile() {
                 <Link className="dropdown-item" href="/account/my-watchlists">
                     <i className="fi-bookmarj me-2"></i>My Watchlists
                 </Link>
-                <Link className="dropdown-item" href="/account/my-lists">
-                    <i className="fi-bookmarj me-2"></i>My Lists
-                </Link>
                 <div className="dropdown-divider"></div>
                 <a href="signin-dark.html">Sign Out</a>
             </div>

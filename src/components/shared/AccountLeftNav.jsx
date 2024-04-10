@@ -25,9 +25,6 @@ export default function AccountLeftNav({session}) {
                     <Link className={`card-nav-link ${router.pathname == "/account/my-watchlists" ? "active" : ""}`} href="/account/my-watchlists">
                             <i className="fi-bookmark me-2"></i>My Watchlists
                     </Link>
-                    <Link className={`card-nav-link ${router.pathname == "/account/my-lists" ? "active" : ""}`} href="/account/my-lists">
-                            <i className="fi-list me-2"></i>My Lists
-                    </Link>
                     <a className="card-nav-link" href="/real-estate/account-wishlist">
                         <i className="fi-logout me-2"></i>Sign Out
                     </a>

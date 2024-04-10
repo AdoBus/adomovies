@@ -46,9 +46,6 @@ export default function NavProfile({profile}) {
                     <Link className="dropdown-item" href="/account/my-watchlists">
                         <i className="fi-bookmark me-2"></i>My Watchlists
                     </Link>
-                    <Link className="dropdown-item" href="/account/my-lists">
-                        <i className="fi-list me-2"></i>My Lists
-                    </Link>
                     <div className="dropdown-divider"></div>
                     <a className="dropdown-item" href="#" onClick={() => logOut()}>Sign Out</a>
                 </div>

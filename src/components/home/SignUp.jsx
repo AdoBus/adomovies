@@ -83,7 +83,7 @@ const SignUp = () => {
     }
     return (
         <>
-            <div className="modal fade" id="signup-modal" tabindex="-1" aria-hidden="true" style={{ display: "none" }}>
+            <div className="modal fade" id="signup-modal" tabIndex="-1" aria-hidden="true" style={{ display: "none" }}>
                 <div className="modal-dialog modal-lg modal-dialog-centered p-2 my-0 mx-auto" style={{ "maxWidth": "950px" }}>
                     <div className="modal-content bg-dark border-light">
                         <div className="modal-body px-0 py-2 py-sm-0">

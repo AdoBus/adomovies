@@ -34,10 +34,6 @@ const CollectionList = ({session, media, setData, type, data, style, divId}) => 
                 <a className="d-flex align-items-center text-decoration-none">
                     <div className="ps-2">
                         <div className="d-flex text-body fs-sm">
-                            <span type="button" className="me-3 pe-1 opacity-70 text-light">
-                                <i className="fi-list active opacity-70 text-light me-2"></i>
-                                Add to list
-                            </span>
                             <span onClick={() => removeCollection(media.id, media.original_name ? 'tv' : 'movie')} type="button" className="me-3 pe-1 opacity-70 text-light">
                                 <i className="fi-trash active opacity-70 text-light me-2"></i>
                                 Remove
