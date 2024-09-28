@@ -1,3 +1,5 @@
+export const runtime = 'edge';
+
 import Navbar from "../../components/shared/Navbar"
 import dynamic from "next/dynamic";
 import Footer from "../../components/shared/Footer";
