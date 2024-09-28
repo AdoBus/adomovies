@@ -1,3 +1,5 @@
+export const runtime = 'edge';
+
 import Navbar from "../components/shared/Navbar"
 import TrendingToday from "../components/home/TrendingToday";
 import PopularToday from "../components/home/PopularToday";
