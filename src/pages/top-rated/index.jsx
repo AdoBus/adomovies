@@ -1,3 +1,5 @@
+export const runtime = 'edge';
+
 import Navbar from "../../components/shared/Navbar"
 import SortBy from "../../components/shared/GenresSort";
 import Footer from "../../components/shared/Footer";
