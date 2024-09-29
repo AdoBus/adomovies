@@ -10,13 +10,27 @@ export default function Pagination({ discover, media_type, genres_id, tv_genre, 
     const [movies, setMovies] = useState(data);
     const [hasMore, setHasMore] = useState(true);
 
-    const getMoreMovie = async () => {
-        const res = await fetch(
-            `/api/pagination?t=${pagination_type}&m=${media_type}&p=${$("#xyzz").attr('name')}&g=${$("#pagination").attr('name')}&q=${query}`
-        );
+    const pagenate = async (genres, page) => {
+        let url;
+        if (pagination_type === "discover") {
+            url = `${process.env.tmdburl}/3/discover/${media_type}?api_key=${process.env.tmdbkey}&language=en-US&page=${page}${genres !== undefined && '&with_genres='}${genres}&sort_by=popularity.desc`
+        } else if (pagination_type === "top-rated") {
+            url = `${process.env.tmdburl}/3/${media_type}/top_rated?api_key=${process.env.tmdbkey}&language=en-US&page=${page}`
+        } else if (pagination_type === "search") {
+            url = `${process.env.tmdburl}/3/search/multi?api_key=${process.env.tmdbkey}&language=en-US&page=${page}&include_adult=false&query=${query}`
+        } else {
+            return []
+        }
+
+        const res = await fetch(url);
 
         const newMovies = await res.json();
 
+        return newMovies
+    }
+
+    const getMoreMovie = async () => {
+        const newMovies = await pagenate($("#pagination").attr('name'), $("#xyzz").attr('name'));
         setMovies((movie) => [...movie, ...newMovies.results]);
 
         $("#xyzz").attr('name', `${parseInt($("#xyzz").attr('name')) + 1}`)

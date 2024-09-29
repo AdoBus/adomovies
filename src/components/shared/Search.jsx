@@ -10,23 +10,21 @@ export default function Search() {
     const [options, setOptions] = useState([]);
 
     const handleSearch = (query) => {
-
-        fetch(`${SEARCH_URI}?q=${query}`)
+        fetch(`${process.env.tmdburl}/3/search/multi?api_key=${process.env.tmdbkey}&language=en-US&page=1&include_adult=false&query=${query}`)
             .then((resp) => resp.json())
             .then(({ results }) => {
-                const options = results.map((i) => (
-                    i.media_type !== 'person' ?
-                        {
-                            poster_path: i.poster_path,
-                            id: i.id,
-                            title: i.title ? i.title : i.original_name,
-                        } :
-                        ''
-                ));
+                const options = results
+                    .filter(i => i.media_type !== 'person')
+                    .map(i => ({
+                        poster_path: i.poster_path,
+                        id: i.id,
+                        title: i.title ? i.title : i.original_name,
+                    }));
 
                 setOptions(options);
             });
     };
+    
     const filterBy = () => true;
 
     const router = useRouter()
