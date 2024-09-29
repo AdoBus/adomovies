@@ -1,4 +1,4 @@
-export const runtime = 'edge';
+export const config = { runtime: 'edge' };
 
 import React from "react";
 import Layout from "../../components/shared/LayoutComponent";

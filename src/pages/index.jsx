@@ -1,4 +1,4 @@
-export const runtime = 'edge';
+export const config = { runtime: 'edge' };
 
 import Navbar from "../components/shared/Navbar"
 import TrendingToday from "../components/home/TrendingToday";
