@@ -14,7 +14,7 @@ import EpisodesError from '../../../../components/shared/EpisodesErrors';
 import Skeleton from "react-loading-skeleton";
 import 'react-loading-skeleton/dist/skeleton.css';
 
-const SeasonEpisodes = dynamic(() => import("../../../../components/shared/SeasonEpisodes"), { ssr: false });
+const SeasonEpisodes = dynamic(() => import("../../../../components/shared/SeasonEpisodes"), { ssr: false }); 
 
 class ErrorBoundary extends React.Component {
     constructor(props) {
