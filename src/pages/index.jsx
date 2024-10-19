@@ -19,7 +19,7 @@ export default function Index() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const trendingAllApi = await fetch(`${process.env.tmdburl}/3/trending/all/day?api_key=${process.env.tmdbkey}`);
+      const trendingAllApi = await fetch(`${process.env.tmdburl}/3/trending/movie/day?api_key=${process.env.tmdbkey}`);
       const trendingMoviesApi = await fetch(`${process.env.tmdburl}/3/trending/movie/day?api_key=${process.env.tmdbkey}`);
       const popularSeriesApi = await fetch(`${process.env.tmdburl}/3/trending/tv/day?api_key=${process.env.tmdbkey}`);
       const genresApi = await fetch(`${process.env.tmdburl}/3/genre/movie/list?api_key=${process.env.tmdbkey}&language=en-US`);

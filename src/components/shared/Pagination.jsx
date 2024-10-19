@@ -19,7 +19,7 @@ export default function Pagination({ discover, media_type, genres_id, tv_genre, 
         } else if (pagination_type === "search") {
             url = `${process.env.tmdburl}/3/search/multi?api_key=${process.env.tmdbkey}&language=en-US&page=${page}&include_adult=false&query=${query}`
         } else {
-            return []
+            url = `${process.env.tmdburl}/3/person/popular?api_key=${process.env.tmdbkey}&language=en-US&page=${page}`
         }
 
         const res = await fetch(url);
@@ -52,15 +52,14 @@ export default function Pagination({ discover, media_type, genres_id, tv_genre, 
                 <div id="pagination" name={media_type === 'movie' ? genres_id : tv_genre} className="row g-4" style={{ "display": "show" }}>
                     {movies.length > 0 ?
                         movies.map((movie, index) =>
-                            movie.media_type != 'person' &&
                             <div key={index} className="col-md-2 col-6 mb-3">
                                 {/* <!-- Item --> */}
-                                <Link href={`/watch/${movie.media_type ? movie.media_type : media_type}/${movie.id}-${media_type === 'tv' ? '1-' : ''}${movie.original_title ?
+                                <Link href={"profile_path" in movie ? `/person/${movie.id}-${movie.original_name}` : `/watch/${movie.media_type ? movie.media_type : media_type}/${movie.id}-${media_type === 'tv' ? '1-' : ''}${movie.original_title ?
                                     String(movie.original_title).replaceAll(' ', '-') : String(movie.original_name).replaceAll(' ', '-')}`}>
                                     <a className="card h-100 card-light shadow-sm card-hover border-0">
                                         <div className="card-img-top card-img-hover">
                                             <span className="img-overlay opacity-65"></span>
-                                            <Image width="195" height="288" src={movie.poster_path ? `https://image.tmdb.org/t/p/original${movie.poster_path}` : '/img/errors/grey.jpg'}
+                                            <Image width="195" height="288" src={movie.poster_path ? `https://image.tmdb.org/t/p/original${movie.poster_path}` : movie.profile_path ? `https://image.tmdb.org/t/p/original${movie.profile_path}` : '/img/errors/grey.jpg'}
                                                 alt={movie.original_title ? movie.original_title : movie.original_name} />
                                             <div className="content-overlay start-0 top-0 d-flex align-items-center justify-content-center w-100 h-100 p-3">
                                                 <div className="w-100 p-1">

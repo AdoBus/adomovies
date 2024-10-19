@@ -15,7 +15,7 @@ export default function MovieDetails({ movie, type, torrent }) {
             <section className="container mt-4 pt-2 pl-4 pr-4 pb-4">
                 <article className="card card-light border-0 shadow-sm card-hover card-horizontal">
                     <a rel="noreferrer" target="_blank" href={movie.homepage} className="card-img-top"
-                        style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original${movie.poster_path})` }}>
+                        style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original${movie.backdrop_path})` }}>
                     </a>
                     <div className="card-body">
                         <a rel="noreferrer" target="_blank" href={movie.homepage} className="fs-xs text-uppercase text-decoration-none">{movie.status} </a>

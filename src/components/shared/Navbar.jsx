@@ -55,9 +55,9 @@ export default function Navbar({ genres }) {
                   <a className="nav-link">TV SERIES</a>
                 </Link>
               </li>
-              <li className={`nav-item ${router.pathname == "/top-rated" ? "active" : ""}`}>
-                <Link href="/top-rated?q=movie">
-                  <a className="nav-link">TOP RATED</a>
+              <li className={`nav-item ${router.pathname == "/people" && "active"}`}>
+                <Link className="nav-link" href="/people">
+                  <a className="nav-link">PEOPLE</a>
                 </Link>
               </li>
             </ul>
