@@ -36,7 +36,7 @@ export default function EmbededComponent({ movie, season_number }) {
                     </ol>
                 </nav>
                 <p className="h6 card-light text-light opacity-70 p-3 rounded-2">
-                    <strong>If you get an error when trying to stream, switch to another streaming server or refresh the page.</strong>
+                    <strong>If you get an error when trying to stream, switch to another streaming server {season_number} or refresh the page.</strong>
                 </p>
             </section>
 
@@ -46,10 +46,10 @@ export default function EmbededComponent({ movie, season_number }) {
                     {movie.status === 'Released' || movie.status === 'Ended' || movie.status === 'Returning Series' || movie.status === 'Canceled' ?
                         <>
                             {movie.hasOwnProperty("seasons") ?
-                                <iframe id='iframe' src={`https://vidsrc.xyz/embed/tv/${movie.id}/${season_number}-1`}
+                                <iframe id='iframe' src={`https://multiembed.mov/directstream.php/?video_id=${movie.id}&tmdb=1&s=${season_number ?? 1}&e=1`}
                                     width="100%" height="500px" allow="fullscreen 'src'" referrerpolicy="origin"></iframe>
                                 :
-                                <iframe src={`https://vidsrc.xyz/embed/movie/${movie.id}`} width="100%" height="500px"
+                                <iframe src={`https://multiembed.mov/directstream.php/?video_id=${movie.id}&tmdb=1`} width="100%" height="500px"
                                     allow="fullscreen 'src'" allowtransparency="true"></iframe>
                             }
                         </>
