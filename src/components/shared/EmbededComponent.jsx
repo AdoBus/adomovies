@@ -47,10 +47,10 @@ export default function EmbededComponent({ movie, season_number }) {
                         <>
                             {movie.hasOwnProperty("seasons") ?
                                 <iframe id='iframe' src={`https://multiembed.mov/directstream.php/?video_id=${movie.id}&tmdb=1&s=${season_number ?? 1}&e=1`}
-                                    width="100%" height="500px" frameborder="0" allowFullScreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>
+                                    width="100%" height="500px" allowFullScreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>
                                 :
                                 <iframe src={`https://multiembed.mov/directstream.php/?video_id=${movie.id}&tmdb=1`} width="100%" height="500px"
-                                    frameborder="0" allowFullScreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>
+                                    allowFullScreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>
                             }
                         </>
                         :
