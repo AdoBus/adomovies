@@ -101,11 +101,11 @@ export default function Streaming() {
 
                 {series && <MovieDetails movie={series} type="tv" torrent={torrent} />}
 
-                {/* {series?.seasons?.length >= 1 &&
+                {series?.seasons?.length >= 1 &&
                     <ErrorBoundary>
                         <SeasonEpisodes series={series} episodes={episodes} />
                     </ErrorBoundary>
-                } */}
+                }
 
                 <section className="container mt-3 mb-3">
                     <div className="row">
