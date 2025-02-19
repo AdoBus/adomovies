@@ -46,10 +46,10 @@ export default function EmbededComponent({ movie, season_number }) {
                     {movie.status === 'Released' || movie.status === 'Ended' || movie.status === 'Returning Series' || movie.status === 'Canceled' ?
                         <>
                             {movie.hasOwnProperty("seasons") ?
-                                <iframe id='iframe' src={`https://multiembed.mov/directstream.php/?video_id=${movie.id}&tmdb=1&s=${season_number ?? 1}&e=1`}
+                                <iframe id='iframe' src={`https://vidsrc.xyz/embed/tv?tmdb=${movie.id}&season=${season_number ?? 1}&episode=1`}
                                     width="100%" height="500px" allowFullScreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>
                                 :
-                                <iframe src={`https://multiembed.mov/directstream.php/?video_id=${movie.id}&tmdb=1`} width="100%" height="500px"
+                                <iframe src={`https://vidsrc.xyz/embed/movie?tmdb=${movie.id}`} width="100%" height="500px"
                                     allowFullScreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>
                             }
                         </>

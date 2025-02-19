@@ -39,7 +39,7 @@ export default function SeasonEpisodes({ series, episodes }) {
                                 episodes.episodes.map(episode => (
                                     <div key={episode.id} className="col-md-2 col-6">
                                         <a id={`episode${episode.episode_number}`} href={episode.runtime !== null ? "#iframeContainer" : 'javascript:void(0)'}
-                                            onClick={() => episode.runtime !== null && $('#iframe').attr('src', `https://multiembed.mov/directstream.php/?video_id=${series.id}&tmdb=1&s=${episode.season_number}&e=${episode.episode_number}`)}
+                                            onClick={() => episode.runtime !== null && $('#iframe').attr('src', `https://vidsrc.xyz/embed/tv?tmdb=${series.id}&season=${episode.season_number}&episode=${episode.episode_number}`)}
                                             style={{ 'overflow': 'hidden', 'textOverflow': 'ellipsis' }}
                                             type="button" className={`btn ${episode.runtime === null ? 'btn-dark border-0 text-muted' : 'btn-outline-light'} w-100`}
                                             data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-trigger="hover"
